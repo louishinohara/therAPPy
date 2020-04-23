@@ -12,7 +12,7 @@ import Guide4 from './Login/Guide4';
 import Guide5 from './Login/Guide5';
 import EmotionWheel from './Login/EmotionWheel';
 import CapsSurvey from './Login/CapsSurvey';
-
+import BottomTabs from './BottomTabs'
 const RootStack = createCompatNavigatorFactory(createStackNavigator)(
   {
     LoginScreen: {screen: Login},
@@ -25,6 +25,7 @@ const RootStack = createCompatNavigatorFactory(createStackNavigator)(
     Guide5Screen: {screen: Guide5},
     EmotionWheelScreen: {screen: EmotionWheel},
     CapsSurveyScreen: {screen: CapsSurvey},
+    BottomTabs : {screen:BottomTabs},
   },
   {
     initialRouteName: 'LoginScreen',
