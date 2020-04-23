@@ -21,7 +21,7 @@ export default class BottomTabs extends React.Component {
     index: 0,
     routes: [
       { key: 'profile', title: 'Profile', icon: 'account'},
-      { key: 'history', title: 'History', icon: 'history',color:'blue' },
+      { key: 'history', title: 'History', icon: 'history' },
       { key: 'add', title: 'Add', icon: 'plus-circle-outline' },
       { key: 'data', title: 'See Data', icon: 'chart-multiline' },
       { key: 'settings', title: 'Settings', icon: 'settings', },
