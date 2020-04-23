@@ -5,7 +5,7 @@ import { Block,theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
 
 // import {Images } from '../constants';
-import {HeaderHeight} from "../constants/utils"
+import {HeaderHeight} from "../../constants/utils"
 const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
 

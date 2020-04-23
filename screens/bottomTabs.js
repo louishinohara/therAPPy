@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {Component} from 'react';
-import AddButton from "./components/AddButton";
+import AddButton from "../components/AddButton";
 import { View, StyleSheet, Image, Button, ScrollView } from "react-native";
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text  } from 'react-native-paper';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 // ================== Bottom Tab Navigation ====================\\
 
-import ProfileRoute from './screens/ProfileRoute';
-import HistoryRoute from './screens/HistoryRoute';
-import DataRoute from './screens/DataRoute';
-import AddRoute from './screens/AddRoute'
-import SettingsRoute from './screens/SettingsRoute';
+import ProfileRoute from './tabScreens/ProfileRoute';
+import HistoryRoute from './tabScreens/HistoryRoute';
+import DataRoute from './tabScreens/DataRoute';
+import AddRoute from './tabScreens/AddRoute'
+import SettingsRoute from './tabScreens/SettingsRoute';
 
 // https://callstack.github.io/react-native-paper/bottom-navigation.html
 
