@@ -1,8 +1,18 @@
 import * as React from 'react';
+import {Component} from 'react';
 import AddButton from "./components/AddButton";
 import { View, StyleSheet, Image, Button, ScrollView } from "react-native";
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text  } from 'react-native-paper';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+// =============== Login Screen Stuff ==================\\
+
+import Login from './Login/Login';
+import CreateAccount from './Login/CreateAccount';
+import RootStack from './RootStack';
+import {NavigationContainer} from '@react-navigation/native';
+
+//================== Bottom Tab Navigation ====================\\
 
 import ProfileRoute from './screens/ProfileRoute';
 import HistoryRoute from './screens/HistoryRoute';
@@ -11,10 +21,6 @@ import AddRoute from './screens/AddRoute'
 import SettingsRoute from './screens/SettingsRoute';
 
 // https://callstack.github.io/react-native-paper/bottom-navigation.html
-
-
-
-
 
 
 
@@ -44,12 +50,16 @@ export default class MyComponent extends React.Component {
 
   render() {
     return (
+            <NavigationContainer>
+        <RootStack />
+      
       <BottomNavigation 
         // style={styles.title}
         navigationState={this.state}
         onIndexChange={this._handleIndexChange}
         renderScene={this._renderScene}
       />
+      </NavigationContainer>
     );
   }
 }
