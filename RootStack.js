@@ -12,7 +12,8 @@ import Guide4 from './Login/Guide4';
 import Guide5 from './Login/Guide5';
 import EmotionWheel from './Login/EmotionWheel';
 import CapsSurvey from './Login/CapsSurvey';
-import BottomTabs from './BottomTabs'
+import BottomTabs from './bottomTabs'
+
 const RootStack = createCompatNavigatorFactory(createStackNavigator)(
   {
     LoginScreen: {screen: Login},

@@ -195,6 +195,14 @@ class EmotionWheel extends React.Component {
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Plutchik-wheel.svg/1200px-Plutchik-wheel.svg.png',
             }}
           />
+          <TouchableOpacity
+          style={styles.loginBtn}
+          onPress={() => {
+            this.props.navigation.navigate('BottomTabs')
+          }}>
+          <Text style={styles.loginText}>Start</Text>
+        </TouchableOpacity>
+
         </ScrollView>
         <FlatList
           data={this.state.dataSource}

@@ -15,7 +15,7 @@ import SettingsRoute from './screens/SettingsRoute';
 
 // https://callstack.github.io/react-native-paper/bottom-navigation.html
 
-expo default class BottomTabs extends React.Component {
+export default class BottomTabs extends React.Component {
   // =============== THE DIFFERENT SCREENS +++++++++++++++++++
   state = {
     index: 0,

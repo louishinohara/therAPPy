@@ -55,14 +55,22 @@ export default class LoginBase extends Component {
             //Returns promise, if login is sucessful navigate to login screen, else do the function in the catch block
             //TODO Display error message when login is unsuccessful
             //TODO add lockout if too many failed attempts in some time frame
-            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){});
 
+
+
+            //=========== Turned OFF FOR NOW ===========\\
+            // firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){});
+            this.props.navigation.navigate('Guide1Screen')
           }}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('CreateAccountScreen')}>
           <Text style={styles.forgot}>Create Account</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('BottomTabs')}>
+          <Text style={styles.forgot}>TO MAIN SCREEN DELETE LATER</Text>
         </TouchableOpacity>
       </View>
 

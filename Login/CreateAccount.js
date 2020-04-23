@@ -57,22 +57,24 @@ export default class CreateAccount extends React.Component {
         <TouchableOpacity
           style={styles.loginBtn}
           onPress={() => {
-            if (this.state.password == this.state.confirm) {
-              firebase
-                .auth()
-                .createUserWithEmailAndPassword(
-                  this.state.email,
-                  this.state.password,
-                )
-                .then(this.props.navigation.navigate('Guide1Screen'))
-                .catch(function(error) {
-                  // Handle Errors here.
-                  var errorCode = error.code;
-                  var errorMessage = error.message;
-                  console.log(errorMessage);
-                  // ...
-                });
-            }
+            // if (this.state.password == this.state.confirm) {
+            //   firebase
+            //     .auth()
+            //     .createUserWithEmailAndPassword(
+            //       this.state.email,
+            //       this.state.password,
+            //     )
+            //     .then(this.props.navigation.navigate('Guide1Screen'))
+            //     .catch(function(error) {
+            //       // Handle Errors here.
+            //       var errorCode = error.code;
+            //       var errorMessage = error.message;
+            //       console.log(errorMessage);
+            //       // ...
+            //     });
+            // }
+
+            this.props.navigation.navigate('Guide1Screen')
           }}>
           <Text style={styles.loginText}>Create Account</Text>
         </TouchableOpacity>

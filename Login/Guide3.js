@@ -58,7 +58,14 @@ export default class Guide3 extends Component {
                 //Submit data to /collection/doc/field
                 //Currently /collection is the internal user ID, note that UID is different than username or email
                 //TODO REMOVE, just a test submission
-                firebase.firestore().collection(firebase.auth().currentUser.uid).doc('testMenu').set({'radioButton':this.state.value});
+
+              
+
+                // firebase.firestore().collection(firebase.auth().currentUser.uid).doc('testMenu').set({'radioButton':this.state.value});
+
+
+
+
                 this.props.navigation.navigate('Guide4Screen');
               }}>
               <Text style={styles.loginText}>Next!</Text>
