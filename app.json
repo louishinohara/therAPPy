@@ -22,7 +22,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "therAPPy"
+    },
+    "android": {
+      "package": "therAPPY"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
