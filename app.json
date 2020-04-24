@@ -26,7 +26,7 @@
       "bundleIdentifier": "therAPPy"
     },
     "android": {
-      "package": "therAPPY"
+      "package": "com.therAppy"
     },
     "entryPoint": "node_modules/expo/AppEntry.js"
   }
