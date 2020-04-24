@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-nati
 import { Appbar } from "react-native-paper";
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import HomeScreen from './visualizationGraphs/1stchart';
+import Donut from './visualizationGraphs/1stchart';
 import AnotherScreen from './visualizationGraphs/2ndchart';
 import ChartScreen from './visualizationGraphs/3rdchart';
 import CAPSScreen from './visualizationGraphs/4thchart';
@@ -22,8 +22,8 @@ class DataRoute extends React.Component {
         </Appbar.Header>
    <NavigationContainer independent={true}>
       <Tab.Navigator>
-        <Tab.Screen name="Mood History" component={HomeScreen} />
-        <Tab.Screen name="Donut" component={AnotherScreen} />
+        <Tab.Screen name="Pie Chart" component={Donut} />
+        <Tab.Screen name="Charrt" component={AnotherScreen} />
         <Tab.Screen name="Chart" component={ChartScreen} />
         <Tab.Screen name="CAPS Survey" component={CAPSScreen} />
       </Tab.Navigator>
