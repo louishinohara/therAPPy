@@ -26,7 +26,7 @@ class ProfileRoute extends React.Component {
                 <Card style={styles.cardContent}>
                     <Card.Content>
                         <Title>Monday, March 1st</Title>
-                        <Paragraph>Here's your recommendation for today!</Paragraph>
+                        <Paragraph>Here's your latest recommendation!</Paragraph>
                     </Card.Content>
                     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
   

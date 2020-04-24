@@ -22,9 +22,9 @@ constructor(props) {
     this.state = {
       data: [
         {id:1, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "3/5/2020", tags:['Mood1', 'Mood2', 'Mood3','Mood4'], message: 'Ate some icecream'},
-        {id:2, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "3/4/2020", tags:['Mood1', ],message: 'Got corona today'},
+        {id:2, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "3/4/2020", tags:['Mood1', ], message: 'Got corona today'},
         {id:3, color:"#fd7c1a", icon:"https://i.imgur.com/N6d2HMQ.png", date: "3/3/2020", tags:['Mood1', 'Mood2', 'Mood3',],message: 'Hurt my knee'}, 
-        {id:4, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "3/2/2020", tags:['Mood1', 'Mood2',],message: 'Forgot to do HW'}, 
+        {id:4, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "3/2/2020", tags:['Mood1', 'Mood2',], message: 'Forgot to do HW'}, 
         {id:5, color:"#a1df39", icon:"https://i.imgur.com/UTUIdBX.png", date: "3/1/2020", tags:['Mood1', 'Mood2', 'Mood3','Mood4'],message: 'Did good on exam'}, 
         {id:6, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "2/29/2020", tags:['Mood1', 'Mood2', 'Mood3', 'Mood4'],message: 'Ate some icecream'}, 
         {id:7, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/28/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
@@ -72,10 +72,11 @@ constructor(props) {
                 <View style={styles.cardContent}>
                   <Image style={[styles.image, styles.imageContent]} source={{uri: item.icon}}/>
                   <Text style={styles.date}>{item.date}</Text>
-                </View>
-                <View style={[styles.cardContent, styles.tagsContent]}>
+                  <View style={[styles.cardContent, styles.tagsContent]}>
                   {this.renderTags(item)}
                 </View>
+                </View>
+                
 
               </TouchableOpacity>
             )
@@ -128,7 +129,6 @@ const styles = StyleSheet.create({
     marginTop:-40,
   },
   tagsContent:{
-    marginTop:10,
     flexWrap:'wrap'
   },
   image:{
