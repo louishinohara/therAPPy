@@ -31,7 +31,7 @@ class DataRoute extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
         <Appbar.Header>
-            <Appbar.Content title="March 2020" />
+            <Appbar.Content title= "${value}" />
             {/* Calls Date Picking Modal */}
             <Appbar.Action icon="calendar" onPress={this.toggleModal} />            
         </Appbar.Header>
