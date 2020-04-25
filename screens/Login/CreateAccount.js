@@ -76,7 +76,8 @@ export default class CreateAccount extends React.Component {
                 });
             }
 
-            this.props.navigation.navigate('Guide1Screen')
+          //  commented out bc this method happens before promise is resolved
+          //this.props.navigation.navigate('Guide1Screen')
           }}>
           <Text style={styles.loginText}>Create Account</Text>
         </TouchableOpacity>
