@@ -58,9 +58,9 @@ export default class LoginBase extends Component {
 
 
 
-            //=========== Turned OFF FOR NOW ===========\\
-            // firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){});
-            this.props.navigation.navigate('Guide1Screen')
+            //=========== SIGN IN TURNED ON ===========\\
+            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){});
+          //  this.props.navigation.navigate('Guide1Screen')
           }}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>

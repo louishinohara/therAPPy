@@ -12,7 +12,7 @@ import CreateAccount from './screens/Login/CreateAccount';
 import RootStack from './RootStack';
 import {NavigationContainer} from '@react-navigation/native';
 
-// import './android/Firebase/globalFirebase';
+import './globalFirebase';
 //===== Fire Base Stuff ====== \\\
 
 import { decode, encode } from 'base-64'
