@@ -50,7 +50,7 @@ class DataRoute extends React.Component {
    <NavigationContainer independent={true}>
       <Tab.Navigator>
         <Tab.Screen name="Pie Chart" component={Donut} />
-        <Tab.Screen name="Charrt" component={AnotherScreen} />
+        {/* <Tab.Screen name="Charrt" component={AnotherScreen} /> */}
         <Tab.Screen name="Chart" component={ChartScreen} />
         <Tab.Screen name="CAPS Survey" component={CAPSScreen} />
       </Tab.Navigator>
