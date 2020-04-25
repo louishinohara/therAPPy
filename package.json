@@ -42,6 +42,7 @@
     "react-native-settings-page": "^2.0.6",
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-svg": "^12.0.3",
+    "react-native-svg-charts": "^5.4.0",
     "react-native-svg-transformer": "^0.14.3",
     "react-native-svg-uri": "^1.2.3",
     "react-native-tab-view": "^2.14.0",
