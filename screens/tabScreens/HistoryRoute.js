@@ -8,15 +8,25 @@ import {
   Alert,
   ScrollView,
   TextInput,
-  FlatList
+  FlatList,
+  Button
 } from 'react-native';
 import { Appbar } from "react-native-paper";
-
+import Modal from 'react-native-modal';
+import { Picker, DatePicker } from 'react-native-wheel-pick';
 // https://www.vectorstock.com/royalty-free-vector/colored-flat-icons-of-emoticonsdifferent-emotions-vector-13779241
 // https://www.bootdey.com/react-native-snippet/66/simple-profile-list-ui-example
 
 
 class HistoryRoute extends React.Component {
+        state = {
+        isModalVisible: false,
+        };
+ 
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
+
 constructor(props) {
     super(props);
     this.state = {
@@ -57,9 +67,21 @@ constructor(props) {
 
       <View style={styles.container}>
               <Appbar.Header>
-        <Appbar.Content title="< March 2020 >" />
+        <Appbar.Content title="March 2020 " />
+        <Appbar.Action icon="calendar" onPress={this.toggleModal} />            
         </Appbar.Header>
-
+        <Modal isVisible={this.state.isModalVisible} backdropColor="black">
+          <View style={styles.modal}>
+            <Picker
+                style={{ backgroundColor: 'white' }}
+                selectedValue='March 2020'
+                pickerData={['March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
+                onValueChange={value => { }}
+                itemSpace={30} // this only support in android
+            />
+            <Button title="Select Month" onPress={this.toggleModal} />
+          </View>
+        </Modal>
         <FlatList 
           style={styles.notificationList}
           data={this.state.data}
@@ -154,4 +176,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     marginTop:5,
   },
+      modal: {
+        backgroundColor: "white",
+        // height: 200,
+    },
 });   
