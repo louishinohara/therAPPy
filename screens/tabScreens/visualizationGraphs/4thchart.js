@@ -45,6 +45,10 @@ class CAPSScreen extends React.Component {
                   chartConfig={chartConfig}
                   verticalLabelRotation={42}
                   showBarTops="True"
+                  style={{
+                marginVertical: 8,
+                borderRadius: 16,
+              }}
               />
           <Text style={styles.subHeader}> What does this mean?</Text>
           <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>

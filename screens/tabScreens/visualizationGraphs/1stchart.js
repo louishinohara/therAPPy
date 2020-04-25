@@ -68,7 +68,7 @@ const data = [
                 />
                 </View>
                 <Text style={styles.subHeader}> What does this mean?</Text>
-                <Text style = {styles.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </Text>
+                <Text style = {styles.description}> Based off the emotions that you have inputted into our app, therAPPy has taken the emotions you inputted and has placed how you are feeling within 1 of 5 categories spanning from very happy to very unhappy. You pie chart displays the total of our calculated field which we have placed you in for the month</Text>
             </ScrollView>
 
         );
@@ -103,6 +103,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '400',
         textAlign: 'center', 
+        marginLeft: 14,
+        marginRight: 14,
 
   }
 });  

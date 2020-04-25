@@ -60,7 +60,7 @@ class ChartScreen extends React.Component {
     }}
   />
           <Text style={styles.subHeader}> What does this mean?</Text>
-          <Text style = {styles.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </Text>
+          <Text style = {styles.description}> Using our algorithm at therAPPy, we have calculated how 'happy' you have been for the month. The closer you are to the peak (100) the happier you have been. This line graph shows how your mood has been changing over the span of the last couple months </Text>
           </ScrollView>
         );
     }
@@ -94,7 +94,9 @@ const styles = StyleSheet.create({
   description: {
         fontSize: 18,
         fontWeight: '400',
-        textAlign: 'center', 
+        textAlign: 'center',
+        marginLeft: 14,
+        marginRight: 14,
 
   }
 });  
