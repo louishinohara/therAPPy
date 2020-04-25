@@ -86,7 +86,7 @@ constructor(props) {
           style={styles.notificationList}
           data={this.state.data}
           keyExtractor= {(item) => {
-            return item.id;
+            return item.id.toString();
           }}
           renderItem={({item}) => {
             return (

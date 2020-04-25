@@ -16,6 +16,8 @@ var firebaseConfig = {
     appId: '1:549204690488:web:6f5af93518accaa16208cd',
     measurementId: 'G-447368E30T',
 };
+
+
 // Initialize Firebase as global object
 //TODO move away from global delcarations and figure out how to imlement using context providers
 global.firebase = firebase.initializeApp(firebaseConfig);

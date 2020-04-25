@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
-
 import {
   BarChart,
 } from "react-native-chart-kit";
@@ -10,7 +9,7 @@ class CAPSScreen extends React.Component {
     render() {
       const chartConfig = {
         backgroundColor: "#e26a00",
-        fillShadowGradient:"#FFcc0033",
+        fillShadowGradient:"#6200ee",
         backgroundGradientToOpacity: 0.5,
         labelColor: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
         color: (opacity = 1) => `rgba(5, 0, 0, ${opacity})`,
@@ -18,11 +17,13 @@ class CAPSScreen extends React.Component {
         barPercentage: 0.5
       };  
       const barData = {
-        labels: ['Anger', 'Joy', 'Anxious', 'Sad', 'Joyful', 'Excited'],
+        labels: ['Depression', 'General Anxiety', 'Substance Use', 'Social Anxiety', 'Academic Distress', 'Eating Concerns', 'Family Distress','Hostility',''],
         datasets: [
           {
             data: [            
               Math.random() * 100,
+            Math.random() * 100,
+            Math.random() * 100,
             Math.random() * 100,
             Math.random() * 100,
             Math.random() * 100,
@@ -35,17 +36,22 @@ class CAPSScreen extends React.Component {
           <ScrollView style={styles.container}>
             <Text style={styles.title}>Your Last CAPS Survey From March</Text>
               <BarChart
-            //   style={graphStyle} 
+              // style={styles.graphStyle} 
                   data={barData}
-                  width={screenWidth}
-                  height={350}
+                  width={screenWidth * .95}
+                  height={450}
                   yAxisLabel=""
                   fromZero = "True"
                   chartConfig={chartConfig}
-                  verticalLabelRotation={30}
+                  verticalLabelRotation={42}
+                  showBarTops="True"
               />
           <Text style={styles.subHeader}> What does this mean?</Text>
-          <Text style = {styles.description}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </Text>
+          <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>
+          <Text> </Text>
+          <Text style = {styles.description}>   Professionals will keep track of all eight subscores of every client in their practice, and assign each client eight scores, indicating what percentile they fall into for that subscale. The CCAPS test further establishes two cutoff points for each subscale. These two cutoff points divide the sample into three regions: low concern, mild concern, and elevated concern. The exact cutoff point-values are unique to each subscale, and are shown in Figure 4.1. These cutoffs can be expressed both as percentiles of the clinical population, as well as through averages of the raw numerical answers of all the questions in a given subscale.</Text>
+          <Text> </Text>
+          <Text style = {styles.description}>   For example, if the Depression category had 4 questions, which the user answered with 0, 1, 2, and 3, the average would be 1.5, placing the user in the “mild concern” range.</Text>
           </ScrollView>
         );
     }
@@ -72,13 +78,15 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: '500',
         textAlign: 'center', 
-        marginTop: 5,
+        marginTop: 25,
         marginBottom: 20,
   },
   description: {
-        fontSize: 18,
+        fontSize: 17,
         fontWeight: '400',
         textAlign: 'center', 
+        marginLeft: 14,
+        marginRight: 14,
 
   }
 });  
