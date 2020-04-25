@@ -7,20 +7,17 @@ class AnotherScreen extends React.Component {
 
         const db = firebase.firestore();
 
-        const query = db.collection("surveyData").where("userID", "==", "biKnLLfkEvfsoKTD9e311GkXbs22").get()
-                .then(snapshot => {
-                    if (snapshot.empty) {
-                    console.log('No matching documents.');
-                    return;
-                    }  
-
-                    snapshot.forEach(doc => {
-                    console.log(doc.id, '=>', doc.data());
+        const query = db.collection("surveyData").where("userID", "==", "biKnLLfkEvfsoKTD9e311GkXbs22").where("test","==","true").get()
+                .then(function(querySnapshot) {
+                        querySnapshot.forEach(function(doc) {
+                            var data = doc.data();
+                            var moods = data.moods; 
+                            console.log(moods[1])
+                        });
+                    })
+                    .catch(function(error) {
+                        console.log("Error getting documents: ", error);
                     });
-                })
-                .catch(err => {
-                    console.log('Error getting documents', err);
-                });
         
         
         
