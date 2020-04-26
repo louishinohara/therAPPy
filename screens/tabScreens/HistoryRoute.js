@@ -8,28 +8,38 @@ import {
   Alert,
   ScrollView,
   TextInput,
-  FlatList
+  FlatList,
+  Button
 } from 'react-native';
 import { Appbar } from "react-native-paper";
-
+import Modal from 'react-native-modal';
+import { Picker, DatePicker } from 'react-native-wheel-pick';
 // https://www.vectorstock.com/royalty-free-vector/colored-flat-icons-of-emoticonsdifferent-emotions-vector-13779241
 // https://www.bootdey.com/react-native-snippet/66/simple-profile-list-ui-example
 
 
 class HistoryRoute extends React.Component {
+        state = {
+        isModalVisible: false,
+        };
+ 
+  toggleModal = () => {
+    this.setState({isModalVisible: !this.state.isModalVisible});
+  };
+
 constructor(props) {
     super(props);
     this.state = {
       data: [
-        {id:1, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "3/5/2020", tags:['Mood1', 'Mood2', 'Mood3','Mood4'], message: 'Ate some icecream'},
-        {id:2, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "3/4/2020", tags:['Mood1', ], message: 'Got corona today'},
-        {id:3, color:"#fd7c1a", icon:"https://i.imgur.com/N6d2HMQ.png", date: "3/3/2020", tags:['Mood1', 'Mood2', 'Mood3',],message: 'Hurt my knee'}, 
-        {id:4, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "3/2/2020", tags:['Mood1', 'Mood2',], message: 'Forgot to do HW'}, 
-        {id:5, color:"#a1df39", icon:"https://i.imgur.com/UTUIdBX.png", date: "3/1/2020", tags:['Mood1', 'Mood2', 'Mood3','Mood4'],message: 'Did good on exam'}, 
-        {id:6, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "2/29/2020", tags:['Mood1', 'Mood2', 'Mood3', 'Mood4'],message: 'Ate some icecream'}, 
-        {id:7, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/28/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
-        {id:8, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "2/27/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
-        {id:9, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/26/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
+        {id:1, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "3/5/2020", tags:['Admiration', 'Trust', 'Joy','Serenity'], message: 'Ate some icecream'},
+        {id:2, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "3/4/2020", tags:['Anger', ], message: 'Got corona today'},
+        {id:3, color:"#fd7c1a", icon:"https://i.imgur.com/N6d2HMQ.png", date: "3/3/2020", tags:['Annoyance', 'Surprise', 'Boredom',],message: 'Hurt my knee'}, 
+        {id:4, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "3/2/2020", tags:['Acceptance', 'Interest',], message: 'Forgot to do HW'}, 
+        {id:5, color:"#a1df39", icon:"https://i.imgur.com/UTUIdBX.png", date: "3/1/2020", tags:['Amazement', 'Joy', 'Serenity','Love'],message: 'Did good on exam'}, 
+        {id:6, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "2/29/2020", tags:['Contempt', 'Sandess',],message: 'Ate some icecream'}, 
+        {id:7, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/28/2020", tags:['Love', 'Optimism', 'Joy'],message: 'Ate some icecream'},
+        {id:8, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "2/27/2020", tags:['Rage', 'Anger', 'Annoyance'],message: 'Ate some burgers'},
+        {id:9, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/26/2020", tags:['Joy', 'Optimism', 'Love'],message: 'Ate some icecream'},
       ],
     };
   }
@@ -45,7 +55,8 @@ constructor(props) {
   renderTags = (item) =>{
     return item.tags.map((tag, key) => {
       return (
-        <TouchableOpacity key={key} style={styles.btnColor} onPress={() => {this.tagClickEventListener(tag)}}>
+        <TouchableOpacity key={key} style={styles.btnColor} onPress={() => {}}>
+                                                          {/* Add {this.tagClickEventListener(tag)}} to make the tag's do something when clicked but we prob dont need that shit */}
           <Text>{tag}</Text>
         </TouchableOpacity> 
       );
@@ -57,14 +68,26 @@ constructor(props) {
 
       <View style={styles.container}>
               <Appbar.Header>
-        <Appbar.Content title="< March 2020 >" />
+        <Appbar.Content title="March 2020 " />
+        <Appbar.Action icon="calendar" onPress={this.toggleModal} />            
         </Appbar.Header>
-
+        <Modal isVisible={this.state.isModalVisible} backdropColor="black">
+          <View style={styles.modal}>
+            <Picker
+                style={{ backgroundColor: 'white' }}
+                selectedValue='March 2020'
+                pickerData={['March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
+                onValueChange={value => { }}
+                itemSpace={30} // this only support in android
+            />
+            <Button title="Select Month" onPress={this.toggleModal} />
+          </View>
+        </Modal>
         <FlatList 
           style={styles.notificationList}
           data={this.state.data}
           keyExtractor= {(item) => {
-            return item.id;
+            return item.id.toString();
           }}
           renderItem={({item}) => {
             return (
@@ -154,4 +177,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
     marginTop:5,
   },
+      modal: {
+        backgroundColor: "white",
+        // height: 200,
+    },
 });   

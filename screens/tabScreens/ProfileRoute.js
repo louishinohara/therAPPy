@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,Platform } from "react-native";
+import { View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,Platform, TouchableHighlight,Linking} from "react-native";
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text,Appbar  } from 'react-native-paper';
 import { Block,theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -30,6 +30,15 @@ class ProfileRoute extends React.Component {
                     </Card.Content>
                     <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
   
+                </Card>
+                <Card style={styles.cardContent}>
+                
+                    <Card.Content>
+                        <Title>Here Are Some Events Near You!</Title>
+                    </Card.Content>
+                    <TouchableHighlight onPress={ ()=>{ Linking.openURL('https://therappy.rutgers.edu/?page_id=96')}}>
+                    <Card.Cover source={{ uri: 'https://i.imgur.com/k5mgiDT.png' }} />
+                    </TouchableHighlight>
                 </Card>
             </View>
         </View>
@@ -96,5 +105,10 @@ const styles = StyleSheet.create({
     },
     cardContent: {
         elevation: 4,
+        marginTop: 15,
+        marginBottom: 15,
+        marginLeft: 10,
+        marginRight: 10,
+        resizeMode:'contain',
     }
 });
