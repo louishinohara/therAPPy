@@ -29,7 +29,7 @@ export default class Guide5 extends Component {
             <TouchableOpacity
               style={styles.rightBtn}
               onPress={() =>
-                this.props.navigation.navigate('CapsSurveyScreen')
+                this.props.navigation.navigate('CapsSurvey1Screen')
               }>
               <Text style={styles.loginText}>Next!</Text>
             </TouchableOpacity>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     //therappyteal: #20c0b0
     //therappyAIAIAIAI: #fdfdfb
     //lime green: #cbe86b
-    color: '#ff666b',
+    color: '#7f58ff',
     marginBottom: 40,
   },
   inputView: {
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   rightBtn: {
     width: '45%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 10,
     height: 40,
     alignItems: 'center',
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
   leftBtn: {
     width: '45%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 10,
     height: 40,
     alignItems: 'center',

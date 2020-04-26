@@ -59,7 +59,7 @@ export default class Guide3 extends Component {
                 //Currently /collection is the internal user ID, note that UID is different than username or email
                 //TODO REMOVE, just a test submission
 
-              
+
 
                 // firebase.firestore().collection(firebase.auth().currentUser.uid).doc('testMenu').set({'radioButton':this.state.value});
 
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     //therappyteal: #20c0b0
     //therappyAIAIAIAI: #fdfdfb
     //lime green: #cbe86b
-    color: '#ff666b',
+    color: '#7f58ff',
     marginBottom: 40,
   },
   inputView: {
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
   rightBtn: {
     width: '45%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 10,
     height: 40,
     alignItems: 'center',
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   },
   leftBtn: {
     width: '45%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 10,
     height: 40,
     alignItems: 'center',
