@@ -1,5 +1,3 @@
-//fifth screen of guide sequence
-//outro
 
 import React, {Component} from 'react';
 import {
@@ -8,6 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    Linking,
 } from 'react-native';
 
 const links = [
@@ -33,29 +32,23 @@ const links = [
 
 export default class Resources extends Component {
     render() {
+        let resourcesArr;
+        resourcesArr = links.map((obj,index) => (
+            <View key={index} style={styles.minContainer}>
+                <Text
+                    style={styles.bigger}
+                    onPress={() => Linking.openURL(obj.link)}>
+                    {obj.title}
+                </Text>
+                <Text style={styles.loginText}>
+                    {obj.description}
+                </Text>
+            </View>
+        ));
         return (
             <View style={styles.container}>
                 <Text style={styles.logo}>Resources</Text>
-                <Text style={styles.loginText}>Hope you find this app helpful!</Text>
-                <Text style={styles.loginText}>Have a good day! ^_^</Text>
-                <View style={styles.rowContainer}>
-                    <View style={styles.leftView}>
-                        <TouchableOpacity
-                            style={styles.leftBtn}
-                            onPress={() => this.props.navigation.navigate('Guide4Screen')}>
-                            <Text style={styles.loginText}>Back!</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.rightView}>
-                        <TouchableOpacity
-                            style={styles.rightBtn}
-                            onPress={() =>
-                                this.props.navigation.navigate('CapsSurveyScreen')
-                            }>
-                            <Text style={styles.loginText}>Next!</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+                {resourcesArr}
             </View>
         );
     }
@@ -68,12 +61,12 @@ const styles = StyleSheet.create({
         //therappylessblue: #707586
         backgroundColor: '#f2e9e1',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
     },
-    rowContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        flex: 1,
+    minContainer: {
+        justifyContent: 'center',
+        marginLeft: 20,
+        marginRight: 20,
     },
     logo: {
         fontWeight: 'bold',
@@ -83,8 +76,14 @@ const styles = StyleSheet.create({
         //therappyteal: #20c0b0
         //therappyAIAIAIAI: #fdfdfb
         //lime green: #cbe86b
-        color: '#ff666b',
+        color: '#7f58ff',
         marginBottom: 40,
+    },
+    bigger: {
+        fontWeight: 'bold',
+        fontSize: 25,
+        color: 'blue',
+        textDecorationLine: 'underline',
     },
     inputView: {
         width: '80%',
