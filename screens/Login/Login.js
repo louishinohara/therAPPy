@@ -8,6 +8,7 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
+  Alert,
   View,
 } from 'react-native';
 
@@ -59,7 +60,22 @@ export default class LoginBase extends Component {
 
 
             //=========== SIGN IN TURNED ON ===========\\
-            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){});
+            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){
+              var errorCode = error.code;
+              var errorMessage = error.message;
+              if (errorCode === 'auth/wrong-password') {
+                alert('Wrong password');
+              }
+              else if (errorCode === 'auth/invalid-email') {
+                alert('Invalid Email');
+              }
+              else if (errorCode === 'auth/user-disabled') {
+                alert('User blocked for too many wrong attempts. Try again in a few minutes.');
+              }
+              else if (errorCode === 'auth/user-not-found') {
+                alert('No user found with the given email. Try creating an account.');
+              }
+            });
           //  this.props.navigation.navigate('Guide1Screen')
           }}>
           <Text style={styles.loginText}>LOGIN</Text>
