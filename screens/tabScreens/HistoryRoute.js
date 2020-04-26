@@ -31,15 +31,15 @@ constructor(props) {
     super(props);
     this.state = {
       data: [
-        {id:1, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "3/5/2020", tags:['Mood1', 'Mood2', 'Mood3','Mood4'], message: 'Ate some icecream'},
-        {id:2, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "3/4/2020", tags:['Mood1', ], message: 'Got corona today'},
-        {id:3, color:"#fd7c1a", icon:"https://i.imgur.com/N6d2HMQ.png", date: "3/3/2020", tags:['Mood1', 'Mood2', 'Mood3',],message: 'Hurt my knee'}, 
-        {id:4, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "3/2/2020", tags:['Mood1', 'Mood2',], message: 'Forgot to do HW'}, 
-        {id:5, color:"#a1df39", icon:"https://i.imgur.com/UTUIdBX.png", date: "3/1/2020", tags:['Mood1', 'Mood2', 'Mood3','Mood4'],message: 'Did good on exam'}, 
-        {id:6, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "2/29/2020", tags:['Mood1', 'Mood2', 'Mood3', 'Mood4'],message: 'Ate some icecream'}, 
-        {id:7, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/28/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
-        {id:8, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "2/27/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
-        {id:9, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/26/2020", tags:['Mood1', 'Mood2', 'Mood3'],message: 'Ate some icecream'},
+        {id:1, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "3/5/2020", tags:['Admiration', 'Trust', 'Joy','Serenity'], message: 'Ate some icecream'},
+        {id:2, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "3/4/2020", tags:['Anger', ], message: 'Got corona today'},
+        {id:3, color:"#fd7c1a", icon:"https://i.imgur.com/N6d2HMQ.png", date: "3/3/2020", tags:['Annoyance', 'Surprise', 'Boredom',],message: 'Hurt my knee'}, 
+        {id:4, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "3/2/2020", tags:['Acceptance', 'Interest',], message: 'Forgot to do HW'}, 
+        {id:5, color:"#a1df39", icon:"https://i.imgur.com/UTUIdBX.png", date: "3/1/2020", tags:['Amazement', 'Joy', 'Serenity','Love'],message: 'Did good on exam'}, 
+        {id:6, color:"#fed41c", icon:"https://i.imgur.com/XD8gBGr.png", date: "2/29/2020", tags:['Contempt', 'Sandess',],message: 'Ate some icecream'}, 
+        {id:7, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/28/2020", tags:['Love', 'Optimism', 'Joy'],message: 'Ate some icecream'},
+        {id:8, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "2/27/2020", tags:['Rage', 'Anger', 'Annoyance'],message: 'Ate some burgers'},
+        {id:9, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/26/2020", tags:['Joy', 'Optimism', 'Love'],message: 'Ate some icecream'},
       ],
     };
   }
@@ -55,7 +55,8 @@ constructor(props) {
   renderTags = (item) =>{
     return item.tags.map((tag, key) => {
       return (
-        <TouchableOpacity key={key} style={styles.btnColor} onPress={() => {this.tagClickEventListener(tag)}}>
+        <TouchableOpacity key={key} style={styles.btnColor} onPress={() => {}}>
+                                                          {/* Add {this.tagClickEventListener(tag)}} to make the tag's do something when clicked but we prob dont need that shit */}
           <Text>{tag}</Text>
         </TouchableOpacity> 
       );

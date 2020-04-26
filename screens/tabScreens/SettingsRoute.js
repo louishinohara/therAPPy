@@ -109,30 +109,20 @@ class SettingsRoute extends React.Component {
     			<ReactNativeSettingsPage>
 				<SectionRow text='Other Settings'>
 					<NavigateRow
-						text='Navigate Row'
-						iconName='your-icon-name'
+						text='Team Members'
+						iconName='linkedin-square'
 						onPressCallback={this._navigateToScreen} />
-					{/* <SwitchRow 
-						text='Switch Row' 
-						iconName='your-icon-name'
-						_value={this.state.switch}
-						_onValueChange={() => { this.setState({ switch: !this.state.switch }) }} /> */}
-					<CheckRow 
+
+					{/* <CheckRow 
 						text='Check Row'
 						iconName='your-icon-name'
 						_color='#000'
 						_value={this.state.check}
-						_onValueChange={() => { this.setState({ check: !this.state.check }) }} />
-					{/* <SliderRow 
-						text='Slider Row'
-						iconName='your-icon-name'
-						_color='#000'
-						_min={0}
-						_max={100}
-						_value={this.state.value}
-						_onValueChange={value => { this.setState({ value }) }} /> */}
+						_onValueChange={() => { this.setState({ check: !this.state.check }) }} /> */}
+
 				</SectionRow>
 			</ReactNativeSettingsPage>
+        <Text style={styles.version}>  therAPPy version 1.1.2</Text>
 
 
 
@@ -143,6 +133,21 @@ class SettingsRoute extends React.Component {
 }
 
 export default SettingsRoute;
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+  },
+  version: {
+      fontSize: 14,
+      fontWeight: '600',
+      textAlign: 'center',
+      marginTop: 30,
+      // marginBottom: 20,
+  },
+});  
 
 const colors = {
   white: "#FFFFFF",
