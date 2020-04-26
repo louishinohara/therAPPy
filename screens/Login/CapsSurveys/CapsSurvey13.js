@@ -72,7 +72,7 @@ export default class CapsSurvey13 extends Component {
                     onPress={() => {
                         console.log(this.answers);
                         //firebase.firestore().collection(firebase.auth().currentUser.uid).doc('capsForm').set({'1-5':this.answers});
-                        this.props.navigation.navigate('EmotionWheelScreen')}}>
+                        this.props.navigation.navigate('MoodWheelScreen')}}>
                     <Text style={styles.loginText}>To Mood Input</Text>
                 </TouchableOpacity>
             </View>

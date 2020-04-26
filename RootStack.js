@@ -26,6 +26,7 @@ import CapsSurvey11 from "./screens/Login/CapsSurveys/CapsSurvey11";
 import CapsSurvey12 from "./screens/Login/CapsSurveys/CapsSurvey12";
 import CapsSurvey13 from "./screens/Login/CapsSurveys/CapsSurvey13";
 import Resources from "./screens/Login/Resources";
+import MoodWheel from "./screens/Login/MoodWheel";
 
 const RootStack = createCompatNavigatorFactory(createStackNavigator)(
   {
@@ -52,6 +53,7 @@ const RootStack = createCompatNavigatorFactory(createStackNavigator)(
       CapsSurvey12Screen: {screen: CapsSurvey12},
       CapsSurvey13Screen: {screen: CapsSurvey13},
       ResourcesScreen: {screen: Resources},
+      MoodWheelScreen: {screen: MoodWheel},
     BottomTabs : {
         screen:BottomTabs,
         navigationOptions: {

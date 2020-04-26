@@ -1,272 +1,829 @@
-import React from "react";
-import { Appbar } from "react-native-paper";
-import {
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  SafeAreaView,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  FlatList,
-  Dimensions,
-  Alert
-} from 'react-native';
-import {withNavigation} from '@react-navigation/compat';
+import React, {Component} from 'react';
+import Svg, {Text, Path, TSpan, G} from 'react-native-svg';
+import {Alert, StyleSheet, View} from 'react-native';
+import TouchableOpacity from "react-native-web/src/exports/TouchableOpacity";
 
-let items = [
-  {
-    id: '1',
-    name: 'acceptance',
-  },
-  {
-    id: '2',
-    name: 'admiration',
-  },
-  {
-    id: '3',
-    name: 'aggressiveness',
-  },
-  {
-    id: '4',
-    name: 'amazement',
-  },
-  {
-    id: '5',
-    name: 'anger',
-  },
-  {
-    id: '6',
-    name: 'annoyance',
-  },
-  {
-    id: '7',
-    name: 'anticipation',
-  },
-  {
-    id: '8',
-    name: 'apprehension',
-  },
-  {
-    id: '9',
-    name: 'awe',
-  },
-  {
-    id: '10',
-    name: 'boredom',
-  },
-  {
-    id: '11',
-    name: 'contempt',
-  },
-  {
-    id: '12',
-    name: 'disapproval',
-  },
-  {
-    id: '13',
-    name: 'disgust',
-  },
-  {
-    id: '14',
-    name: 'distraction',
-  },
-  {
-    id: '15',
-    name: 'ecstasy',
-  },
-  {
-    id: '16',
-    name: 'fear',
-  },
-  {
-    id: '17',
-    name: 'grief',
-  },
-  {
-    id: '18',
-    name: 'interest',
-  },
-  {
-    id: '19',
-    name: 'joy',
-  },
-  {
-    id: '20',
-    name: 'loathing',
-  },
-  {
-    id: '21',
-    name: 'love',
-  },
-  {
-    id: '22',
-    name: 'optimism',
-  },
-  {
-    id: '23',
-    name: 'pensiveness',
-  },
-  {
-    id: '24',
-    name: 'rage',
-  },
-  {
-    id: '25',
-    name: 'remorse',
-  },
-  {
-    id: '26',
-    name: 'sadness',
-  },
-  {
-    id: '27',
-    name: 'serenity',
-  },
-  {
-    id: '28',
-    name: 'submission',
-  },
-  {
-    id: '29',
-    name: 'surprise',
-  },
-  {
-    id: '30',
-    name: 'terror',
-  },
-  {
-    id: '31',
-    name: 'trust',
-  },
-  {
-    id: '32',
-    name: 'vigilance',
-  },
-];
-
-class AddRoute extends React.Component {
+export default class MoodWheel extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      dataSource: items,
-    };
+    this.emotions = new Map();
   }
-  FlatListItemSeparator = () => <View style={styles.line} />;
+  state = {
+    mood: {
+      date: new Date().getDate(),
+      name: [],
+      points: [],
+      //TODO: update colors
+      color: [],
+    },
+  }
+  handleTouch(input) {
+    if (this.emotions.has(input)) {
+      let temp = this.emotions.get(input);
+      this.emotions.set(input, temp + 1);
+    } else {
+      this.emotions.set(input, 1);
+      this.state.mood.name.push(input);
+    }
+    console.log(input, this.emotions.get(input));
+  }
 
-  selectItem = data => {
-    data.item.isSelect = !data.item.isSelect;
-    data.item.selectedClass = data.item.isSelect
-      ? styles.selected
-      : styles.list;
-
-    const index = this.state.dataSource.findIndex(
-      item => data.item.id === item.id,
-    );
-
-    this.state.dataSource[index] = data.item;
-    items = items.map(item => {
-      item.isSelect = false;
-      item.selectedClass = styles.list;
-      return item;
+  handleSubmit(mood) {
+    console.log(mood.name);
+    mood.name.forEach(function(name) {
+      console.log(name);
+      if (name === 'ecstasy' || name === 'admiration' || name === 'amazement') {
+        mood.points.push(100);
+      }
+      else if (name === 'joy' || name === 'trust' || name === 'surprise') {
+        mood.points.push(87.5);
+      }
+      else if (name === 'interest' || name === 'serenity' || name === 'acceptance') {
+        mood.points.push(75);
+      }
+      else if (name === 'anticipation') {
+        mood.points.push(62.5);
+      }
+      else if (name === 'pensiveness' || name === 'distraction' || name === 'vigilance') {
+        mood.points.push(50);
+      }
+      else if (name === 'annoyance' || name === 'boredom' || name === 'apprehension') {
+        mood.points.push(37.5);
+      }
+      else if (name === 'fear' || name === 'anger' || name === 'disgust' || name === 'sadness') {
+        mood.points.push(20);
+      }
+      else if (name === 'rage' || name === 'loathing' || name === 'terror' || name === 'grief') {
+        mood.points.push(0);
+      }
     });
-    this.setState({
-      dataSource: this.state.dataSource,
-    });
-  };
+    console.log(Object.values(this.emotions));
+    console.log(mood.name);
+    console.log(this.emotions);
+  }
 
-  renderItem = data => (
-    <TouchableOpacity
-      style={[styles.list, data.item.selectedClass]}
-      onPress={() => this.selectItem(data)}>
-      <Text style={styles.loginText}>{data.item.name}</Text>
-    </TouchableOpacity>
-  );
-
+  createTwoButtonAlert = (mood) =>
+      Alert.alert(
+          "Thanks for Submitting",
+          "Your Emotions are " + mood.name[0] + " " + mood.name[1] + ", & " + mood.name[2],
+          [
+            {
+              text: "Cancel",
+              onPress: () => console.log("Cancel Pressed"),
+              style: "cancel"
+            },
+            { text: "OK", onPress: () => {
+                console.log("OK Pressed");
+                this.props.navigation.navigate('BottomTabs')
+              } }
+          ],
+          { cancelable: false }
+      );
 
   render() {
-
-        const createTwoButtonAlert = () =>
-    Alert.alert(
-      "Thanks for Submitting",
-      "Your Emotions are X, X and X",
-      [
-        {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel"
-        },
-        { text: "OK", onPress: () => console.log("OK Pressed") }
-      ],
-      { cancelable: false }
-    );
     return (
-        
-      <View style={styles.container}>
-      <Appbar.Header>
-            <Appbar.Content title= "March 2020" />
-        </Appbar.Header>
-        {/* <ScrollView> */}
-          <Text style={styles.title}>
-            Mood Input according to Plutchik's Wheel of Emotions
-          </Text>
-          <Image
-            style={styles.smol}
-            source={{
-              uri:
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Plutchik-wheel.svg/1200px-Plutchik-wheel.svg.png',
-            }}
-          />
-          <TouchableOpacity
-          style={styles.loginBtn}
-          onPress={() => {
-          }}>
-          <Button style={styles.doneBtn} title={"Done"} onPress={createTwoButtonAlert} />
-        </TouchableOpacity>
-
-        {/* </ScrollView> */}
-        <FlatList
-          data={this.state.dataSource}
-          ItemSeparatorComponent={this.FlatListItemSeparator}
-          renderItem={item => this.renderItem(item)}
-          keyExtractor={item => item.id}
-          extraData={this.state}
-        />
-      </View>
+        <View style={styles.container}>
+          <Svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="454.12817"
+              height="460"
+              viewBox="0 0 715.41962 724.66992">
+            <Path
+                fill="none"
+                stroke="#000"
+                stroke-dasharray="2.78784907 2.78784907"
+                stroke-width=".92928302"
+                d="M490.90953 536.44983c0 64.32829-52.14838 116.47667-116.47667 116.47667s-116.47667-52.14838-116.47667-116.47667 52.14838-116.47667 116.47667-116.47667 116.47667 52.14838 116.47667 116.47667z"
+                color="#000"
+                overflow="visible"
+                style="marker:none"
+                transform="matrix(2.14156 0 0 2.16288 -444.16204497 -797.94309643)"
+            />
+            <Path
+                fill="none"
+                stroke="#000"
+                stroke-width="2"
+                d="M490.90953 536.44983c0 64.32829-52.14838 116.47667-116.47667 116.47667s-116.47667-52.14838-116.47667-116.47667 52.14838-116.47667 116.47667-116.47667 116.47667 52.14838 116.47667 116.47667z"
+                color="#000"
+                overflow="visible"
+                style="marker:none"
+                transform="matrix(1.05187 0 0 1.06234 -36.14334597 -207.55556043)"
+            />
+            <Path
+                fill="none"
+                stroke="#000"
+                stroke-dasharray="2.47682023 2.47682023"
+                stroke-width="1.23841012"
+                d="M490.90953 536.44983c0 64.32829-52.14838 116.47667-116.47667 116.47667s-116.47667-52.14838-116.47667-116.47667 52.14838-116.47667 116.47667-116.47667 116.47667 52.14838 116.47667 116.47667z"
+                color="#000"
+                overflow="visible"
+                style="marker:none"
+                transform="matrix(1.607 0 0 1.623 -244.00192497 -508.31901643)"
+            />
+            <Path
+                fill="#ffc5c5"
+                stroke="#000"
+                stroke-width="2"
+                d="M111.03756503 324.74765357c-26.247101 7.53902-52.020844 19.36057-76.90625 37.09375v1c24.71689 17.61309 50.535979 29.28758 76.875 36.71875-.55813-3.8034-1.04968-7.61192-1.4375-11.46875-.4258-4.2345-.75324-8.48739-.96875-12.78125-.21551-4.29386-.34375-8.6208-.34375-12.96875 0-4.34795.12824-8.67489.34375-12.96875.21551-4.29386.54295-8.54675.96875-12.78125.39946-3.97258.88867-7.92792 1.46875-11.84375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#c5e2c5"
+                stroke="#000"
+                stroke-width="2"
+                d="M604.38131503 399.90390357c26.25708-7.53865 52.04297-19.32282 76.9375-37.0625v-1c-24.89462-17.73975-50.68031-29.55511-76.9375-37.09375.58008 3.91583 1.06929 7.87117 1.46875 11.84375.4258 4.2345.75324 8.48739.96875 12.78125.21551 4.29386.34375 8.6208.34375 12.96875 0 4.34795-.12824 8.67489-.34375 12.96875-.21551 4.29386-.54295 8.54675-.96875 12.78125-.3994 3.97194-.88879 7.89729-1.46875 11.8125z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#8cc68c"
+                stroke="#000"
+                stroke-width="2"
+                d="M538.44381503 410.77890357c22.16789-1.32369 44.22641-4.64155 65.9375-10.875.57996-3.91521 1.06935-7.84056 1.46875-11.8125.4258-4.2345.75324-8.48739.96875-12.78125.21551-4.29386.34375-8.6208.34375-12.96875 0-4.34795-.12824-8.67489-.34375-12.96875-.21551-4.29386-.54295-8.54675-.96875-12.78125-.39946-3.97258-.88867-7.92792-1.46875-11.84375-21.71105-6.23341-43.76959-9.52789-65.9375-10.84375.90178 3.43892 1.9445 6.8309 2.65625 10.34375 1.24669 6.15305 2.17348 12.395 2.8125 18.75.63902 6.355.96875 12.81848.96875 19.34375 0 6.52527-.32973 12.9575-.96875 19.3125-.63902 6.355-1.56581 12.6282-2.8125 18.78125-.71175 3.51285-1.75447 6.90483-2.65625 10.34375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#009600"
+                stroke="#000"
+                stroke-width="2"
+                d="M472.69381503 409.74765357c21.91123 1.68762 43.88332 2.33695 65.75 1.03125.90178-3.43892 1.9445-6.8309 2.65625-10.34375 1.24669-6.15305 2.17348-12.42625 2.8125-18.78125.63902-6.355.96875-12.78723.96875-19.3125 0-6.52527-.32973-12.98875-.96875-19.34375-.63902-6.355-1.56581-12.59695-2.8125-18.75-.71175-3.51285-1.75447-6.90483-2.65625-10.34375-21.86671-1.29798-43.83882-.65622-65.75 1.03125 1.40666 3.40735 2.67653 6.85448 3.78125 10.40625 1.21127 3.89436 2.23415 7.88944 3.0625 11.9375.82835 4.04806 1.48165 8.16283 1.90625 12.34375.4246 4.18092.625 8.42581.625 12.71875s-.2004 8.53783-.625 12.71875-1.0779 8.29569-1.90625 12.34375c-.82835 4.04806-1.85123 8.01189-3.0625 11.90625-1.10497 3.5526-2.3742 7.02939-3.78125 10.4375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="green"
+                stroke="#000"
+                stroke-width="2"
+                d="M472.69381503 409.74765357c1.40705-3.40811 2.67628-6.8849 3.78125-10.4375 1.21127-3.89436 2.23415-7.85819 3.0625-11.90625.82835-4.04806 1.48165-8.16283 1.90625-12.34375.4246-4.18092.625-8.42581.625-12.71875s-.2004-8.53783-.625-12.71875-1.0779-8.29569-1.90625-12.34375c-.82835-4.04806-1.85123-8.04314-3.0625-11.9375-1.10472-3.55177-2.37459-6.9989-3.78125-10.40625-.19763.0152-.39613.0159-.59375.0312l-1.5625.65625h-.0312l-112.28125 47.34375 113.875 46.75c.19762.0154.39612.016.59375.0312z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ff8c8c"
+                stroke="#000"
+                stroke-width="2"
+                d="M176.97506503 313.90390357c-22.17325 1.31496-44.22199 4.60635-65.9375 10.84375-.58008 3.91583-1.06929 7.87117-1.46875 11.84375-.4258 4.2345-.75324 8.48739-.96875 12.78125-.21551 4.29386-.34375 8.6208-.34375 12.96875 0 4.34795.12824 8.67489.34375 12.96875.21551 4.29386.54295 8.54675.96875 12.78125.38782 3.85683.87937 7.66535 1.4375 11.46875 21.67188 6.11441 43.70158 9.32965 65.8125 10.625-.83943-3.24425-1.79816-6.44028-2.46875-9.75-1.24669-6.15305-2.20473-12.42625-2.84375-18.78125-.63902-6.355-.96875-12.78723-.96875-19.3125 0-6.52527.32973-12.98875.96875-19.34375.63902-6.355 1.59706-12.59695 2.84375-18.75.71153-3.51176 1.72356-6.90588 2.625-10.34375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="red"
+                stroke="#000"
+                stroke-width="2"
+                d="M242.72506503 314.93515357c-21.90618-1.68603-43.88816-2.32775-65.75-1.03125-.90144 3.43787-1.91347 6.83199-2.625 10.34375-1.24669 6.15305-2.20473 12.395-2.84375 18.75-.63902 6.355-.96875 12.81848-.96875 19.34375 0 6.52527.32973 12.9575.96875 19.3125.63902 6.355 1.59706 12.6282 2.84375 18.78125.67059 3.30972 1.62932 6.50575 2.46875 9.75 21.93066 1.28479 43.93548.65302 65.71875-.96875-1.32146-3.24249-2.54485-6.53393-3.59375-9.90625-1.21127-3.89436-2.23415-7.85819-3.0625-11.90625-.82835-4.04806-1.48165-8.16283-1.90625-12.34375-.4246-4.18092-.625-8.42581-.625-12.71875s.2004-8.53783.625-12.71875 1.0779-8.29569 1.90625-12.34375c.82835-4.04806 1.85123-8.04314 3.0625-11.9375 1.10472-3.55177 2.37459-6.9989 3.78125-10.40625z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#d40000"
+                stroke="#000"
+                stroke-width="2"
+                d="M242.72506503 314.93515357c-1.40666 3.40735-2.67653 6.85448-3.78125 10.40625-1.21127 3.89436-2.23415 7.88944-3.0625 11.9375-.82835 4.04806-1.48165 8.16283-1.90625 12.34375-.4246 4.18092-.625 8.42581-.625 12.71875s.2004 8.53783.625 12.71875 1.0779 8.29569 1.90625 12.34375c.82835 4.04806 1.85123 8.01189 3.0625 11.90625 1.0489 3.37232 2.27229 6.66376 3.59375 9.90625.80065-.0596 1.60623-.0939 2.40625-.15625l113.28125-46.09375-113.28125-47.34375-.375-.59375-1.21875-.0625c-.20803-.0162-.41695-.0152-.625-.0312z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffe854"
+                stroke="#000"
+                stroke-width="2"
+                d="M405.13131503 247.37265357c-3.40838-1.40719-6.88461-2.70744-10.4375-3.8125-3.89436-1.21127-7.85819-2.23415-11.90625-3.0625-4.04806-.82835-8.19408-1.4504-12.375-1.875-4.18092-.4246-8.39456-.65625-12.6875-.65625s-8.53783.23165-12.71875.65625-8.32694 1.04665-12.375 1.875c-4.04806.82835-8.01189 1.85123-11.90625 3.0625-3.54351 1.10215-7.00647 2.4098-10.40625 3.8125.0152.1976.0159.39617.0312.59375l47.875 115 46.875-115c.0154-.19758.016-.39615.0312-.59375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffff54"
+                stroke="#000"
+                stroke-width="2"
+                d="M357.72506503 173.27890357c-6.46095 0-12.86389.35461-19.15625 1s-12.50135 1.58465-18.59375 2.84375c-3.57824.7395-7.03057 1.80747-10.53125 2.75-1.4557 22.43679-.85657 45.00914.875 67.5 3.39978-1.4027 6.86274-2.71035 10.40625-3.8125 3.89436-1.21127 7.85819-2.23415 11.90625-3.0625 4.04806-.82835 8.19408-1.4504 12.375-1.875 4.18092-.4246 8.42581-.65625 12.71875-.65625s8.50658.23165 12.6875.65625 8.32694 1.04665 12.375 1.875c4.04806.82835 8.01189 1.85123 11.90625 3.0625 3.55289 1.10506 7.02912 2.40531 10.4375 3.8125 1.73156-22.49086 2.33069-45.06321.875-67.5-3.51018-.94571-6.97432-2.00844-10.5625-2.75-6.0924-1.2591-12.30139-2.19836-18.59375-2.84375-6.29236-.64539-12.66405-1-19.125-1z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffffb1"
+                stroke="#000"
+                stroke-width="2"
+                d="M357.72506503 110.40390357c-4.3051 0-8.59221.12609-12.84375.34375s-8.49474.53871-12.6875.96875c-3.78292.388-7.51898.88069-11.25 1.4375-6.54614 21.96408-10.04373 44.27306-11.5 66.71875 3.50068-.94253 6.95301-2.0105 10.53125-2.75 6.0924-1.2591 12.30139-2.19836 18.59375-2.84375 6.29236-.64539 12.6953-1 19.15625-1s12.83264.35461 19.125 1 12.50135 1.58465 18.59375 2.84375c3.58818.74156 7.05232 1.80429 10.5625 2.75-1.45627-22.44569-4.95386-44.75467-11.5-66.71875-3.74107-.55878-7.48799-1.04844-11.28125-1.4375-4.19276-.43004-8.43596-.75109-12.6875-.96875-4.25154-.21766-8.5074-.34375-12.8125-.34375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#feffdd"
+                stroke="#000"
+                stroke-width="2"
+                d="M357.22506503 38.74765357c-17.16801 24.09229-28.7171 49.02647-36.28125 74.40625 3.73102-.55681 7.46708-1.0495 11.25-1.4375 4.19276-.43004 8.43596-.75109 12.6875-.96875 4.25154-.21766 8.53865-.34375 12.84375-.34375 4.3051 0 8.56096.12609 12.8125.34375s8.49474.53871 12.6875.96875c3.79326.38906 7.54018.87872 11.28125 1.4375-7.56415-25.37978-19.11323-50.31396-36.28125-74.40625h-1z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#c5c5ff"
+                stroke="#000"
+                stroke-width="2"
+                d="M320.94381503 611.52890357c7.56415 25.37978 19.11324 50.28271 36.28125 74.375h1c17.16802-24.09229 28.7171-48.99522 36.28125-74.375-3.74107.55878-7.48799 1.04844-11.28125 1.4375-4.19276.43004-8.43596.75109-12.6875.96875-4.25154.21766-8.5074.3125-12.8125.3125-4.3051 0-8.59221-.0948-12.84375-.3125-4.25154-.21766-8.49474-.53871-12.6875-.96875-3.78292-.388-7.51898-.88069-11.25-1.4375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#8c8cff"
+                stroke="#000"
+                stroke-width="2"
+                d="M309.44381503 544.77890357c1.45625 22.45364 4.95381 44.78575 11.5 66.75 3.73102.55681 7.46708 1.0495 11.25 1.4375 4.19276.43004 8.43596.75109 12.6875.96875 4.25154.21766 8.53865.3125 12.84375.3125 4.3051 0 8.56096-.0948 12.8125-.3125 4.25154-.21766 8.49474-.53871 12.6875-.96875 3.79326-.38906 7.54018-.87872 11.28125-1.4375 6.54619-21.96425 10.04375-44.29636 11.5-66.75-3.51018.94571-6.97432 2.00844-10.5625 2.75-6.0924 1.2591-12.30139 2.22961-18.59375 2.875-6.29236.64539-12.66405.96875-19.125.96875s-12.86389-.32336-19.15625-.96875-12.50135-1.6159-18.59375-2.875c-3.57824-.7395-7.03057-1.80747-10.53125-2.75z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#5151ff"
+                stroke="#000"
+                stroke-width="2"
+                d="M310.31881503 477.31015357c-1.7297 22.48026-2.32998 45.0347-.875 67.46875 3.50068.94253 6.95301 2.0105 10.53125 2.75 6.0924 1.2591 12.30139 2.22961 18.59375 2.875 6.29236.64539 12.6953.96875 19.15625.96875s12.83264-.32336 19.125-.96875 12.50135-1.6159 18.59375-2.875c3.58818-.74156 7.05232-1.80429 10.5625-2.75 1.45498-22.43405.8547-44.98849-.875-67.46875-3.40838 1.40719-6.88461 2.70744-10.4375 3.8125-3.89436 1.21127-7.85819 2.23415-11.90625 3.0625-4.04806.82835-8.19408 1.4504-12.375 1.875-4.18092.4246-8.39456.65625-12.6875.65625s-8.53783-.23165-12.71875-.65625-8.32694-1.04665-12.375-1.875c-4.04806-.82835-8.01189-1.85123-11.90625-3.0625-3.54351-1.10215-7.00647-2.4098-10.40625-3.8125z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#0000c8"
+                stroke="#000"
+                stroke-width="2"
+                d="M310.31881503 477.31015357c3.39978 1.4027 6.86274 2.71035 10.40625 3.8125 3.89436 1.21127 7.85819 2.23415 11.90625 3.0625 4.04806.82835 8.19408 1.4504 12.375 1.875 4.18092.4246 8.42581.65625 12.71875.65625s8.50658-.23165 12.6875-.65625 8.32694-1.04665 12.375-1.875c4.04806-.82835 8.01189-1.85123 11.90625-3.0625 3.55289-1.10506 7.02912-2.40531 10.4375-3.8125-.016-.20796-.015-.41705-.0312-.625l-46.875-113.71875-47.21875 112.125c.002.01-.002.0213 0 .0312l-.65625 1.5625c-.0162.20795-.0152.41704-.0312.625z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ff7d00"
+                stroke="#000"
+                stroke-width="2"
+                d="M309.94381503 247.49765357c-.21507.0895-.4418.15929-.65625.25-3.71982 1.57335-7.3193 3.30416-10.84375 5.21875s-6.97302 4.015-10.28125 6.25c-3.30823 2.235-6.49132 4.62168-9.5625 7.15625-3.07118 2.53457-6.03046 5.21796-8.84375 8.03125-2.81329 2.81329-5.46543 5.74132-8 8.8125-2.53457 3.07118-4.9525 6.28552-7.1875 9.59375-2.235 3.30823-4.30416 6.72555-6.21875 10.25-1.91459 3.52445-3.67665 7.15518-5.25 10.875-.0858.20288-.13399.42157-.21875.625.15723.13475.3114.27164.46875.40625l114.875 48-47.1875-113.40625c.0258-.11417.0367-.22959.0625-.34375l.0625-.34375-.8125-.90625c-.13451-.15724-.2716-.31164-.40625-.46875z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffa854"
+                stroke="#000"
+                stroke-width="2"
+                d="M263.16256503 199.37265357c-3.40643 2.02025-6.8295 3.99151-10.09375 6.21875-4.97895 3.3972-9.78407 7.02246-14.40625 10.875-4.62218 3.85254-9.07844 7.91129-13.3125 12.1875-4.23406 4.27621-8.24793 8.7693-12.0625 13.4375-3.81457 4.6682-7.41754 9.53398-10.78125 14.5625-2.55404 3.81812-4.84679 7.80271-7.125 11.8125 14.61595 16.50492 30.70644 31.7009 47.5 46.09375.0848-.20343.13294-.42212.21875-.625 1.57335-3.71982 3.33541-7.35055 5.25-10.875s3.98375-6.94177 6.21875-10.25 4.65293-6.52257 7.1875-9.59375c2.53457-3.07118 5.18671-5.99921 8-8.8125 2.81329-2.81329 5.77257-5.49668 8.84375-8.03125 3.07118-2.53457 6.25427-4.92125 9.5625-7.15625 3.30823-2.235 6.7568-4.33541 10.28125-6.25 3.52445-1.91459 7.12393-3.6454 10.84375-5.21875.21445-.0907.44118-.16046.65625-.25-14.59414-17.02883-30.00673-33.34693-46.78125-48.125z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffc48c"
+                stroke="#000"
+                stroke-width="2"
+                d="M208.38131503 160.52890357c-3.17038 2.39682-6.29261 4.86316-9.34375 7.40625-3.07988 2.56705-6.10932 5.19542-9.0625 7.90625-2.95318 2.71083-5.83499 5.4944-8.65625 8.34375-2.82126 2.84935-5.56589 5.76742-8.25 8.75-2.68411 2.98258-5.30201 6.04571-7.84375 9.15625-2.54174 3.11054-5.0121 6.26678-7.40625 9.5-.52108.7037-.98606 1.44689-1.5 2.15625 10.95092 19.9257 24.25115 37.99317 39.0625 54.71875 2.27821-4.00979 4.57096-7.99438 7.125-11.8125 3.36371-5.02852 6.96668-9.8943 10.78125-14.5625 3.81457-4.6682 7.82844-9.16129 12.0625-13.4375 4.23406-4.27621 8.69032-8.33496 13.3125-12.1875 4.62218-3.85254 9.4273-7.4778 14.40625-10.875 3.26425-2.22724 6.68732-4.1985 10.09375-6.21875-16.74119-14.7487-34.83664-27.9662-54.78125-38.84375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffe2ff"
+                stroke="#000"
+                stroke-width="2"
+                d="M156.31881503 510.93515357c-13.02587 23.70119-22.74409 50.01462-27.75 79.84375l.71875.71875c29.51687-4.9535 55.58613-14.52312 79.09375-27.34375-3.17038-2.39682-6.29261-4.86316-9.34375-7.40625-3.07988-2.56705-6.10932-5.22667-9.0625-7.9375-2.95318-2.71083-5.83499-5.4944-8.65625-8.34375-2.82126-2.84935-5.56589-5.76742-8.25-8.75-2.68411-2.98258-5.30201-6.01446-7.84375-9.125-2.54174-3.11054-5.0121-6.29803-7.40625-9.53125-.51601-.69685-.991-1.4226-1.5-2.125z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffc6ff"
+                stroke="#000"
+                stroke-width="2"
+                d="M195.38131503 456.18515357c-14.81747 16.73822-28.10783 34.81747-39.0625 54.75.509.7024.98399 1.42815 1.5 2.125 2.39415 3.23322 4.86451 6.42071 7.40625 9.53125 2.54174 3.11054 5.15964 6.14242 7.84375 9.125 2.68411 2.98258 5.42874 5.90065 8.25 8.75 2.82126 2.84935 5.70307 5.63292 8.65625 8.34375 2.95318 2.71083 5.98262 5.37045 9.0625 7.9375 3.05114 2.54309 6.17337 5.00943 9.34375 7.40625 19.93774-10.87369 38.01392-24.12493 54.75-38.875-3.39359-2.01369-6.81009-3.96834-10.0625-6.1875-4.97895-3.3972-9.78407-7.02246-14.40625-10.875-4.62218-3.85254-9.07844-7.94254-13.3125-12.21875-4.23406-4.27621-8.24793-8.73805-12.0625-13.40625-3.81457-4.6682-7.41754-9.53398-10.78125-14.5625-2.55523-3.8199-4.84586-7.83201-7.125-11.84375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ff54ff"
+                stroke="#000"
+                stroke-width="2"
+                d="M242.88131503 410.12265357c-16.78241 14.38408-32.8926 29.56158-47.5 46.0625 2.27914 4.01174 4.56977 8.02385 7.125 11.84375 3.36371 5.02852 6.96668 9.8943 10.78125 14.5625 3.81457 4.6682 7.82844 9.13004 12.0625 13.40625 4.23406 4.27621 8.69032 8.36621 13.3125 12.21875 4.62218 3.85254 9.4273 7.4778 14.40625 10.875 3.25241 2.21916 6.66891 4.17381 10.0625 6.1875 16.77636-14.78557 32.18541-31.0959 46.78125-48.125-.20276-.0845-.42279-.13322-.625-.21875-3.71982-1.57335-7.3193-3.33541-10.84375-5.25s-6.97302-3.98375-10.28125-6.21875-6.49132-4.62168-9.5625-7.15625c-3.07118-2.53457-6.03046-5.21796-8.84375-8.03125-2.81329-2.81329-5.46543-5.77257-8-8.84375-2.53457-3.07118-4.9525-6.25427-7.1875-9.5625-2.235-3.30823-4.30416-6.72555-6.21875-10.25-1.91459-3.52445-3.67665-7.15518-5.25-10.875-.0856-.2024-.13419-.42206-.21875-.625z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#de00de"
+                stroke="#000"
+                stroke-width="2"
+                d="M242.88131503 410.12265357c.0846.20294.13314.4226.21875.625 1.57335 3.71982 3.33541 7.35055 5.25 10.875s3.98375 6.94177 6.21875 10.25 4.65293 6.49132 7.1875 9.5625c2.53457 3.07118 5.18671 6.03046 8 8.84375 2.81329 2.81329 5.77257 5.49668 8.84375 8.03125 3.07118 2.53457 6.25427 4.92125 9.5625 7.15625 3.30823 2.235 6.7568 4.30416 10.28125 6.21875 3.52445 1.91459 7.12393 3.67665 10.84375 5.25.20221.0855.42224.13426.625.21875.13902-.1622.29863-.30642.4375-.46875l47.875-113.71875-114.875 46.71875c-.16252.13904-.30635.29831-.46875.4375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#d5eeff"
+                stroke="#000"
+                stroke-width="2"
+                d="M507.03756503 564.12265357c23.5172 12.83073 49.59273 22.41891 79.125 27.375l.71875-.71875c-5.00761-29.83928-14.71744-56.16755-27.75-79.875-.5174.71425-1.00661 1.44773-1.53125 2.15625-2.39415 3.23322-4.86451 6.42071-7.40625 9.53125-2.54174 3.11054-5.15964 6.14242-7.84375 9.125-2.68411 2.98258-5.42874 5.90065-8.25 8.75-2.82126 2.84935-5.70307 5.63292-8.65625 8.34375-2.95318 2.71083-5.98262 5.37045-9.0625 7.9375-3.04618 2.53896-6.17871 4.98184-9.34375 7.375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#a5dbff"
+                stroke="#000"
+                stroke-width="2"
+                d="M452.28756503 525.27890357c16.73652 14.75008 34.81352 27.96662 54.75 38.84375 3.16504-2.39316 6.29757-4.83604 9.34375-7.375 3.07988-2.56705 6.10932-5.22667 9.0625-7.9375 2.95318-2.71083 5.83499-5.4944 8.65625-8.34375 2.82126-2.84935 5.56589-5.76742 8.25-8.75 2.68411-2.98258 5.30201-6.01446 7.84375-9.125 2.54174-3.11054 5.0121-6.29803 7.40625-9.53125.52464-.70852 1.01385-1.442 1.53125-2.15625-10.95781-19.93329-24.26969-38.01304-39.09375-54.75-2.28301 4.01987-4.56481 8.0477-7.125 11.875-3.36371 5.02852-6.96668 9.8943-10.78125 14.5625-3.81457 4.6682-7.82844 9.13004-12.0625 13.40625-4.23406 4.27621-8.65907 8.36621-13.28125 12.21875-4.62218 3.85254-9.45855 7.4778-14.4375 10.875-3.25241 2.21916-6.66891 4.17381-10.0625 6.1875z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#59bdff"
+                stroke="#000"
+                stroke-width="2"
+                d="M405.50631503 477.15390357c14.59004 17.02393 30.0114 33.34555 46.78125 48.125 3.39359-2.01369 6.81009-3.96834 10.0625-6.1875 4.97895-3.3972 9.81532-7.02246 14.4375-10.875 4.62218-3.85254 9.04719-7.94254 13.28125-12.21875 4.23406-4.27621 8.24793-8.73805 12.0625-13.40625 3.81457-4.6682 7.41754-9.53398 10.78125-14.5625 2.56019-3.8273 4.84199-7.85513 7.125-11.875-14.60918-16.49436-30.68963-31.682-47.46875-46.0625-.0896.21525-.15922.44161-.25.65625-1.57335 3.71982-3.33541 7.35055-5.25 10.875s-3.98375 6.94177-6.21875 10.25-4.62168 6.49132-7.15625 9.5625c-2.53457 3.07118-5.21796 6.03046-8.03125 8.84375-2.81329 2.81329-5.77257 5.49668-8.84375 8.03125-3.07118 2.53457-6.25427 4.92125-9.5625 7.15625-3.30823 2.235-6.72555 4.30416-10.25 6.21875-3.52445 1.91459-7.15518 3.67665-10.875 5.25-.20221.0855-.42224.13426-.625.21875z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#0089e0"
+                stroke="#000"
+                stroke-width="2"
+                d="M405.50631503 477.15390357c.20276-.0845.42279-.13322.625-.21875 3.71982-1.57335 7.35055-3.33541 10.875-5.25s6.94177-3.98375 10.25-6.21875 6.49132-4.62168 9.5625-7.15625c3.07118-2.53457 6.03046-5.21796 8.84375-8.03125 2.81329-2.81329 5.49668-5.77257 8.03125-8.84375 2.53457-3.07118 4.92125-6.25427 7.15625-9.5625 2.235-3.30823 4.30416-6.72555 6.21875-10.25 1.91459-3.52445 3.67665-7.15518 5.25-10.875.0908-.21464.16039-.441.25-.65625-.15709-.13463-.31154-.27176-.46875-.40625l-113.875-46.71875 46.875 113.71875c.13447.15719.27164.31168.40625.46875z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#c5ffc5"
+                stroke="#000"
+                stroke-width="2"
+                d="M559.13131503 213.77890357c13.03256-23.70745 22.74239-50.06697 27.75-79.90625l-.71875-.6875c-29.53272 4.95617-55.60753 14.54397-79.125 27.375 3.16504 2.39316 6.29757 4.83604 9.34375 7.375 3.07988 2.56705 6.10932 5.19542 9.0625 7.90625 2.95318 2.71083 5.83499 5.4944 8.65625 8.34375 2.82126 2.84935 5.56589 5.76742 8.25 8.75 2.68411 2.98258 5.30201 6.04571 7.84375 9.15625 2.54174 3.11054 5.0121 6.26678 7.40625 9.5.52972.71537 1.00891 1.46628 1.53125 2.1875z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#00b400"
+                stroke="#000"
+                stroke-width="2"
+                d="M472.53756503 314.56015357c-.0848-.20343-.13294-.42212-.21875-.625-1.57335-3.71982-3.33541-7.35055-5.25-10.875s-3.98375-6.94177-6.21875-10.25-4.62168-6.52257-7.15625-9.59375c-2.53457-3.07118-5.21796-5.99921-8.03125-8.8125-2.81329-2.81329-5.77257-5.49668-8.84375-8.03125-3.07118-2.53457-6.25427-4.92125-9.5625-7.15625-3.30823-2.235-6.72555-4.33541-10.25-6.25-3.52445-1.91459-7.15518-3.6454-10.875-5.21875-.20221-.0855-.42224-.13426-.625-.21875-.12951.15112-.27687.28627-.40625.4375l-.6875 1.59375-.125-.6875-46.0625 114.09375 113.875-48c.15126-.1294.28635-.27672.4375-.40625z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#54ff54"
+                stroke="#000"
+                stroke-width="2"
+                d="M452.28756503 199.40390357c-16.7758 14.77687-32.18682 31.09517-46.78125 48.125.20276.0845.42279.13322.625.21875 3.71982 1.57335 7.35055 3.30416 10.875 5.21875s6.94177 4.015 10.25 6.25c3.30823 2.235 6.49132 4.62168 9.5625 7.15625 3.07118 2.53457 6.03046 5.21796 8.84375 8.03125 2.81329 2.81329 5.49668 5.74132 8.03125 8.8125 2.53457 3.07118 4.92125 6.28552 7.15625 9.59375 2.235 3.30823 4.30416 6.72555 6.21875 10.25 1.91459 3.52445 3.67665 7.15518 5.25 10.875.0858.20288.13399.42157.21875.625 16.78557-14.38515 32.88564-29.57002 47.5-46.0625-2.28208-4.01793-4.566-8.01822-7.125-11.84375-3.36371-5.02852-6.96668-9.8943-10.78125-14.5625-3.81457-4.6682-7.82844-9.16129-12.0625-13.4375-4.23406-4.27621-8.65907-8.33496-13.28125-12.1875-4.62218-3.85254-9.45855-7.4778-14.4375-10.875-3.25241-2.21916-6.66891-4.17381-10.0625-6.1875z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#8cff8c"
+                stroke="#000"
+                stroke-width="2"
+                d="M507.03756503 160.56015357c-19.93623 10.87712-38.01338 24.1014-54.75 38.84375 3.39359 2.01369 6.81009 3.96834 10.0625 6.1875 4.97895 3.3972 9.81532 7.02246 14.4375 10.875 4.62218 3.85254 9.04719 7.91129 13.28125 12.1875 4.23406 4.27621 8.24793 8.7693 12.0625 13.4375 3.81457 4.6682 7.41754 9.53398 10.78125 14.5625 2.559 3.82553 4.84292 7.82582 7.125 11.84375 14.82406-16.72913 28.13594-34.78546 39.09375-54.71875-.52234-.72122-1.00153-1.47213-1.53125-2.1875-2.39415-3.23322-4.86451-6.38946-7.40625-9.5-2.54174-3.11054-5.15964-6.17367-7.84375-9.15625-2.68411-2.98258-5.42874-5.90065-8.25-8.75-2.82126-2.84935-5.70307-5.63292-8.65625-8.34375-2.95318-2.71083-5.98262-5.3392-9.0625-7.90625-3.04618-2.53896-6.17871-4.98184-9.34375-7.375z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="#ffe1c5"
+                stroke="#000"
+                stroke-width="2"
+                d="M208.38131503 160.52890357c-23.5079-12.82093-49.57643-22.39017-79.09375-27.34375l-.71875.6875c5.00591 29.82913 14.72413 56.17381 27.75 79.875.51394-.70936.97892-1.45255 1.5-2.15625 2.39415-3.23322 4.86451-6.38946 7.40625-9.5 2.54174-3.11054 5.15964-6.17367 7.84375-9.15625 2.68411-2.98258 5.42874-5.90065 8.25-8.75 2.82126-2.84935 5.70307-5.63292 8.65625-8.34375 2.95318-2.71083 5.98262-5.3392 9.0625-7.90625 3.05114-2.54309 6.17337-5.00943 9.34375-7.40625z"
+                color="#000"
+                font-family="Bitstream Vera Sans"
+                font-weight="400"
+                overflow="visible"
+                style="text-indent:0;text-align:start;line-height:normal;text-transform:none;block-progression:tb;marker:none;-inkscape-font-specification:Bitstream Vera Sans"
+            />
+            <Path
+                fill="none"
+                stroke="#000"
+                stroke-width="2"
+                d="M482.07870151 362.33499267c0 68.68704-55.68186 124.3689-124.3689 124.3689s-124.3689-55.68186-124.3689-124.3689 55.68186-124.3689 124.3689-124.3689 124.3689 55.68186 124.3689 124.3689z"
+                color="#000"
+                opacity=".6"
+                overflow="visible"
+                style="marker:none"
+            />
+            <Text
+                onPress={() => this.handleTouch('disapproval')}
+                x="471.49340503"
+                y="619.4125735700001"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              disapproval
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('remorse')}
+                x="245.47219503000002"
+                y="619.4125735700001"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              remorse
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('contempt')}
+                x="72.23557103"
+                y="470.66837356999997"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              contempt
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('awe')}
+                x="631.62222503"
+                y="470.66837356999997"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              awe
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('submission')}
+                x="631.84438503"
+                y="262.57358357000004"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              submission
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('love')}
+                x="470.92944503"
+                y="117.14572357000003"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              love
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('optimism')}
+                x="245.98830503"
+                y="117.14572357000003"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              optimism
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('aggressiveness')}
+                x="95.37228902999999"
+                y="262.57358357000004"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              aggressiveness
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('pensiveness')}
+                x="357.24593503"
+                y="583.22861357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              pensiveness
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('annoyance')}
+                x="118.05811502999998"
+                y="365.92874357000005"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              annoyance
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('anger')}
+                x="206.47408503"
+                y="365.87503357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              anger
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('rage')}
+                x="265.58813503"
+                y="365.87503357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              rage
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('ecstasy')}
+                x="357.45101503"
+                y="273.83859357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              ecstasy
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('joy')}
+                x="358.17855503"
+                y="214.00351357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              joy
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('serenity')}
+                x="357.41195503"
+                y="148.85361357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              serenity
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('terror')}
+                x="443.50185503"
+                y="369.20511357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              terror
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('fear')}
+                x="508.72945502999994"
+                y="369.83011357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              fear
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('apprehension')}
+                x="606.63070503"
+                y="367.92093357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              apprehension
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('admiration')}
+                x="424.52743503"
+                y="311.14645357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              admiration
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('trust')}
+                x="464.70699503"
+                y="250.13763357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              trust
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('acceptance')}
+                x="511.70260503"
+                y="212.05200357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              acceptance
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('vigilance')}
+                x="294.27050503"
+                y="311.14645357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              vigilance
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('anticipation')}
+                x="254.90865502999998"
+                y="250.13763357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              anticipation
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('interest')}
+                x="203.31344503"
+                y="212.05200357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              interest
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('boredom')}
+                x="205.69772503"
+                y="525.38193357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              boredom
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('disgust')}
+                x="249.30459502999997"
+                y="475.57333357000005"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              disgust
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('loathing')}
+                x="295.58675503"
+                y="423.06992357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              loathing
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('amazement')}
+                x="425.06588503"
+                y="423.06992357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              amazement
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('surprise')}
+                x="467.34811503"
+                y="475.40048357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              surprise
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('distraction')}
+                x="509.95211502999996"
+                y="525.35068357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              distraction
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('sadness')}
+                x="357.58285503"
+                y="519.55380357"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              sadness
+            </Text>
+            <Text
+                onPress={() => this.handleTouch('grief')}
+                x="357.07015503"
+                y="463.50217356999997"
+                fill="black"
+                fontSize="18"
+                textAnchor="middle">
+              grief
+            </Text>
+            <Text
+                onPress={() => {
+                  this.handleSubmit(this.state.mood);
+                  this.createTwoButtonAlert(this.state.mood);
+                  //TODO: add firebase upload
+                }}
+                x="357.70981"
+                y="724.66992"
+                fill="black"
+                fontSize="28"
+                fontWeight="bold"
+                textAnchor="middle">
+              Submit!
+            </Text>
+          </Svg>
+        </View>
     );
   }
 }
-export default AddRoute;
-
 
 const styles = StyleSheet.create({
   container: {
-    flex: 2,
+    flex: 1,
+    //therappy1: #707590
+    //therappylessblue: #707586
+    backgroundColor: '#f2e9e1',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  serenityContainer: {
+    position: 'absolute',
+    top: 228,
+    left: 539,
+    right: 545,
+    bottom: 952,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   rowContainer: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     flex: 1,
   },
-  list: {
-    paddingVertical: 5,
-    margin: 3,
-    flexDirection: 'row',
-    backgroundColor: '#c6aac4',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    zIndex: -1,
+  logo: {
+    fontWeight: 'bold',
+    fontSize: 50,
+    //therappy1: #584d9b
+    //therappylessblue: #584d9b
+    //therappyteal: #20c0b0
+    //therappyAIAIAIAI: #fdfdfb
+    //lime green: #cbe86b
+    color: '#ff666b',
+    marginBottom: 40,
   },
-  title: {
-        fontSize: 24,
-      fontWeight: '600',
-      textAlign: 'center',
-      marginTop: 30,
-      marginBottom: 20,
-  },
-  selected: {backgroundColor: '#FA7B5F'},
   inputView: {
     width: '80%',
     backgroundColor: '#ffffff',
@@ -316,15 +873,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   smol: {
-    width: 400,
-    height: 400,
-  },
-  doneBtn: {
-      fontSize: 18,
-      fontWeight: '600',
-      textAlign: 'right',
-      color: '#1da0f2',
-      marginBottom: 10,
-      marginRight: 20,
+    width: 550,
+    height: 550,
   },
 });
