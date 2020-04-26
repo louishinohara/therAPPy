@@ -64,7 +64,7 @@ export default class CapsSurvey11 extends Component {
     render() {
         let radioFormArr;
         radioFormArr = survey.map(buttonInfo => (
-            <View>
+            <View key={buttonInfo.id}>
                 <Text style={styles.loginText}>{buttonInfo.text}</Text>
                 <RadioForm
                     radio_props={this.state.radio_props}
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: '80%',
-        backgroundColor: '#ff666b',
+        backgroundColor: '#7f58ff',
         borderRadius: 25,
         height: 40,
         alignItems: 'center',

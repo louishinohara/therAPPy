@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     //therappyteal: #20c0b0
     //therappyAIAIAIAI: #fdfdfb
     //lime green: #cbe86b
-    color: '#ff666b',
+    color: '#7f58ff',
     marginBottom: 40,
   },
   inputView: {
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   },
   loginBtn: {
     width: '80%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 25,
     height: 50,
     alignItems: 'center',

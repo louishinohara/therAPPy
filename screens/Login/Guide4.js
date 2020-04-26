@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
   },
   rightBtn: {
     width: '45%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 10,
     height: 40,
     alignItems: 'center',
@@ -294,7 +294,7 @@ const styles = StyleSheet.create({
   },
   leftBtn: {
     width: '45%',
-    backgroundColor: '#ff666b',
+    backgroundColor: '#7f58ff',
     borderRadius: 10,
     height: 40,
     alignItems: 'center',
