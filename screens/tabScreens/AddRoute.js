@@ -74,7 +74,6 @@ export default class MoodWheel extends Component {
             },
             { text: "OK", onPress: () => {
                 console.log("OK Pressed");
-                this.props.navigation.navigate('BottomTabs')
               } }
           ],
           { cancelable: false }
@@ -797,7 +796,7 @@ const styles = StyleSheet.create({
     //therappylessblue: #707586
     backgroundColor: '#f2e9e1',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   },
   serenityContainer: {
     position: 'absolute',
