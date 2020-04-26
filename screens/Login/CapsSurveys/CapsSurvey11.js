@@ -15,23 +15,23 @@ import {
 const survey = [
     {
         id: 'q51',
-        text: 'I have thoughts of ending my life',
+        text: 'I am not able to concentrate as well as usual',
     },
     {
         id: 'q52',
-        text: 'I feel self conscious around others',
+        text: 'I am afraid I may lose control and act violently',
     },
     {
         id: 'q53',
-        text: 'I purge to control my weight',
+        text: 'It\'s hard to stay motivated for my classes',
     },
     {
         id: 'q54',
-        text: 'I drink more than I should',
+        text: 'I feel comfortable around other people',
     },
     {
         id: 'q55',
-        text: 'I enjoy getting drunk',
+        text: 'I like myself',
     },
 ];
 
