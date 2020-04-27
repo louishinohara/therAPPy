@@ -486,7 +486,7 @@ state = {
                         x="471.49340503"
                         y="619.4125735700001"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         disapproval
                     </Text>
@@ -495,7 +495,7 @@ state = {
                         x="245.47219503000002"
                         y="619.4125735700001"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         remorse
                     </Text>
@@ -504,7 +504,7 @@ state = {
                         x="72.23557103"
                         y="470.66837356999997"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         contempt
                     </Text>
@@ -513,7 +513,7 @@ state = {
                         x="631.62222503"
                         y="470.66837356999997"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         awe
                     </Text>
@@ -522,7 +522,7 @@ state = {
                         x="631.84438503"
                         y="262.57358357000004"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         submission
                     </Text>
@@ -531,7 +531,7 @@ state = {
                         x="470.92944503"
                         y="117.14572357000003"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         love
                     </Text>
@@ -540,7 +540,7 @@ state = {
                         x="245.98830503"
                         y="117.14572357000003"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         optimism
                     </Text>
@@ -549,7 +549,7 @@ state = {
                         x="95.37228902999999"
                         y="262.57358357000004"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         aggressiveness
                     </Text>
@@ -558,7 +558,7 @@ state = {
                         x="357.24593503"
                         y="583.22861357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         pensiveness
                     </Text>
@@ -567,7 +567,7 @@ state = {
                         x="118.05811502999998"
                         y="365.92874357000005"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         annoyance
                     </Text>
@@ -576,7 +576,7 @@ state = {
                         x="206.47408503"
                         y="365.87503357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         anger
                     </Text>
@@ -585,7 +585,7 @@ state = {
                         x="265.58813503"
                         y="365.87503357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         rage
                     </Text>
@@ -594,7 +594,7 @@ state = {
                         x="357.45101503"
                         y="273.83859357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         ecstasy
                     </Text>
@@ -603,7 +603,7 @@ state = {
                         x="358.17855503"
                         y="214.00351357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         joy
                     </Text>
@@ -612,7 +612,7 @@ state = {
                         x="357.41195503"
                         y="148.85361357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         serenity
                     </Text>
@@ -621,7 +621,7 @@ state = {
                         x="443.50185503"
                         y="369.20511357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         terror
                     </Text>
@@ -630,7 +630,7 @@ state = {
                         x="508.72945502999994"
                         y="369.83011357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         fear
                     </Text>
@@ -639,7 +639,7 @@ state = {
                         x="606.63070503"
                         y="367.92093357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         apprehension
                     </Text>
@@ -648,7 +648,7 @@ state = {
                         x="424.52743503"
                         y="311.14645357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         admiration
                     </Text>
@@ -657,7 +657,7 @@ state = {
                         x="464.70699503"
                         y="250.13763357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         trust
                     </Text>
@@ -666,7 +666,7 @@ state = {
                         x="511.70260503"
                         y="212.05200357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         acceptance
                     </Text>
@@ -675,7 +675,7 @@ state = {
                         x="294.27050503"
                         y="311.14645357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         vigilance
                     </Text>
@@ -684,7 +684,7 @@ state = {
                         x="254.90865502999998"
                         y="250.13763357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         anticipation
                     </Text>
@@ -693,7 +693,7 @@ state = {
                         x="203.31344503"
                         y="212.05200357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         interest
                     </Text>
@@ -702,7 +702,7 @@ state = {
                         x="205.69772503"
                         y="525.38193357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         boredom
                     </Text>
@@ -711,7 +711,7 @@ state = {
                         x="249.30459502999997"
                         y="475.57333357000005"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         disgust
                     </Text>
@@ -720,7 +720,7 @@ state = {
                         x="295.58675503"
                         y="423.06992357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         loathing
                     </Text>
@@ -729,7 +729,7 @@ state = {
                         x="425.06588503"
                         y="423.06992357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         amazement
                     </Text>
@@ -738,7 +738,7 @@ state = {
                         x="467.34811503"
                         y="475.40048357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         surprise
                     </Text>
@@ -747,7 +747,7 @@ state = {
                         x="509.95211502999996"
                         y="525.35068357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         distraction
                     </Text>
@@ -756,7 +756,7 @@ state = {
                         x="357.58285503"
                         y="519.55380357"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         sadness
                     </Text>
@@ -765,7 +765,7 @@ state = {
                         x="357.07015503"
                         y="463.50217356999997"
                         fill="black"
-                        fontSize="18"
+                        fontSize="22"
                         textAnchor="middle">
                         grief
                     </Text>

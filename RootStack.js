@@ -27,6 +27,7 @@ import CapsSurvey12 from "./screens/Login/CapsSurveys/CapsSurvey12";
 import CapsSurvey13 from "./screens/Login/CapsSurveys/CapsSurvey13";
 import Resources from "./screens/Login/Resources";
 import MoodWheel from "./screens/Login/MoodWheel";
+import SettingsRoute from "./screens/tabScreens/SettingsRoute";
 
 const RootStack = createCompatNavigatorFactory(createStackNavigator)(
   {
@@ -62,7 +63,7 @@ const RootStack = createCompatNavigatorFactory(createStackNavigator)(
      },} ,
   },
   {
-    initialRouteName: 'LoginScreen',
+    initialRouteName: 'ResourcesScreen',
   },
 );
 
