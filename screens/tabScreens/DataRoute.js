@@ -18,20 +18,31 @@ const Tab = createMaterialTopTabNavigator();
 // https://www.npmjs.com/package/react-native-modal
 
 class DataRoute extends React.Component {
+
+      func = () => {
+        this.toggleModal();
+        this.setDate();
+      }
+      
+
       state = {
         isModalVisible: false,
         };
- 
   toggleModal = () => {
     this.setState({isModalVisible: !this.state.isModalVisible});
   };
 
-    render() {
+  setDate = () => {
+    // this.setState({isModalVisible: !this.state.isModalVisible});
+    // console.log(temp)
+  };
 
+    render() {
+      var temp = 'aaaa';
         return (
             <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
         <Appbar.Header>
-            <Appbar.Content title= "March 2020" />
+            <Appbar.Content title= '${temp}'/>
             {/* Calls Date Picking Modal */}
             <Appbar.Action icon="calendar" onPress={this.toggleModal} />            
         </Appbar.Header>
@@ -41,16 +52,15 @@ class DataRoute extends React.Component {
                 style={{ backgroundColor: 'white' }}
                 selectedValue='March 2020'
                 pickerData={['March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
-                onValueChange={value => { console.log(value) }}
-                itemSpace={30} // this only support in android
+                onValueChange={value => { temp = value }}
             />
-            <Button title="Select Month" onPress={this.toggleModal} />
+            <Button title="Select Month" onPress={this.func} />
           </View>
         </Modal>
    <NavigationContainer independent={true}>
       <Tab.Navigator>
         <Tab.Screen name="Pie Chart" component={Donut} />
-        {/* <Tab.Screen name="Charrt" component={AnotherScreen} /> */}
+        <Tab.Screen name="Charrt" component={AnotherScreen} />
         <Tab.Screen name="Chart" component={ChartScreen} />
         <Tab.Screen name="CAPS Survey" component={CAPSScreen} />
       </Tab.Navigator>
