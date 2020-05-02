@@ -5,40 +5,42 @@ import * as scale from 'd3-scale'
 import {getData} from '../getData'
 
     class AnotherScreen extends React.Component {
-        onSurveyDataReceived = (surveyData) => {
-            console.log(surveyData);
-            this.setState(prevState => ({
-                surveyData: surveyData
-            }));
-        }
-        componentDidMount() {
-            getData(this.onSurveyDataReceived)
+           constructor() {
+            super()
+            this.state = {
+                wholeData: []
+            }
         }
 
+
+
+        toggle = () => {
+            var a = [1,2,3]
+            console.log(a)
+        };
     render() {
+
+        const db = firebase.firestore();
+        var UID = firebase.auth().currentUser.uid;
+        var wholeData = []
+        db.collection('surveyData').where("userID", "==", UID ).get()
+        .then(snapshot => {
+        snapshot.forEach(doc => {
+            wholeData.push(doc.data())
+            this.toggle
+        });
         
-                
+        })
+        .catch(error => {
+        console.log('Error!', error);
+        })
+
         var data = [3, 1, 4, 9, 1, 1];
         return (
             
             <View style={{ height: 200, padding: 20 }}>
-                {/* <BarChart
-                    style={{ flex: 1 }}
-                    data={data}
-                    gridMin={0}
-                    svg={{ fill: 'rgb(134, 65, 244)' }}
-                />
-                <XAxis
-                    style={{ marginTop: 10 }}
-                    data={ data }
-                    scale={scale.scaleBand}
-                    formatLabel={ (value, index) => index }
-                    labelStyle={ { color: 'black' } }
-                />
-                            */}
-            <Button title="Select Month" onPress={()=> getData({
 
-            }) } />
+            <Button title="Select Month" onPress={this.toggle} />
           
             </View>
 

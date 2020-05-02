@@ -84,4 +84,32 @@
                 .catch(err => {
                     console.log('Error getting documents', err);
                 });
+
+
+                {/* <BarChart
+                    style={{ flex: 1 }}
+                    data={data}
+                    gridMin={0}
+                    svg={{ fill: 'rgb(134, 65, 244)' }}
+                />
+                <XAxis
+                    style={{ marginTop: 10 }}
+                    data={ data }
+                    scale={scale.scaleBand}
+                    formatLabel={ (value, index) => index }
+                    labelStyle={ { color: 'black' } }
+                />
+                            */}
+
+
+        // onSurveyDataReceived = (surveyData) => {
+        //     console.log(surveyData);
+        //     this.setState(prevState => ({
+        //         surveyData: surveyData
+        //     }));
+        // }
+        // componentDidMount() {
+        //     getData(this.onSurveyDataReceived)
+        // }
+
         

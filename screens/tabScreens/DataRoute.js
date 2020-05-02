@@ -18,31 +18,28 @@ const Tab = createMaterialTopTabNavigator();
 // https://www.npmjs.com/package/react-native-modal
 
 class DataRoute extends React.Component {
-
-      func = () => {
-        this.toggleModal();
-        this.setDate();
-      }
-      
-
-      state = {
+   constructor() {
+      super()
+      this.state = {
         isModalVisible: false,
-        };
+        value: 'May 2020'
+      }
+   }
+
+      
   toggleModal = () => {
     this.setState({isModalVisible: !this.state.isModalVisible});
   };
 
-  setDate = () => {
-    // this.setState({isModalVisible: !this.state.isModalVisible});
-    // console.log(temp)
+  setDate = (val) => {
+    this.setState({value: val});
   };
 
     render() {
-      var temp = 'aaaa';
         return (
             <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
         <Appbar.Header>
-            <Appbar.Content title= '${temp}'/>
+            <Appbar.Content title= {this.state.value} />
             {/* Calls Date Picking Modal */}
             <Appbar.Action icon="calendar" onPress={this.toggleModal} />            
         </Appbar.Header>
@@ -52,9 +49,9 @@ class DataRoute extends React.Component {
                 style={{ backgroundColor: 'white' }}
                 selectedValue='March 2020'
                 pickerData={['March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
-                onValueChange={value => { temp = value }}
+                onValueChange={value => {this.setDate(value)}}
             />
-            <Button title="Select Month" onPress={this.func} />
+            <Button title="Select Month" onPress={this.toggleModal} />
           </View>
         </Modal>
    <NavigationContainer independent={true}>
