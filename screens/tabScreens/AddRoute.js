@@ -15,7 +15,7 @@ export default class MoodWheel extends Component {
       points: [],
       userID: '',
     },
-  }
+  };
   handleTouch(input) {
     if (this.emotions.has(input)) {
       let temp = this.emotions.get(input);
@@ -58,7 +58,7 @@ export default class MoodWheel extends Component {
     });
     console.log(mood);
     //this isn't working for some reason
-  // mood.date = firebase.firestore.Timestamp.now();
+  //  mood.date = firebase.firestore.Timestamp.now();
     mood.userID = firebase.auth().currentUser.uid;
     firebase.firestore().collection('feelingsData').doc().set(mood);
   }

@@ -53,7 +53,7 @@ export default class CapsSurvey1 extends Component {
 
     constructor(props) {
         super(props);
-        global.survey = new Map();
+        global.survey = [];
         this.answers = new Map();
     }
     handleKey(key) {
@@ -61,7 +61,7 @@ export default class CapsSurvey1 extends Component {
     }
     handlePackage(id, value) {
         this.answers.set(id, value);
-        global.survey.set(id, value);
+        global.survey.push(value);
     }
     render() {
         let radioFormArr;
