@@ -60,7 +60,7 @@ export default class LoginBase extends Component {
 
 
             //=========== SIGN IN TURNED ON ===========\\
-            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){
+            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('BottomTabs')).catch(function(error){
               var errorCode = error.code;
               var errorMessage = error.message;
               if (errorCode === 'auth/wrong-password') {
@@ -76,7 +76,6 @@ export default class LoginBase extends Component {
                 alert('No user found with the given email. Try creating an account.');
               }
             });
-          //  this.props.navigation.navigate('Guide1Screen')
           }}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>

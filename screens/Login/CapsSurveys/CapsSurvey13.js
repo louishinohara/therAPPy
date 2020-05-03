@@ -34,11 +34,6 @@ export default class CapsSurvey13 extends Component {
             {label: '3', value: 3},
             {label: '4', value: 4},
         ],
-        data: {
-            dateAndTimeReceived: -1,
-            userID: '',
-            qVals: new Map(),
-        }
     };
 
     constructor(props) {
@@ -50,13 +45,47 @@ export default class CapsSurvey13 extends Component {
     }
     handlePackage(id, value) {
         this.answers.set(id, value);
-        global.survey.set(id, value);
+        global.survey.push(value);
     }
-    handleSubmit(data) {
-        data.qVals = global.survey;
-        // data.userID = firebase.auth().currentUser.uid;
+    handleSubmit() {
+        var i;
+        let data = {
+            dateAndTimeReceived: -1,
+            userID: firebase.auth().currentUser.uid,
+            depression: -1,
+            generalizedAnxiety: -1,
+            socialAnxiety: -1,
+            academicDistress: -1,
+            eatingConcerns: -1,
+            hostility: -1,
+            alcoholUse: -1,
+        };
+        for (i = 0; i < global.survey.length; i++) {
+            if (i === 3 || i === 4 || i === 10 || i === 11 || i === 20 || i === 24) {
+                data.depression += global.survey[i];
+            }
+            else if (i === 1 || i === 6 || i === 8 || i === 9 || i === 14 || i === 16) {
+                data.generalizedAnxiety += global.survey[i];
+            }
+            else if (i === 0 || i === 18 || i === 21 || i === 23 || i === 25) {
+                data.socialAnxiety += global.survey[i];
+            }
+            else if (i === 7 || i === 25 || i === 29 || i === 32) {
+                data.academicDistress += global.survey[i];
+            }
+            else if (i === 2 || i === 5 || i === 12) {
+                data.eatingConcerns += global.survey[i];
+            }
+            else if (i === 17 || i === 19 || i === 22 || i === 28 || i === 31 || i === 33) {
+                data.hostility += global.survey[i];
+            }
+            else if (i === 13 || i === 15 || i === 26 || i === 30) {
+                data.alcoholUse += global.survey[i];
+            }
+        }
         // data.dateAndTimeReceived = firebase.firestore().Timestamp.now();
-        // firebase.firestore().collection('surveyData').doc().set(data);
+        console.log(data);
+        firebase.firestore().collection('surveyData').doc().set(data);
     }
     render() {
         let radioFormArr;
@@ -83,7 +112,7 @@ export default class CapsSurvey13 extends Component {
                     style={styles.loginBtn}
                     onPress={() => {
                         console.log(this.answers);
-                        this.handleSubmit(this.state.data);
+                        this.handleSubmit();
                         //firebase.firestore().collection(firebase.auth().currentUser.uid).doc('capsForm').set({'1-5':this.answers});
                         this.props.navigation.navigate('ResourcesScreen')}}>
                     <Text style={styles.loginText}>To Additional Resources</Text>
