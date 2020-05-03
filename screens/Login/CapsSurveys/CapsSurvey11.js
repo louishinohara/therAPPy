@@ -60,6 +60,7 @@ export default class CapsSurvey11 extends Component {
     }
     handlePackage(id, value) {
         this.answers.set(id, value);
+        global.survey.set(id, value);
     }
     render() {
         let radioFormArr;

@@ -87,6 +87,12 @@ export default class Resources extends Component {
                     <Text style={styles.logo}>Research</Text>
                     {researchArr}
                 </View>
+                <TouchableOpacity
+                    style={styles.loginBtn}
+                    onPress={() => {
+                        this.props.navigation.navigate('BottomTabs')}}>
+                    <Text style={styles.loginText}>To Dashboard</Text>
+                </TouchableOpacity>
             </View>
         );
     }

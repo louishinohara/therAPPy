@@ -10,11 +10,10 @@ export default class MoodWheel extends Component {
     }
 state = {
     mood: {
-        date: new Date().getDate(),
+        date: -1,
         name: [],
         points: [],
-        //TODO: update colors
-        color: [],
+        userID: '',
     },
 }
     handleTouch(input) {
@@ -57,9 +56,11 @@ state = {
                 mood.points.push(0);
             }
         });
-        console.log(Object.values(this.emotions));
-        console.log(mood.name);
-        console.log(this.emotions);
+        console.log(mood);
+        //this isn't working for some reason
+        //mood.date = firebase.firestore().Timestamp.now();
+        mood.userID = firebase.auth().currentUser.uid;
+        firebase.firestore().collection('feelingsData').doc().set(mood);
     }
 
     createTwoButtonAlert = (mood) =>

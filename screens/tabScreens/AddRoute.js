@@ -10,11 +10,10 @@ export default class MoodWheel extends Component {
   }
   state = {
     mood: {
-      date: new Date().getDate(),
+      date: -1,
       name: [],
       points: [],
-      //TODO: update colors
-      color: [],
+      userID: '',
     },
   }
   handleTouch(input) {
@@ -28,7 +27,7 @@ export default class MoodWheel extends Component {
     console.log(input, this.emotions.get(input));
   }
 
-  handleSubmit(mood) {
+  handleSubmit(mood, firebase) {
     console.log(mood.name);
     mood.name.forEach(function(name) {
       console.log(name);
@@ -57,9 +56,11 @@ export default class MoodWheel extends Component {
         mood.points.push(0);
       }
     });
-    console.log(Object.values(this.emotions));
-    console.log(mood.name);
-    console.log(this.emotions);
+    console.log(mood);
+    //this isn't working for some reason
+  // mood.date = firebase.firestore.Timestamp.now();
+    mood.userID = firebase.auth().currentUser.uid;
+    firebase.firestore().collection('feelingsData').doc().set(mood);
   }
 
   createTwoButtonAlert = (mood) =>
@@ -771,7 +772,7 @@ export default class MoodWheel extends Component {
             </Text>
             <Text
                 onPress={() => {
-                  this.handleSubmit(this.state.mood);
+                  this.handleSubmit(this.state.mood, firebase);
                   this.createTwoButtonAlert(this.state.mood);
                   //TODO: add firebase upload
                 }}

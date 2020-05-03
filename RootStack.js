@@ -63,7 +63,7 @@ const RootStack = createCompatNavigatorFactory(createStackNavigator)(
      },} ,
   },
   {
-    initialRouteName: 'ResourcesScreen',
+    initialRouteName: 'LoginScreen',
   },
 );
 
