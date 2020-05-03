@@ -22,8 +22,7 @@ export default class Guide2 extends Component {
           status today.
         </Text>
         <Text style={styles.loginText}>
-          We will come up with these recommendations by checking your fitbit
-          data and events that are coming up in your area.
+          We will come up with these recommendations by checking your data from this app and events that are coming up in your area.
         </Text>
         <View style={styles.rowContainer}>
           <View style={styles.leftView}>

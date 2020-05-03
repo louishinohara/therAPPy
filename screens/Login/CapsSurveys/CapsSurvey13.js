@@ -34,6 +34,11 @@ export default class CapsSurvey13 extends Component {
             {label: '3', value: 3},
             {label: '4', value: 4},
         ],
+        data: {
+            dateAndTimeReceived: -1,
+            userID: '',
+            qVals: new Map(),
+        }
     };
 
     constructor(props) {
@@ -45,6 +50,13 @@ export default class CapsSurvey13 extends Component {
     }
     handlePackage(id, value) {
         this.answers.set(id, value);
+        global.survey.set(id, value);
+    }
+    handleSubmit(data) {
+        data.qVals = global.survey;
+        // data.userID = firebase.auth().currentUser.uid;
+        // data.dateAndTimeReceived = firebase.firestore().Timestamp.now();
+        // firebase.firestore().collection('surveyData').doc().set(data);
     }
     render() {
         let radioFormArr;
@@ -71,9 +83,10 @@ export default class CapsSurvey13 extends Component {
                     style={styles.loginBtn}
                     onPress={() => {
                         console.log(this.answers);
+                        this.handleSubmit(this.state.data);
                         //firebase.firestore().collection(firebase.auth().currentUser.uid).doc('capsForm').set({'1-5':this.answers});
-                        this.props.navigation.navigate('MoodWheelScreen')}}>
-                    <Text style={styles.loginText}>To Mood Input</Text>
+                        this.props.navigation.navigate('ResourcesScreen')}}>
+                    <Text style={styles.loginText}>To Additional Resources</Text>
                 </TouchableOpacity>
             </View>
         );

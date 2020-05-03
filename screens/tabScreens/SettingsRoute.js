@@ -1,7 +1,7 @@
 // https://github.com/Mazurco066/react-native-settings-page
 // https://github.com/florianstahr/react-native-settings-components
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking} from "react-native";
 import { Appbar } from "react-native-paper";
 import {
   SettingsDividerShort,
@@ -11,11 +11,12 @@ import {
   SettingsSwitch,
   SettingsPicker
 } from "react-native-settings-components";
-import ReactNativeSettingsPage, { 
-	SectionRow, 
+import ReactNativeSettingsPage, {
+	SectionRow,
 	NavigateRow,
 	CheckRow
 } from 'react-native-settings-page';
+
 
 
 class SettingsRoute extends React.Component {
@@ -32,12 +33,12 @@ class SettingsRoute extends React.Component {
 		check: false,
 		switch: false,
 		value: 40
-	}
+	};
 
     render() {
         return (
 
-            
+
                 <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
         <Appbar.Header>
             <Appbar.Content title="Settings" />
@@ -49,7 +50,7 @@ class SettingsRoute extends React.Component {
         backgroundColor:
           Platform.OS === "ios" ? colors.iosSettingsBackground : colors.white
       }}
-    >           
+    >
      {/* ================        Start of First Library       ================*/}
       <SettingsCategoryHeader
         title={"My Account"}
@@ -68,7 +69,7 @@ class SettingsRoute extends React.Component {
             username: value
           });
         }}
-        value={this.state.username}        
+        value={this.state.username}
       />
       <SettingsDividerShort />
       <SettingsPicker
@@ -111,9 +112,8 @@ class SettingsRoute extends React.Component {
 					<NavigateRow
 						text='Team Members'
 						iconName='linkedin-square'
-						onPressCallback={this._navigateToScreen} />
-
-					{/* <CheckRow 
+                        onPressCallback={this._navigateToScreen}/>
+					{/* <CheckRow
 						text='Check Row'
 						iconName='your-icon-name'
 						_color='#000'
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
       marginTop: 30,
       // marginBottom: 20,
   },
-});  
+});
 
 const colors = {
   white: "#FFFFFF",

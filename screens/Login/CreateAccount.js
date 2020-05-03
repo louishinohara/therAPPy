@@ -59,7 +59,7 @@ export default class CreateAccount extends React.Component {
           onPress={() => {
 
             // -----FIREBASE------
-            if (this.state.password == this.state.confirm) {
+            if (this.state.password === this.state.confirm) {
               firebase
                 .auth()
                 .createUserWithEmailAndPassword(

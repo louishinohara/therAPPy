@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking} from "react-native";
 import {
   BarChart,
 } from "react-native-chart-kit";
@@ -15,12 +15,12 @@ class CAPSScreen extends React.Component {
         color: (opacity = 1) => `rgba(5, 0, 0, ${opacity})`,
         strokeWidth: 3, // optional, default 3
         barPercentage: 0.5
-      };  
+      };
       const barData = {
         labels: ['Depression', 'General Anxiety', 'Substance Use', 'Social Anxiety', 'Academic Distress', 'Eating Concerns', 'Family Distress','Hostility',''],
         datasets: [
           {
-            data: [            
+            data: [
               Math.random() * 100,
             Math.random() * 100,
             Math.random() * 100,
@@ -36,7 +36,7 @@ class CAPSScreen extends React.Component {
           <ScrollView style={styles.container}>
             <Text style={styles.title}>Your Last CAPS Survey From March</Text>
               <BarChart
-              // style={styles.graphStyle} 
+              // style={styles.graphStyle}
                   data={barData}
                   width={screenWidth * .95}
                   height={450}
@@ -60,7 +60,8 @@ class CAPSScreen extends React.Component {
           <Image style={styles.image} source={{ uri: 'https://i.imgur.com/RMsFfpN.png' }} />
           <Text style={styles.subHeader}> CAPS _______ Chart</Text>
           <Image style={styles.image} source={{ uri: 'https://i.imgur.com/FdAqMfo.png' }} />
-          <Text style={styles.subHeader}> For more information visit xxx</Text>
+          <Text style={styles.subHeader}> For more information visit:</Text>
+              <Text style={styles.link} onPress={() => Linking.openURL('http://health.rutgers.edu/medical-counseling-services/counseling/')}> Rutgers CAPS Website</Text>
           </ScrollView>
         );
     }
@@ -72,6 +73,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#ffffff',
   },
+    link: {
+        fontWeight: 'bold',
+        fontSize: 17,
+        color: 'blue',
+        textDecorationLine: 'underline',
+    },
   title: {
       fontSize: 24,
       fontWeight: '600',
@@ -86,14 +93,14 @@ const styles = StyleSheet.create({
   subHeader: {
         fontSize: 22,
         fontWeight: '500',
-        textAlign: 'center', 
+        textAlign: 'center',
         marginTop: 25,
         marginBottom: 20,
   },
   description: {
         fontSize: 17,
         fontWeight: '400',
-        textAlign: 'center', 
+        textAlign: 'center',
         marginLeft: 14,
         marginRight: 14,
 
@@ -110,4 +117,4 @@ const styles = StyleSheet.create({
         // marginTop: 20,
         resizeMode:'contain'
   }
-});  
+});
