@@ -19,10 +19,10 @@ import { Picker, DatePicker } from 'react-native-wheel-pick';
 
 
 class HistoryRoute extends React.Component {
-        // state = {
-        // isModalVisible: false,
-        // value: 'May 2020'
-        // };
+        state = {
+        isModalVisible: false,
+        value: 'May 2020'
+        };
  
 constructor(props) {
     super(props);
@@ -38,9 +38,6 @@ constructor(props) {
         {id:8, color:"#FF3714", icon:"https://i.imgur.com/r1uqWbZ.png", date: "2/27/2020", tags:['Rage', 'Anger', 'Annoyance'],message: 'Ate some burgers'},
         {id:9, color:"#23b526", icon:"https://i.imgur.com/1R82UKp.png", date: "2/26/2020", tags:['Joy', 'Optimism', 'Love'],message: 'Ate some icecream'},
       ],
-
-        isModalVisible: false,
-        value: 'May 2020'
     };
   }
 
@@ -83,8 +80,8 @@ constructor(props) {
           <View style={styles.modal}>
             <Picker
                 style={{ backgroundColor: 'white' }}
-                selectedValue='March 2020'
-                pickerData={['March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
+                selectedValue='May 2020'
+                pickerData={['May 2020', 'March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
                 onValueChange={value => {this.setDate(value)}}
                 itemSpace={30} // this only support in android
             />
@@ -95,7 +92,7 @@ constructor(props) {
           style={styles.notificationList}
           data={this.state.data}
           keyExtractor= {(item) => {
-            return item.id.toString();
+            return item.date.toString();
           }}
           renderItem={({item}) => {
             return (

@@ -122,6 +122,7 @@ class SettingsRoute extends React.Component {
 
 				</SectionRow>
 			</ReactNativeSettingsPage>
+      <Text style={styles.version}>  Sign Out </Text>
         <Text style={styles.version}>  therAPPy version 1.1.2</Text>
 
 
