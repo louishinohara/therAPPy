@@ -20,15 +20,16 @@ class ProfileRoute extends React.Component {
             <View style={styles.body}>
                 <View style={styles.bodyContent}>
                     <Text style={styles.name}>John Doe</Text>
-                    <Text style={styles.info}>PH.D in Biomedical Engineering</Text>
                     <Text style={styles.description}></Text>
                 </View>
                 <Card style={styles.cardContent}>
                     <Card.Content>
-                        <Title>Monday, March 1st</Title>
-                        <Paragraph>Here's your latest recommendation!</Paragraph>
+                        <Title style={styles.date}>Monday, May 1st</Title>
+                        <Paragraph style={styles.recTitle}>Here's your latest recommendation!</Paragraph>
+                        <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                        <Paragraph style={styles.reBody}>We've been noticing that you have been feeling down lately. We recommend that you go out for a walk!</Paragraph>
                     </Card.Content>
-                    <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+                    
   
                 </Card>
                 <Card style={styles.cardContent}>
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     },
     bodyContent: {
         alignItems: 'center',
-        padding: 30,
+        padding: 20,
     },
     name: {
         fontSize: 28,
@@ -105,10 +106,21 @@ const styles = StyleSheet.create({
     },
     cardContent: {
         elevation: 4,
-        marginTop: 15,
+        // marginTop: 15,
         marginBottom: 15,
         marginLeft: 10,
         marginRight: 10,
         resizeMode:'contain',
-    }
+    },
+    date: {
+        fontSize: 20
+    },
+    recTitle: {
+        fontSize: 18
+    },
+    recBody: {
+        fontSize: 17,
+        marginTop: 40
+    },
+
 });

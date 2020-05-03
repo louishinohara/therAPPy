@@ -1,7 +1,8 @@
 // https://github.com/Mazurco066/react-native-settings-page
 // https://github.com/florianstahr/react-native-settings-components
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking} from "react-native";
+import {Component} from 'react';
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking,TouchableOpacity} from "react-native";
 import { Appbar } from "react-native-paper";
 import {
   SettingsDividerShort,
@@ -16,7 +17,7 @@ import ReactNativeSettingsPage, {
 	NavigateRow,
 	CheckRow
 } from 'react-native-settings-page';
-
+import 'react-native-gesture-handler';
 
 
 class SettingsRoute extends React.Component {
@@ -122,7 +123,10 @@ class SettingsRoute extends React.Component {
 
 				</SectionRow>
 			</ReactNativeSettingsPage>
-      <Text style={styles.version}>  Sign Out </Text>
+              <TouchableOpacity
+          onPress={console.log('signout')}>
+          <Text style={styles.signOut}>Sign Out</Text>
+        </TouchableOpacity>
         <Text style={styles.version}>  therAPPy version 1.1.2</Text>
 
 
@@ -148,6 +152,12 @@ const styles = StyleSheet.create({
       marginTop: 30,
       // marginBottom: 20,
   },
+  signOut: {
+      fontSize: 24,
+      fontWeight: '600',
+      textAlign: 'center',
+      marginTop: 20,
+  }
 });
 
 const colors = {

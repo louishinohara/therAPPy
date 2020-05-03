@@ -12,6 +12,7 @@ import Guide4 from './screens/Login/Guide4';
 import Guide5 from './screens/Login/Guide5';
 import EmotionWheel from './screens/Login/EmotionWheel';
 import BottomTabs from './screens/bottomTabs';
+import ProfileRoute from './screens/tabScreens/ProfileRoute';
 import CapsSurvey1 from './screens/Login/CapsSurveys/CapsSurvey1';
 import CapsSurvey2 from "./screens/Login/CapsSurveys/CapsSurvey2";
 import CapsSurvey3 from "./screens/Login/CapsSurveys/CapsSurvey3";
@@ -61,6 +62,7 @@ const RootStack = createCompatNavigatorFactory(createStackNavigator)(
         headerShown: false,
         indepdendent: true,
      },} ,
+     SettingsRoute : {screen: SettingsRoute}
   },
   {
     initialRouteName: 'LoginScreen',

@@ -54,7 +54,7 @@ const data = [
 ];
         return (
             <ScrollView style={styles.container}>
-                <Text style={styles.title}>How You Were Feeling For March!</Text>
+                <Text style={styles.title}>How You Were Feeling This Month</Text>
                 <View styles={styles.chart}>
                 <PieChart
                     data={data}
@@ -68,7 +68,7 @@ const data = [
                 />
                 </View>
                 <Text style={styles.subHeader}> What does this mean?</Text>
-                <Text style = {styles.description}> Based off the emotions that you have inputted into our app, therAPPy has taken the emotions you inputted and has placed how you are feeling within 1 of 5 categories spanning from very happy to very unhappy. You pie chart displays the total of our calculated field which we have placed you in for the month</Text>
+                <Text style = {styles.description}> Based off the emotions that you have inputted into our app, therAPPy has taken the emotions you inputted and has placed how you are feeling within 1 of 5 categories spanning from very happy to very unhappy. Your pie chart displays the total of our calculated fields which we have placed you in for the month</Text>
             </ScrollView>
 
         );

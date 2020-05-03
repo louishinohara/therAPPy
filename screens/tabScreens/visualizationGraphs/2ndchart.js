@@ -65,7 +65,13 @@ import {getData} from '../getData'
         // console.log('Error!', error);
         // })
         
-        var data = [3, 1, 4, 9, 1, 1];
+        var data = [
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,]
         // console.log('wholeData')
         return (
             

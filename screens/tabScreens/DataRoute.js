@@ -18,8 +18,8 @@ const Tab = createMaterialTopTabNavigator();
 // https://www.npmjs.com/package/react-native-modal
 
 class DataRoute extends React.Component {
-   constructor() {
-      super()
+   constructor(props) {
+      super(props)
       this.state = {
         isModalVisible: false,
         value: 'May 2020'

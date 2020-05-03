@@ -76,21 +76,9 @@ constructor(props) {
 
       <View style={styles.container}>
         <Appbar.Header>
-        <Appbar.Content title="March 2020 " />
-        <Appbar.Action icon="calendar" onPress={this.toggleModal} />            
+        <Appbar.Content title="History of Moods " />
+        {/* <Appbar.Action icon="calendar" onPress={this.toggleModal} />             */}
         </Appbar.Header>
-        <Modal isVisible={this.state.isModalVisible} backdropColor="black">
-          <View style={styles.modal}>
-            <Picker
-                style={{ backgroundColor: 'white' }}
-                selectedValue='March 2020'
-                pickerData={['March 2020', 'April 2020', 'February 2020', 'January 2020', 'December 2019', 'November 2019', 'October 2019']}
-                onValueChange={value => {this.setDate(value)}}
-                itemSpace={30} // this only support in android
-            />
-            <Button title="Select Month" onPress={this.toggleModal} />
-          </View>
-        </Modal>
         <FlatList 
           style={styles.notificationList}
           data={this.state.data}

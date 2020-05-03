@@ -1,11 +1,16 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking} from "react-native";
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking, TouchableOpacity} from "react-native";
 import {
   BarChart,
 } from "react-native-chart-kit";
 const screenWidth = Dimensions.get("window").width;
 
 class CAPSScreen extends React.Component {
+          state = {
+                data: []
+            }
+        
+
     render() {
       const chartConfig = {
         backgroundColor: "#e26a00",
@@ -16,27 +21,43 @@ class CAPSScreen extends React.Component {
         strokeWidth: 3, // optional, default 3
         barPercentage: 0.5
       };
+
+
+    changeData = () => {
+      this.setState({data:[
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100], });
+              
+    }
+
+
+
       const barData = {
         labels: ['Depression', 'General Anxiety', 'Substance Use', 'Social Anxiety', 'Academic Distress', 'Eating Concerns', 'Family Distress','Hostility',''],
         datasets: [
           {
             data: [
               Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100,
-            Math.random() * 100],
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100,
+              Math.random() * 100],
           },
         ],
       };
         return (
           <ScrollView style={styles.container}>
-            <Text style={styles.title}>Your Last CAPS Survey From March</Text>
+            <Text style={styles.title}>Your CAPS Survey This Month</Text>
               <BarChart
-              // style={styles.graphStyle}
                   data={barData}
                   width={screenWidth * .95}
                   height={450}
@@ -50,6 +71,9 @@ class CAPSScreen extends React.Component {
                 borderRadius: 16,
               }}
               />
+              <TouchableOpacity onPress={()=> this.changeData}>
+              <Text>asdasdas </Text>
+              </TouchableOpacity>
           <Text style={styles.subHeader}> What does this mean?</Text>
           <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>
           <Text> </Text>
@@ -58,7 +82,7 @@ class CAPSScreen extends React.Component {
           <Text style = {styles.description}>   For example, if the Depression category had 4 questions, which the user answered with 0, 1, 2, and 3, the average would be 1.5, placing the user in the “mild concern” range.</Text>
           <Text style={styles.subHeader}> Where you stand</Text>
           <Image style={styles.image} source={{ uri: 'https://i.imgur.com/RMsFfpN.png' }} />
-          <Text style={styles.subHeader}> CAPS _______ Chart</Text>
+          <Text style={styles.subHeader}> CAPS Category Chart</Text>
           <Image style={styles.image} source={{ uri: 'https://i.imgur.com/FdAqMfo.png' }} />
           <Text style={styles.subHeader}> For more information visit:</Text>
               <Text style={styles.link} onPress={() => Linking.openURL('http://health.rutgers.edu/medical-counseling-services/counseling/')}> Rutgers CAPS Website</Text>
@@ -116,5 +140,15 @@ const styles = StyleSheet.create({
         // position: 'absolute',
         // marginTop: 20,
         resizeMode:'contain'
+  },
+  link: {
+            fontSize: 17,
+        fontWeight: '400',
+        textAlign: 'center',
+        marginLeft: 14,
+        marginRight: 14,
+        color: 'blue',
+        marginBottom: 25,
+
   }
 });

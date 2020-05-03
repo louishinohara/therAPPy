@@ -61,6 +61,7 @@ class ChartScreen extends React.Component {
   />
           <Text style={styles.subHeader}> What does this mean?</Text>
           <Text style = {styles.description}> Using our algorithm at therAPPy, we have calculated how 'happy' you have been for the month. The closer you are to the peak (100) the happier you have been. This line graph shows how your mood has been changing over the span of the last couple months </Text>
+          <Text style = {styles.description}> We generate these numbers based off your daily input scores. In the pie chart, you can see how often you were feeling very happy or very sad throughout the month. What this chart does it takes an average of all the emotions from that month and we give you a 'happiness' score based of that. This way you can see how you have been generally feeling throughout the last couple months.</Text>
           </ScrollView>
         );
     }
@@ -97,6 +98,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginLeft: 14,
         marginRight: 14,
+        marginTop: 10,
+        marginBottom: 15,
 
   }
 });  
