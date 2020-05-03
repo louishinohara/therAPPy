@@ -158,6 +158,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         marginLeft: 10,
         marginRight: 10,
+        marginBottom: 30,
     },
     rightBtn: {
         width: '45%',
