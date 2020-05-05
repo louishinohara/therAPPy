@@ -1,3 +1,4 @@
+//written by: Ariela Chomski
 //fifth screen of guide sequence
 //outro
 

@@ -1,8 +1,12 @@
+//written by: Ariela Chomski
+//debugged by: Ariela Chomski
+//tested by: Ariela Chomski
+
 import React, {Component} from 'react';
 import Svg, {Text, Path, TSpan, G} from 'react-native-svg';
 import {Alert, StyleSheet, View} from 'react-native';
 import TouchableOpacity from "react-native-web/src/exports/TouchableOpacity";
-
+import firebaseMethods from "firebase/firestore";
 export default class MoodWheel extends Component {
   constructor(props) {
     super(props);
@@ -57,8 +61,8 @@ export default class MoodWheel extends Component {
       }
     });
     console.log(mood);
-    //this isn't working for some reason
-  //  mood.date = firebase.firestore.Timestamp.now();
+    //haven't tested this yet
+  //  mood.date = firebaseMethods.Timestamp.now();
     mood.userID = firebase.auth().currentUser.uid;
     firebase.firestore().collection('feelingsData').doc().set(mood);
   }

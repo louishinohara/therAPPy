@@ -1,3 +1,5 @@
+//written by: Ariela Chomski
+//debugged by: Ariela Chomski
 import React, {Component} from 'react';
 import Svg, {Text, Path, TSpan, G} from 'react-native-svg';
 import {Alert, StyleSheet, View} from 'react-native';
@@ -10,11 +12,10 @@ export default class MoodWheel extends Component {
   }
   state = {
     mood: {
-      date: new Date().getDate(),
+      date: -1,
       name: [],
       points: [],
-      //TODO: update colors
-      color: [],
+      userID: -1,
     },
   }
   handleTouch(input) {
@@ -57,9 +58,11 @@ export default class MoodWheel extends Component {
         mood.points.push(0);
       }
     });
-    console.log(Object.values(this.emotions));
-    console.log(mood.name);
-    console.log(this.emotions);
+    console.log(mood);
+    //haven't tested this yet
+    //  mood.date = firebaseMethods.Timestamp.now();
+    mood.userID = firebase.auth().currentUser.uid;
+    firebase.firestore().collection('feelingsData').doc().set(mood);
   }
 
   createTwoButtonAlert = (mood) =>
