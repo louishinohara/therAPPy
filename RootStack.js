@@ -31,6 +31,7 @@ import CapsSurvey13 from "./screens/Login/CapsSurveys/CapsSurvey13";
 import Resources from "./screens/Login/Resources";
 import MoodWheel from "./screens/Login/MoodWheel";
 import SettingsRoute from "./screens/tabScreens/SettingsRoute";
+import dataUploadDownload from "./screens/dataUploadDownload";
 
 const RootStack = createCompatNavigatorFactory(createStackNavigator)(
   {
@@ -42,6 +43,7 @@ const RootStack = createCompatNavigatorFactory(createStackNavigator)(
     Guide3Screen: {screen: Guide3},
     Guide4Screen: {screen: Guide4},
     Guide5Screen: {screen: Guide5},
+    dataUpDown:{screen: dataUploadDownload},
     EmotionWheelScreen: {screen: EmotionWheel},
       CapsSurvey1Screen: {screen: CapsSurvey1},
       CapsSurvey2Screen: {screen: CapsSurvey2},

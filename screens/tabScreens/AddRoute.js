@@ -61,10 +61,8 @@ export default class MoodWheel extends Component {
       }
     });
     console.log(mood);
-    //haven't tested this yet
-  //  mood.date = firebaseMethods.Timestamp.now();
-    mood.userID = firebase.auth().currentUser.uid;
-    firebase.firestore().collection('feelingsData').doc().set(mood);
+    //Ajay - Fixed firebase submission
+    firebase.submitData('feelingsData',mood);
   }
 
   createTwoButtonAlert = (mood) =>

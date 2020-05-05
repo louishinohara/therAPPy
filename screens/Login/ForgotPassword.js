@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   View,
   AppState,
+    Alert,
 } from 'react-native';
 
 export default class Login extends Component {
@@ -41,13 +42,27 @@ export default class Login extends Component {
 
             //Currently no output is given for success or failure
             //TODO output status message of reset attempt
-            firebase.auth()
-              .sendPasswordResetEmail(this.state.email)
+            firebase.passwordReset(this.state.email)
               .then(function() {
-                // Email sent.
+                Alert.alert('Reset link sent');
               })
               .catch(function(error) {
-                // An error happened.
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+
+
+
+                Alert.alert(
+                    'Error',
+                    errorMessage,
+                    [
+                      {text: 'OK'},
+                    ],
+                    {cancelable: false},
+                );
+
+
               });
           }}>
           <Text style={styles.loginText}>Send Reset Link</Text>

@@ -53,7 +53,6 @@ export default class CapsSurvey13 extends Component {
         var i;
         let data = {
             dateAndTimeReceived: -1,
-            userID: firebase.auth().currentUser.uid,
             depression: -1,
             generalizedAnxiety: -1,
             socialAnxiety: -1,
@@ -88,7 +87,8 @@ export default class CapsSurvey13 extends Component {
        //not tested yet
         // data.dateAndTimeReceived = firebaseMethods.Timestamp.now();
         console.log(data);
-        firebase.firestore().collection('surveyData').doc().set(data);
+        //firebase.firestore.collection('surveyData').doc().set(data);
+        firebase.submitData('surveyData',data);
     }
     render() {
         let radioFormArr;

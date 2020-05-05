@@ -59,10 +59,9 @@ state = {
             }
         });
         console.log(mood);
-        //haven't tested yet
-        //mood.date = firebaseMethods.Timestamp.now();
-        mood.userID = firebase.auth().currentUser.uid;
-        firebase.firestore().collection('feelingsData').doc().set(mood);
+        //mood.userID = firebase.getUID();
+        //Ajay Vejendla - Fixed firebase submission
+        firebase.submitData('feelingsData',mood);
     }
 
     createTwoButtonAlert = (mood) =>
