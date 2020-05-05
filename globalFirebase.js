@@ -1,3 +1,5 @@
+//Written by Ajay Vejendla
+
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
 var firebase = require('firebase/app');

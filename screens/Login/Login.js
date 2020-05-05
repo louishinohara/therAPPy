@@ -1,4 +1,6 @@
-//LoginScreen
+//written by: Ariela Chomski
+//firebase additions by: Ajay Vejendla
+//debugged by: Ariela Chomski
 
 import 'react-native-gesture-handler';
 import React from 'react';

@@ -1,3 +1,4 @@
+//written by: Ariela Chomski
 //Third screen of guide sequence
 //Survey explanation
 

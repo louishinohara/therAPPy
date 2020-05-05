@@ -1,8 +1,10 @@
+//written by: Ariela Chomski
+//debugged by: Ariela Chomski
 import React, {Component} from 'react';
 import Svg, {Text, Path, TSpan, G} from 'react-native-svg';
 import {Alert, StyleSheet, View} from 'react-native';
 import TouchableOpacity from "react-native-web/src/exports/TouchableOpacity";
-
+import firebaseMethods from "firebase/firestore";
 export default class MoodWheel extends Component {
     constructor(props) {
         super(props);
@@ -58,6 +60,7 @@ state = {
         });
         console.log(mood);
         //mood.userID = firebase.getUID();
+        //Ajay Vejendla - Fixed firebase submission
         firebase.submitData('feelingsData',mood);
     }
 

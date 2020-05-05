@@ -1,3 +1,5 @@
+// written by: Ariela Chomski
+// added to by: Louis Shinohara
 //establishing rootstack for screen navigation
 
 import {createStackNavigator} from '@react-navigation/stack';

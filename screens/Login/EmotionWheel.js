@@ -1,3 +1,4 @@
+//written by: Ariela Chomski
 import React, {Component} from 'react';
 import {
   ImageBackground,
