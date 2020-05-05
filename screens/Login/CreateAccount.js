@@ -4,6 +4,7 @@ import 'react-native-gesture-handler';
 // JavaScript source code
 import * as React from 'react';
 import {
+  Alert,
   StyleSheet,
   Text,
   TextInput,
@@ -57,12 +58,66 @@ export default class CreateAccount extends React.Component {
         <TouchableOpacity
           style={styles.loginBtn}
           onPress={() => {
+             if (this.state.password != this.state.confirm) {
+                 Alert.alert(
+                     'Account Creation Error',
+                     'Passwords do not match',
+                     [
+                         {text: 'OK'},
+                     ],
+                     {cancelable: false},
+                 );
+
+             }
+
+             else if (this.state.password === '' || this.state.email === '' || this.state.confirm == ''){
+
+
+               Alert.alert(
+                   'Account Creation Error',
+                   'Please fill all fields',
+                   [
+                     {text: 'OK'},
+                   ],
+                   {cancelable: false},
+               );
+
+
+             }
+
+             else{
+
+                 firebase
+                     .createAccount(
+                         this.state.email,
+                         this.state.password,
+                     )
+                     .then(()=> this.props.navigation.navigate('Guide1Screen'))
+                     .catch(function(error) {
+                         // Handle Errors here.
+                         var errorCode = error.code;
+                         var errorMessage = error.message;
+
+
+
+                         Alert.alert(
+                             'Account Creation Error',
+                             errorMessage,
+                             [
+                                 {text: 'OK'},
+                             ],
+                             {cancelable: false},
+                         );
+
+                     });
+
+             }
+
 
             // -----FIREBASE------
             if (this.state.password === this.state.confirm) {
               firebase
-                .auth()
-                .createUserWithEmailAndPassword(
+                .createAccount(
                   this.state.email,
                   this.state.password,
                 )

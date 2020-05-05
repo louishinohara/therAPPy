@@ -8,10 +8,10 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  Alert,
   View,
+  Alert,
+  Button
 } from 'react-native';
-
 
 
 export default class LoginBase extends Component {
@@ -57,10 +57,11 @@ export default class LoginBase extends Component {
             //TODO Display error message when login is unsuccessful
             //TODO add lockout if too many failed attempts in some time frame
 
-
+            console.log(this.props)
 
             //=========== SIGN IN TURNED ON ===========\\
-            firebase.auth().signInWithEmailAndPassword(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('BottomTabs')).catch(function(error){
+            firebase.login(this.state.email,this.state.password).then(()=> this.props.navigation.navigate('Guide1Screen')).catch(function(error){
+              
               var errorCode = error.code;
               var errorMessage = error.message;
               if (errorCode === 'auth/wrong-password') {
@@ -87,6 +88,12 @@ export default class LoginBase extends Component {
           onPress={() => this.props.navigation.navigate('BottomTabs')}>
           <Text style={styles.forgot}>TO MAIN SCREEN DELETE LATER</Text>
         </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => this.props.navigation.navigate('dataUpDown')}>
+          <Text style={styles.forgot}>TO DATA UPLOAD/DOWNLOAD, DELETE LATER</Text>
+        </TouchableOpacity>
+
       </View>
 
       //  </NavigationContainer>

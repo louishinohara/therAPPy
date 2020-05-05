@@ -57,10 +57,8 @@ state = {
             }
         });
         console.log(mood);
-        //this isn't working for some reason
-        //mood.date = firebase.firestore().Timestamp.now();
-        mood.userID = firebase.auth().currentUser.uid;
-        firebase.firestore().collection('feelingsData').doc().set(mood);
+        //mood.userID = firebase.getUID();
+        firebase.submitData('feelingsData',mood);
     }
 
     createTwoButtonAlert = (mood) =>
