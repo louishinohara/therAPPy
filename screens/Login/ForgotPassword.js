@@ -1,3 +1,5 @@
+//written by: Ariela Chomski
+//firebase additions by: Ajay Vejendla
 //Forgot Password Screen
 
 import 'react-native-gesture-handler';

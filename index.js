@@ -1,3 +1,5 @@
+//written by: Ariela Chomski
+//converted to expo by: Louis Shinohara
 import { registerRootComponent } from 'expo';
 
 import App from './App';

@@ -1,3 +1,5 @@
+//written by: Ariela Chomski
+//debugged by: Ariela Chomski
 import React, {Component} from 'react';
 import RadioForm, {
     RadioButton,
