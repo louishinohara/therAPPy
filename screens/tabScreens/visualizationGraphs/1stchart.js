@@ -6,7 +6,7 @@ import {
 } from "react-native-chart-kit";
 const screenWidth = Dimensions.get("window").width;
 
-class PieChart extends React.Component {
+class MyPieChart extends React.Component {
     render() {
         const chartConfig = {
         fillShadowGradient:"#FFcc0033",
@@ -76,7 +76,7 @@ const data = [
     }
 }
 
-export default PieChart;
+export default MyPieChart;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -1,0 +1,471 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PieChart render test 1`] = `
+<RCTScrollView
+  style={
+    Object {
+      "backgroundColor": "#ffffff",
+      "flex": 1,
+    }
+  }
+>
+  <View>
+    <Text
+      style={
+        Object {
+          "fontSize": 24,
+          "fontWeight": "600",
+          "marginBottom": 20,
+          "marginTop": 30,
+          "textAlign": "center",
+        }
+      }
+    >
+      How You Were Feeling This Month
+    </Text>
+    <View
+      styles={
+        Object {
+          "backgroundColor": "blue",
+          "color": "blue",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "height": 220,
+            "padding": 0,
+            "width": 750,
+          }
+        }
+      >
+        <RNSVGSvgView
+          bbHeight={220}
+          bbWidth={750}
+          focusable={false}
+          height={220}
+          style={
+            Array [
+              Object {
+                "backgroundColor": "transparent",
+                "borderWidth": 0,
+              },
+              Object {
+                "flex": 0,
+                "height": 220,
+                "width": 750,
+              },
+            ]
+          }
+          width={750}
+        >
+          <RNSVGGroup>
+            <RNSVGGroup>
+              <RNSVGDefs>
+                <RNSVGLinearGradient
+                  gradient={
+                    Array [
+                      0,
+                      -16777216,
+                      1,
+                      -2147483648,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={0}
+                  name="backgroundGradient"
+                  x1="0"
+                  x2={220}
+                  y1={220}
+                  y2={0}
+                />
+                <RNSVGLinearGradient
+                  gradient={
+                    Array [
+                      0,
+                      452971520,
+                      1,
+                      16763904,
+                    ]
+                  }
+                  gradientTransform={null}
+                  gradientUnits={0}
+                  name="fillShadowGradient"
+                  x1={0}
+                  x2={0}
+                  y1={0}
+                  y2={220}
+                />
+              </RNSVGDefs>
+            </RNSVGGroup>
+            <RNSVGRect
+              fill={4294967295}
+              height={220}
+              propList={
+                Array [
+                  "fill",
+                ]
+              }
+              rx={0}
+              ry={0}
+              width="100%"
+              x={0}
+              y={0}
+            />
+            <RNSVGGroup
+              matrix={
+                Array [
+                  1,
+                  0,
+                  -0,
+                  1,
+                  188.5,
+                  110,
+                ]
+              }
+            >
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M 0 -88 A 88 88 0 0 1 76.210236 44 L 0 0 A 0 0 0 0 0 0 0 Z "
+                  fill={4280530214}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGRect
+                  fill={4280530214}
+                  height="16px"
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rx={8}
+                  ry={8}
+                  width="16px"
+                  x={276}
+                  y={-76}
+                />
+                <RNSVGText
+                  content={null}
+                  dx={Array []}
+                  dy={Array []}
+                  fill={4280530214}
+                  font={
+                    Object {
+                      "fontSize": 15,
+                    }
+                  }
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rotate={Array []}
+                  x={
+                    Array [
+                      300,
+                    ]
+                  }
+                  y={
+                    Array [
+                      -64,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="10 Very Happy Days"
+                    dx={Array []}
+                    dy={Array []}
+                    font={Object {}}
+                    rotate={Array []}
+                    x={Array []}
+                    y={Array []}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M 76.210236 44 A 88 88 0 0 1 0 88 L 0 0 A 0 0 0 0 0 0 0 Z "
+                  fill={4288798521}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGRect
+                  fill={4288798521}
+                  height="16px"
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rx={8}
+                  ry={8}
+                  width="16px"
+                  x={276}
+                  y={-40.8}
+                />
+                <RNSVGText
+                  content={null}
+                  dx={Array []}
+                  dy={Array []}
+                  fill={4288798521}
+                  font={
+                    Object {
+                      "fontSize": 15,
+                    }
+                  }
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rotate={Array []}
+                  x={
+                    Array [
+                      300,
+                    ]
+                  }
+                  y={
+                    Array [
+                      -28.799999999999997,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="5 Happy Days"
+                    dx={Array []}
+                    dy={Array []}
+                    font={Object {}}
+                    rotate={Array []}
+                    x={Array []}
+                    y={Array []}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M 0 88 A 88 88 0 0 1 -51.725102 71.193496 L 0 0 A 0 0 0 0 0 0 0 Z "
+                  fill={4294890524}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGRect
+                  fill={4294890524}
+                  height="16px"
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rx={8}
+                  ry={8}
+                  width="16px"
+                  x={276}
+                  y={-5.599999999999994}
+                />
+                <RNSVGText
+                  content={null}
+                  dx={Array []}
+                  dy={Array []}
+                  fill={4294890524}
+                  font={
+                    Object {
+                      "fontSize": 15,
+                    }
+                  }
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rotate={Array []}
+                  x={
+                    Array [
+                      300,
+                    ]
+                  }
+                  y={
+                    Array [
+                      6.400000000000006,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="3 Neutral Days"
+                    dx={Array []}
+                    dy={Array []}
+                    font={Object {}}
+                    rotate={Array []}
+                    x={Array []}
+                    y={Array []}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M -51.725102 71.193496 A 88 88 0 0 1 -65.396745 58.883493 L 0 0 A 0 0 0 0 0 0 0 Z "
+                  fill={4294802458}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGRect
+                  fill={4294802458}
+                  height="16px"
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rx={8}
+                  ry={8}
+                  width="16px"
+                  x={276}
+                  y={29.60000000000001}
+                />
+                <RNSVGText
+                  content={null}
+                  dx={Array []}
+                  dy={Array []}
+                  fill={4294802458}
+                  font={
+                    Object {
+                      "fontSize": 15,
+                    }
+                  }
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rotate={Array []}
+                  x={
+                    Array [
+                      300,
+                    ]
+                  }
+                  y={
+                    Array [
+                      41.60000000000001,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="1 Sad Days"
+                    dx={Array []}
+                    dy={Array []}
+                    font={Object {}}
+                    rotate={Array []}
+                    x={Array []}
+                    y={Array []}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+              <RNSVGGroup>
+                <RNSVGPath
+                  d="M -65.396745 58.883493 A 88 88 0 0 1 -0.0088 -88 L 0 0 A 0 0 0 0 0 0 0 Z "
+                  fill={4294915860}
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                />
+                <RNSVGRect
+                  fill={4294915860}
+                  height="16px"
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rx={8}
+                  ry={8}
+                  width="16px"
+                  x={276}
+                  y={64.80000000000001}
+                />
+                <RNSVGText
+                  content={null}
+                  dx={Array []}
+                  dy={Array []}
+                  fill={4294915860}
+                  font={
+                    Object {
+                      "fontSize": 15,
+                    }
+                  }
+                  propList={
+                    Array [
+                      "fill",
+                    ]
+                  }
+                  rotate={Array []}
+                  x={
+                    Array [
+                      300,
+                    ]
+                  }
+                  y={
+                    Array [
+                      76.80000000000001,
+                    ]
+                  }
+                >
+                  <RNSVGTSpan
+                    content="11 Bad Days"
+                    dx={Array []}
+                    dy={Array []}
+                    font={Object {}}
+                    rotate={Array []}
+                    x={Array []}
+                    y={Array []}
+                  />
+                </RNSVGText>
+              </RNSVGGroup>
+            </RNSVGGroup>
+          </RNSVGGroup>
+        </RNSVGSvgView>
+      </View>
+    </View>
+    <Text
+      style={
+        Object {
+          "fontSize": 22,
+          "fontWeight": "500",
+          "marginBottom": 20,
+          "marginTop": 30,
+          "textAlign": "center",
+        }
+      }
+    >
+       What does this mean?
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontSize": 18,
+          "fontWeight": "400",
+          "marginLeft": 14,
+          "marginRight": 14,
+          "textAlign": "center",
+        }
+      }
+    >
+       Based off the emotions that you have inputted into our app, therAPPy has taken the emotions you inputted and has placed how you are feeling within 1 of 5 categories spanning from very happy to very unhappy. Your pie chart displays the total of our calculated fields which we have placed you in for the month
+    </Text>
+  </View>
+</RCTScrollView>
+`;
