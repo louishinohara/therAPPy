@@ -1,3 +1,5 @@
+// Written by Ushio Shinohara
+
 import * as React from 'react';
 import {
   StyleSheet,
@@ -14,9 +16,6 @@ import {
 import { Appbar } from "react-native-paper";
 import Modal from 'react-native-modal';
 import { Picker, DatePicker } from 'react-native-wheel-pick';
-// https://www.vectorstock.com/royalty-free-vector/colored-flat-icons-of-emoticonsdifferent-emotions-vector-13779241
-// https://www.bootdey.com/react-native-snippet/66/simple-profile-list-ui-example
-
 
 class HistoryRoute extends React.Component {
         // state = {
@@ -75,25 +74,25 @@ constructor(props) {
     return (
 
       <View style={styles.container}>
-        <Appbar.Header>
-        <Appbar.Content title="History of Moods " />
-        {/* <Appbar.Action icon="calendar" onPress={this.toggleModal} />             */}
-        </Appbar.Header>
+          <Appbar.Header>
+          <Appbar.Content title="History of Moods " />
+              {/* <Appbar.Action icon="calendar" onPress={this.toggleModal} />             */}
+          </Appbar.Header>
         <FlatList 
-          style={styles.notificationList}
-          data={this.state.data}
-          keyExtractor= {(item) => {
-            return item.id.toString();
-          }}
-          renderItem={({item}) => {
+              style={styles.notificationList}
+              data={this.state.data}
+              keyExtractor= {(item) => {
+                return item.id.toString();
+              }}
+              renderItem={({item}) => {
             return (
               <TouchableOpacity style={[styles.card, {borderColor:item.color}]} onPress={() => {this.cardClickEventListener(item)}}>
                 <View style={styles.cardContent}>
-                  <Image style={[styles.image, styles.imageContent]} source={{uri: item.icon}}/>
-                  <Text style={styles.date}>{item.date}</Text>
-                  <View style={[styles.cardContent, styles.tagsContent]}>
-                  {this.renderTags(item)}
-                </View>
+                    <Image style={[styles.image, styles.imageContent]} source={{uri: item.icon}}/>
+                    <Text style={styles.date}>{item.date}</Text>
+                    <View style={[styles.cardContent, styles.tagsContent]}>
+                    {this.renderTags(item)}
+                  </View>
                 </View> 
               </TouchableOpacity>
             )

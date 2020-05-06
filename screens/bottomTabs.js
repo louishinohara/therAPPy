@@ -1,3 +1,4 @@
+// Written by Ushio Shinohara
 import * as React from 'react';
 import {Component} from 'react';
 import AddButton from "../components/AddButton";

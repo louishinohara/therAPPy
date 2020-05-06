@@ -1,3 +1,5 @@
+// Written by Ushio Shinohara
+
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
 import {
@@ -23,6 +25,8 @@ class ChartScreen extends React.Component {
         stroke: "#ffa726"
       }
     };
+
+    // Data used to test the graphs
      var lineData = {
             labels: ["January", "February", "March", "April", "May", "June"],
       datasets: [
@@ -38,27 +42,26 @@ class ChartScreen extends React.Component {
         }
       ]
     };
-            // legend: ["Rainy Days", "Sunny Days", "Snowy Days"] 
         return (
           <ScrollView style={styles.container}>
             <Text style={styles.title}>Your Happiness Points From 2020</Text>
                 <LineChart
-    data={lineData}
-    width={Dimensions.get("window").width} // from react-native
-    height={280}
-    yAxisLabel=""
-    yAxisSuffix="HP"
-    yAxisInterval={1} // optional, defaults to 1
-    chartConfig={chartConfig}
-    bezier
-    fromZero = "True"
-    getDotColor="white,white"
-    verticalLabelRotation={30}
-    style={{
-      marginVertical: 8,
-      borderRadius: 16
-    }}
-  />
+                  data={lineData}
+                  width={Dimensions.get("window").width} // from react-native
+                  height={280}
+                  yAxisLabel=""
+                  yAxisSuffix="HP"
+                  yAxisInterval={1} // optional, defaults to 1
+                  chartConfig={chartConfig}
+                  bezier
+                  fromZero = "True"
+                  getDotColor="white,white"
+                  verticalLabelRotation={30}
+                  style={{
+                    marginVertical: 8,
+                    borderRadius: 16
+                  }}
+                />
           <Text style={styles.subHeader}> What does this mean?</Text>
           <Text style = {styles.description}> Using our algorithm at therAPPy, we have calculated how 'happy' you have been for the month. The closer you are to the peak (100) the happier you have been. This line graph shows how your mood has been changing over the span of the last couple months </Text>
           <Text style = {styles.description}> We generate these numbers based off your daily input scores. In the pie chart, you can see how often you were feeling very happy or very sad throughout the month. What this chart does it takes an average of all the emotions from that month and we give you a 'happiness' score based of that. This way you can see how you have been generally feeling throughout the last couple months.</Text>

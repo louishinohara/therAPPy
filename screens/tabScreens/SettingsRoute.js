@@ -1,5 +1,5 @@
-// https://github.com/Mazurco066/react-native-settings-page
-// https://github.com/florianstahr/react-native-settings-components
+// Written by Ushio Shinohara
+
 import React from "react";
 import {Component} from 'react';
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking,TouchableOpacity,Alert,Button} from "react-native";
@@ -45,18 +45,18 @@ class SettingsRoute extends Component {
           
 
 
-                <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
-        <Appbar.Header>
-            <Appbar.Content title="Settings" />
-            {/* <Appbar.Action icon="dots-vertical" onPress={null} /> */}
-        </Appbar.Header>
+        <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
+          <Appbar.Header>
+              <Appbar.Content title="Settings" />
+              {/* <Appbar.Action icon="dots-vertical" onPress={null} /> */}
+          </Appbar.Header>
     <ScrollView
-      style={{
-        flex: 1,
-        backgroundColor:
-          Platform.OS === "ios" ? colors.iosSettingsBackground : colors.white
-      }}
-    >
+          style={{
+            flex: 1,
+            backgroundColor:
+              Platform.OS === "ios" ? colors.iosSettingsBackground : colors.white
+          }}
+        >
      {/* ================        Start of First Library       ================*/}
       <SettingsCategoryHeader
         title={"My Account"}
@@ -115,18 +115,11 @@ class SettingsRoute extends Component {
 
     			<ReactNativeSettingsPage>
 				<SectionRow text='Other Settings'>
-					<NavigateRow
-						text='Team Members'
-						iconName='linkedin-square'
-                        onPressCallback={this._navigateToScreen}/>
-					{/* <CheckRow
-						text='Check Row'
-						iconName='your-icon-name'
-						_color='#000'
-						_value={this.state.check}
-						_onValueChange={() => { this.setState({ check: !this.state.check }) }} /> */}
-
-				</SectionRow>
+            <NavigateRow
+              text='Team Members'
+              iconName='linkedin-square'
+              onPressCallback={this._navigateToScreen}/>
+          </SectionRow>
 			</ReactNativeSettingsPage>
               <TouchableOpacity
           onPress={() => {

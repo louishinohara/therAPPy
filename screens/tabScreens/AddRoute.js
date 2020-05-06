@@ -797,8 +797,6 @@ export default class MoodWheel extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    //therappy1: #707590
-    //therappylessblue: #707586
     backgroundColor: '#f2e9e1',
     alignItems: 'center',
     justifyContent: 'center',
@@ -820,11 +818,6 @@ const styles = StyleSheet.create({
   logo: {
     fontWeight: 'bold',
     fontSize: 50,
-    //therappy1: #584d9b
-    //therappylessblue: #584d9b
-    //therappyteal: #20c0b0
-    //therappyAIAIAIAI: #fdfdfb
-    //lime green: #cbe86b
     color: '#ff666b',
     marginBottom: 40,
   },

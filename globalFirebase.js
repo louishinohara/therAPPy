@@ -64,12 +64,7 @@ class globalFirebase {
     getUserData(collection,userID,date){
 
 
-
-
-
     }
-
-    
 
 
     //Submit data object to /collection/x/ where x is a randomly generated string

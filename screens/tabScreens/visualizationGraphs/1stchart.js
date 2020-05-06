@@ -1,3 +1,4 @@
+// Written by Ushio Shinohara
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
 import {
@@ -14,7 +15,7 @@ class PieChart extends React.Component {
         strokeWidth: 3, // optional, default 3
         barPercentage: 0.5
     };
-
+// Data to test out the graphs
 const data = [
   {
     name: "Very Happy Days",

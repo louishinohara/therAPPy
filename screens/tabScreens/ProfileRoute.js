@@ -1,3 +1,5 @@
+// Written by Ushio Shinohara
+
 import * as React from 'react';
 import { View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,Platform, TouchableHighlight,Linking} from "react-native";
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text,Appbar  } from 'react-native-paper';

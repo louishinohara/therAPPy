@@ -1,3 +1,6 @@
+// Written by Ushio Shinohara
+
+
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking, TouchableOpacity} from "react-native";
 import {
@@ -7,10 +10,9 @@ const screenWidth = Dimensions.get("window").width;
 
 class CAPSScreen extends React.Component {
           state = {
-                data: []
+                data: []    // State variable
             }
-        
-
+    // Rendering the graph
     render() {
       const chartConfig = {
         backgroundColor: "#e26a00",
@@ -22,7 +24,7 @@ class CAPSScreen extends React.Component {
         barPercentage: 0.5
       };
 
-
+// Method to test the data to check with the state is working
     changeData = () => {
       this.setState({data:[
               Math.random() * 100,
@@ -37,7 +39,7 @@ class CAPSScreen extends React.Component {
     }
 
 
-
+// Data to test if the graph is working
       const barData = {
         labels: ['Depression', 'General Anxiety', 'Substance Use', 'Social Anxiety', 'Academic Distress', 'Eating Concerns', 'Family Distress','Hostility',''],
         datasets: [
@@ -72,19 +74,19 @@ class CAPSScreen extends React.Component {
               }}
               />
               <TouchableOpacity onPress={()=> this.changeData}>
-              <Text>asdasdas </Text>
+                <Text>asdasdas </Text>
               </TouchableOpacity>
-          <Text style={styles.subHeader}> What does this mean?</Text>
-          <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>
-          <Text> </Text>
-          <Text style = {styles.description}>   Professionals will keep track of all eight subscores of every client in their practice, and assign each client eight scores, indicating what percentile they fall into for that subscale. The CCAPS test further establishes two cutoff points for each subscale. These two cutoff points divide the sample into three regions: low concern, mild concern, and elevated concern. The exact cutoff point-values are unique to each subscale, and are shown in Figure 4.1. These cutoffs can be expressed both as percentiles of the clinical population, as well as through averages of the raw numerical answers of all the questions in a given subscale.</Text>
-          <Text> </Text>
-          <Text style = {styles.description}>   For example, if the Depression category had 4 questions, which the user answered with 0, 1, 2, and 3, the average would be 1.5, placing the user in the “mild concern” range.</Text>
-          <Text style={styles.subHeader}> Where you stand</Text>
-          <Image style={styles.image} source={{ uri: 'https://i.imgur.com/RMsFfpN.png' }} />
-          <Text style={styles.subHeader}> CAPS Category Chart</Text>
-          <Image style={styles.image} source={{ uri: 'https://i.imgur.com/FdAqMfo.png' }} />
-          <Text style={styles.subHeader}> For more information visit:</Text>
+              <Text style={styles.subHeader}> What does this mean?</Text>
+              <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>
+              <Text> </Text>
+              <Text style = {styles.description}>   Professionals will keep track of all eight subscores of every client in their practice, and assign each client eight scores, indicating what percentile they fall into for that subscale. The CCAPS test further establishes two cutoff points for each subscale. These two cutoff points divide the sample into three regions: low concern, mild concern, and elevated concern. The exact cutoff point-values are unique to each subscale, and are shown in Figure 4.1. These cutoffs can be expressed both as percentiles of the clinical population, as well as through averages of the raw numerical answers of all the questions in a given subscale.</Text>
+              <Text> </Text>
+              <Text style = {styles.description}>   For example, if the Depression category had 4 questions, which the user answered with 0, 1, 2, and 3, the average would be 1.5, placing the user in the “mild concern” range.</Text>
+              <Text style={styles.subHeader}> Where you stand</Text>
+              <Image style={styles.image} source={{ uri: 'https://i.imgur.com/RMsFfpN.png' }} />
+              <Text style={styles.subHeader}> CAPS Category Chart</Text>
+              <Image style={styles.image} source={{ uri: 'https://i.imgur.com/FdAqMfo.png' }} />
+              <Text style={styles.subHeader}> For more information visit:</Text>
               <Text style={styles.link} onPress={() => Linking.openURL('http://health.rutgers.edu/medical-counseling-services/counseling/')}> Rutgers CAPS Website</Text>
           </ScrollView>
         );

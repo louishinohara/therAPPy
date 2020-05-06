@@ -1,4 +1,5 @@
 //written by: Ariela Chomski
+// tested by: Ushio Shinohara
 //firebase additions by: Ajay Vejendla
 
 import * as React from 'react';
