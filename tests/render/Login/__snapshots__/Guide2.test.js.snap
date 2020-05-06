@@ -1,0 +1,152 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guide2 render test 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#f2e9e1",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#7f58ff",
+        "fontSize": 50,
+        "fontWeight": "bold",
+        "marginBottom": 40,
+      }
+    }
+  >
+    therAPPy
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 18,
+        "marginLeft": 10,
+        "marginRight": 10,
+      }
+    }
+  >
+    The way this app works is that you sign in and record how you are doing today. We will check how you feel today with past data and come up with some activities you can do to improve your mental health status today.
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 18,
+        "marginLeft": 10,
+        "marginRight": 10,
+      }
+    }
+  >
+    We will come up with these recommendations by checking your data from this app and events that are coming up in your area.
+  </Text>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "space-evenly",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginLeft": 90,
+          "marginTop": 25,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#7f58ff",
+            "borderRadius": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": "45%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontSize": 18,
+              "marginLeft": 10,
+              "marginRight": 10,
+            }
+          }
+        >
+          Back!
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+          "marginTop": 25,
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        isTVSelectable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#7f58ff",
+            "borderRadius": 10,
+            "height": 40,
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": "45%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "black",
+              "fontSize": 18,
+              "marginLeft": 10,
+              "marginRight": 10,
+            }
+          }
+        >
+          Next!
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

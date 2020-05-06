@@ -6,7 +6,6 @@ import { Appbar } from "react-native-paper";
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import PieChart from './visualizationGraphs/1stchart';
-import AnotherScreen from './visualizationGraphs/2ndchart';
 import ChartScreen from './visualizationGraphs/3rdchart';
 import CAPSScreen from './visualizationGraphs/4thchart';
 import Modal from 'react-native-modal';

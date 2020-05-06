@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guide1 render test 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#f2e9e1",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Object {
+        "color": "#7f58ff",
+        "fontSize": 50,
+        "fontWeight": "bold",
+        "marginBottom": 40,
+      }
+    }
+  >
+    therAPPy
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 18,
+        "marginLeft": 10,
+        "marginRight": 10,
+      }
+    }
+  >
+    Thank you for signing up for therAPPy, the app that helps you track and improve your mental health!
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 18,
+        "marginLeft": 10,
+        "marginRight": 10,
+      }
+    }
+  >
+    Please click the button below to navigate your way through the app.
+  </Text>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#7f58ff",
+        "borderRadius": 10,
+        "height": 50,
+        "justifyContent": "center",
+        "marginBottom": 20,
+        "marginTop": 20,
+        "opacity": 1,
+        "width": "45%",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 18,
+          "marginLeft": 10,
+          "marginRight": 10,
+        }
+      }
+    >
+      Next!
+    </Text>
+  </View>
+</View>
+`;

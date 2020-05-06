@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Resources render test 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#f2e9e1",
+      "flex": 1,
+      "justifyContent": "flex-start",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f2e9e1",
+        "flex": 6,
+        "justifyContent": "space-evenly",
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#7f58ff",
+          "fontSize": 50,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Resources
+    </Text>
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "blue",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        Rutgers CAPS website
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 18,
+            "marginBottom": 30,
+            "marginLeft": 10,
+            "marginRight": 10,
+          }
+        }
+      >
+        Offers Counseling, Alcohol and Other Drug Assistance Program & Psychiatric Services
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "blue",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        US SAMHSA website
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 18,
+            "marginBottom": 30,
+            "marginLeft": 10,
+            "marginRight": 10,
+          }
+        }
+      >
+        The US Government Substance Abuse and Mental Health Services Administration.
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "blue",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        US NIMH website
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 18,
+            "marginBottom": 30,
+            "marginLeft": 10,
+            "marginRight": 10,
+          }
+        }
+      >
+        The US Government National Institute of Mental Health, guide to finding help.
+      </Text>
+    </View>
+    <Text
+      style={
+        Object {
+          "color": "#7f58ff",
+          "fontSize": 50,
+          "fontWeight": "bold",
+        }
+      }
+    >
+      Research
+    </Text>
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "blue",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        Overview of Plutchik's Wheel of Emotions and its uses
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 18,
+            "marginBottom": 30,
+            "marginLeft": 10,
+            "marginRight": 10,
+          }
+        }
+      >
+        Offers Counseling, Alcohol and Other Drug Assistance Program & Psychiatric Services
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "blue",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        Mobile Apps for mood tracking
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 18,
+            "marginBottom": 30,
+            "marginLeft": 10,
+            "marginRight": 10,
+          }
+        }
+      >
+        An analysis of features and user reviews
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "justifyContent": "center",
+          "marginLeft": 20,
+          "marginRight": 20,
+        }
+      }
+    >
+      <Text
+        onPress={[Function]}
+        style={
+          Object {
+            "color": "blue",
+            "fontSize": 25,
+            "fontWeight": "bold",
+            "textDecorationLine": "underline",
+          }
+        }
+      >
+        CCAPS Survey Overview
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "black",
+            "fontSize": 18,
+            "marginBottom": 30,
+            "marginLeft": 10,
+            "marginRight": 10,
+          }
+        }
+      >
+        The Counseling Center Assessment of Psychological Symptoms
+      </Text>
+    </View>
+  </View>
+  <View
+    accessible={true}
+    focusable={true}
+    isTVSelectable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "opacity": 1,
+      }
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "black",
+          "fontSize": 18,
+          "marginBottom": 30,
+          "marginLeft": 10,
+          "marginRight": 10,
+        }
+      }
+    >
+      To Dashboard
+    </Text>
+  </View>
+</View>
+`;
