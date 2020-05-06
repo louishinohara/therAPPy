@@ -1,3 +1,6 @@
+//Authored Louis Shinohara
+//Ajay Vejendla - Debugged/fixed data load to change chart dynamically
+
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking, TouchableOpacity} from "react-native";
 import {
@@ -7,9 +10,56 @@ const screenWidth = Dimensions.get("window").width;
 
 class CAPSScreen extends React.Component {
           state = {
-                data: []
+            barDataTest: {
+              //Removed label for 'Family Distress', does not appear in caps score calculation
+              labels: ['Depression', 'General Anxiety', 'Substance Use', 'Social Anxiety', 'Academic Distress', 'Eating Concerns', 'Hostility',''],
+              
+              datasets: [
+                {
+                  data: [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                    ],
+                },
+              ],
+      
             }
-        
+            }
+
+            changeData () {
+              const self = this;
+
+              const temp = {...self.state.barDataTest}
+
+              firebase.querySurvey().then(function(document){
+                temp.datasets[0].data = [
+                  document[0].depression,
+                  document[0].generalizedAnxiety,
+                  document[0].alcoholUse,
+                  document[0].socialAnxiety,
+                  document[0].academicDistress,
+                  document[0].eatingConcerns,
+                  document[0].hostility
+                
+                ];
+                
+              console.log(document);
+              self.setState({barDataTest: temp});
+
+              }).catch();
+              
+                      
+            };
+
+            componentWillMount(){
+              this.changeData();
+            };
+
 
     render() {
       const chartConfig = {
@@ -23,42 +73,37 @@ class CAPSScreen extends React.Component {
       };
 
 
-    changeData = () => {
-      this.setState({data:[
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100], });
-              
-    }
+    
 
-
-
+      
+   
       const barData = {
         labels: ['Depression', 'General Anxiety', 'Substance Use', 'Social Anxiety', 'Academic Distress', 'Eating Concerns', 'Family Distress','Hostility',''],
+        
         datasets: [
           {
             data: [
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100,
-              Math.random() * 100],
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0],
           },
         ],
+
       };
+
+      //this.changeData();
+
+  
         return (
           <ScrollView style={styles.container}>
             <Text style={styles.title}>Your CAPS Survey This Month</Text>
               <BarChart
-                  data={barData}
+                  data={this.state.barDataTest}
                   width={screenWidth * .95}
                   height={450}
                   yAxisLabel=""
@@ -71,8 +116,8 @@ class CAPSScreen extends React.Component {
                 borderRadius: 16,
               }}
               />
-              <TouchableOpacity onPress={()=> this.changeData}>
-              <Text>asdasdas </Text>
+              <TouchableOpacity onPress={()=> this.changeData()}>
+              <Text>Refresh </Text>
               </TouchableOpacity>
           <Text style={styles.subHeader}> What does this mean?</Text>
           <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>

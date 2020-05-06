@@ -104,10 +104,12 @@ export default class dataUploadDownload extends Component {
           <Text style={styles.loginText}>Dowload Data</Text>
         </TouchableOpacity>
 
-
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('BottomTabs')}>
-          <Text style={styles.forgot}>TO MAIN SCREEN DELETE LATER</Text>
+          style={styles.loginBtn}
+          onPress={() => {
+            this.props.navigation.navigate('BottomTabs')
+          }}>
+          <Text style={styles.loginText}>Back to Dashboard</Text>
         </TouchableOpacity>
 
 

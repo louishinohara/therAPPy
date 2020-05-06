@@ -140,7 +140,8 @@ class SettingsRoute extends Component {
                   style: "cancel"
                 },
                 { text: "OK", onPress: () => {
-                  
+
+                  firebase.signOut();
 
                   }, 
                   style: "cancel"
@@ -150,7 +151,7 @@ class SettingsRoute extends Component {
               { cancelable: false }
             );
 
-            firebase.signOut();
+            
             
           }}>
           <Text style={styles.signOut}>Sign Out</Text>

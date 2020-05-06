@@ -4,6 +4,7 @@ import AddButton from "../components/AddButton";
 import { View, StyleSheet, Image, Button, ScrollView } from "react-native";
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text  } from 'react-native-paper';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 // ================== Bottom Tab Navigation ====================\\
 
@@ -39,7 +40,10 @@ export default class BottomTabs extends React.Component {
   });
 
   render() {
+    
+
     return (
+
       <BottomNavigation 
         // style={styles.title}
         navigationState={this.state}
