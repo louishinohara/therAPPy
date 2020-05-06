@@ -1,3 +1,5 @@
+//written by: Ariela Chomski
+//debugged by: Ariela Chomski
 import React, {Component} from 'react';
 import RadioForm, {
     RadioButton,
@@ -11,7 +13,7 @@ import {
     View,
     ScrollView,
 } from 'react-native';
-
+import firebaseMethods from "firebase/firestore";
 const survey = [
     {
         id: 'q61',
@@ -51,7 +53,6 @@ export default class CapsSurvey13 extends Component {
         var i;
         let data = {
             dateAndTimeReceived: -1,
-            userID: firebase.auth().currentUser.uid,
             depression: -1,
             generalizedAnxiety: -1,
             socialAnxiety: -1,
@@ -83,9 +84,11 @@ export default class CapsSurvey13 extends Component {
                 data.alcoholUse += global.survey[i];
             }
         }
-        // data.dateAndTimeReceived = firebase.firestore().Timestamp.now();
+       //not tested yet
+        // data.dateAndTimeReceived = firebaseMethods.Timestamp.now();
         console.log(data);
-        firebase.firestore().collection('surveyData').doc().set(data);
+        //firebase.firestore.collection('surveyData').doc().set(data);
+        firebase.submitData('surveyData',data);
     }
     render() {
         let radioFormArr;

@@ -1,3 +1,5 @@
+//written by: Ariela Chomski
+//blurbs written by: Bracha 'Brooke' Getter
 //Second Screen of Guide sequence
 //Explanation of purpose/methods
 

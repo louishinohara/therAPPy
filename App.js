@@ -1,3 +1,6 @@
+//written by: Ariela Chomski
+//firebase additions by: Ajay Vejendla
+
 import * as React from 'react';
 import {Component} from 'react';
 import AddButton from "./components/AddButton";
@@ -28,6 +31,6 @@ export default function App() {
       <NavigationContainer>
         <RootStack />
       </NavigationContainer>
-     
+
   );
 }

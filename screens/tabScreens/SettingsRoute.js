@@ -2,7 +2,7 @@
 // https://github.com/florianstahr/react-native-settings-components
 import React from "react";
 import {Component} from 'react';
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking,TouchableOpacity} from "react-native";
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking,TouchableOpacity,Alert,Button} from "react-native";
 import { Appbar } from "react-native-paper";
 import {
   SettingsDividerShort,
@@ -15,12 +15,14 @@ import {
 import ReactNativeSettingsPage, {
 	SectionRow,
 	NavigateRow,
-	CheckRow
+  CheckRow
 } from 'react-native-settings-page';
 import 'react-native-gesture-handler';
 
+import { useNavigation } from '@react-navigation/native';
 
-class SettingsRoute extends React.Component {
+
+class SettingsRoute extends Component {
     constructor() {
         super();
         this.state = {
@@ -37,7 +39,10 @@ class SettingsRoute extends React.Component {
 	};
 
     render() {
+      
+      
         return (
+          
 
 
                 <View style={{ flex: 1, backgroundColor: "#FFF0809" }}>
@@ -124,7 +129,30 @@ class SettingsRoute extends React.Component {
 				</SectionRow>
 			</ReactNativeSettingsPage>
               <TouchableOpacity
-          onPress={console.log('signout')}>
+          onPress={() => {
+            Alert.alert(
+              "Confirm",
+              "Are you sure you want to sign out?",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => {
+                  
+
+                  }, 
+                  style: "cancel"
+              
+                },
+              ],
+              { cancelable: false }
+            );
+
+            firebase.signOut();
+            
+          }}>
           <Text style={styles.signOut}>Sign Out</Text>
         </TouchableOpacity>
         <Text style={styles.version}>  therAPPy version 1.1.2</Text>
