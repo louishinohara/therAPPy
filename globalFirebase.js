@@ -29,36 +29,93 @@ class globalFirebase {
         this.auth = firebase.auth();
     }
 
+    //Login with credentials email and password
     login(email, password) {
 
         return this.auth.signInWithEmailAndPassword(email, password);
 
     }
 
+
+    //Create account with credentials email and password
     createAccount(email, password) {
 
         return this.auth.createUserWithEmailAndPassword(email,password);
 
     }
 
-    getUserData(collection,userID){
+    //Search for documents from userID
+    //Promise resolving to array of documents matching query
+    async queryDataUserOnly(collection,userID){
+        //Array containing documents that match query
         documents = [];
-
+    
+    
+        //Declare reference object that points to collection 
         docRef = this.database.collection(collection);
+    
+        //Return references to all documents that have a matching userID
         query = docRef.where("userID", "==", userID);
-        query.get().then(function (querySnapshot) {
-            querySnapshot.forEach(function (doc) {
-                documents.push(doc.data());
-                console.log(doc.id, " => ", doc.data());
-            });
-        })
-            .catch(function (error) {
-                console.log("Error getting documents: ", error);
-            });
+    
+        querySnapshot = await query.get();
+    
+        querySnapshot.forEach(function (doc) {
+            documents.push(doc.data());
+        }
         
-        return documents();
-
-
+        );
+        
+        //return documents
+        return documents;
+        
+    }
+    
+    //Search range date1 < timeAndDateReceived < date2
+    //Promise, resolves to array of documents matching query
+    async queryDataDate(collection,userID,date1,date2){
+        //Array containing documents that match query
+        documents = [];
+    
+    
+        //Declare reference object that points to collection 
+        docRef = this.database.collection(collection);
+    
+        //Return references to all documents that have a matching userID
+        query = docRef.where("userID", "==", userID).where("dateAndTimeReceived" , ">=", date1).where("dateAndTimeReceived" , "<", date2);
+    
+        //Retrieve the actual documents
+        querySnapshot = await query.get();
+        querySnapshot.forEach(function (doc) {
+            documents.push(doc.data());
+        }
+        
+        );
+        
+        //return documents 
+        return documents;
+        
+    }
+    
+    //Generate dates to use with date sorted queries
+    //Year, month, day should be set according to JavaScript Date standards
+    generateDate(year,month,day){
+        var startDate = new Date();
+        startDate.setHours(0,0,0,0);
+        startDate.setFullYear(year,month,day);
+    
+        return firebase.firestore.Timestamp.fromDate(startDate);
+    }
+    
+    //Generate an ending date for date queries
+    //Year, month, day should be set according to JavaScript Date standards
+    //Unused method that generates the second before midnight
+    //Fixed by adjusting query operators
+    generateDateEnd(year,month,day){
+        var endDate = new Date();
+        endDate.setHours(23,59,59,9999);
+        endDate.setFullYear(year,month,day);
+    
+        return firebase.firestore.Timestamp.fromDate(endDate);
     }
 
     getUserData(collection,userID,date){
@@ -67,6 +124,15 @@ class globalFirebase {
     }
 
 
+    //Use to convert timestamp back to date
+    timestampToDate(tstamp){
+
+        return firebase.firestore.Timestamp.toDate(tstamp);
+
+    }
+    
+
+    
     //Submit data object to /collection/x/ where x is a randomly generated string
     //Automatically timestamped
     //Automatically tagged with UID
@@ -82,10 +148,13 @@ class globalFirebase {
         this.database.collection(collection).doc(doc).set(data);
     }
 
+    //Send a password reset link to email
     passwordReset(email){
         return this.auth.sendPasswordResetEmail(email);
     }
 
+
+    //Log out current user
     signOut(){
         this.auth.signOut();
     }
