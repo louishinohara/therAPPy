@@ -23,5 +23,15 @@ username: test@test.com
 password: 123456
 
 However you can also create your own account to navigate through the app
+
+
+
+
+* OTHER NOTES *
+
+Here are the two github repostiries for our code for the first demo. They are in seperate files because we were unable to merge both projects due to compatibility issues.
+https://github.com/louishinohara/therAPPy_data_visualization
+https://github.com/scorrette/se-health-app
+
 fin
 
