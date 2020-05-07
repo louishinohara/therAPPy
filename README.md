@@ -17,10 +17,19 @@ Once those files have been downloaded the commands in the terminal of your IDE o
 4. 'expo start' -> Which launches a QR code in the IDE's terminal. Scan it with the camera app on your phone to launch the simulator in expo client. 
 
 A test account which you can use is
+
+username: marsic@isastud.com
+password: test12
+
+username: ari@gmail.com
+password: test123
+
 username: test@test.com 
 password: 123456
 
-However you can also create your own account to navigate through the app
+
+
+However we believe that the tester should create their own account to have their own experience with our application. 
 
 
 
@@ -44,6 +53,8 @@ There was difficulty understanding and writing a test that integrated the indivi
 * OTHER NOTES *
 
 Here are the two github repositories for our code for the first demo. They are in separate files because we were unable to merge both projects due to compatibility issues.
+
+
 https://github.com/louishinohara/therAPPy_data_visualization
 https://github.com/scorrette/se-health-app
 
