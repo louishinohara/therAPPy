@@ -30,7 +30,7 @@ password: 123456
 
 
 However we believe that the tester should create their own account to have their own experience with our application. 
-
+In addition, we have encountered a bug that crashes the app when the user logs in with an existing account on certain devices. Please create a new acccount for tesing purposes.
 
 
 * Unit Tests *
@@ -57,6 +57,23 @@ Here are the two github repositories for our code for the first demo. They are i
 
 https://github.com/louishinohara/therAPPy_data_visualization
 https://github.com/scorrette/se-health-app
+
+
+*BUGS*
+
+- Depending on the device, logging in with an existing account will crash the data visualization section of the app
+
+- The selectable part of the mood wheel differers on the screen size. So on a phone with a bigger screen (iPhone X, selecting may be hard)
+
+- The next button on the MoodWheel screen needs to be pressed a couple of times. Please be patient with it
+
+- Submitting the mood input without actually selecting an input will throw an error 
+
+* To Do *
+- The last graph with the CAPS both stores and displays the data from the back end
+
+- Given the time constraints, we weren’t able to add this feature to all the graphs. However all the input data does get stored into the firebase back end. Given more time, we would have been able to display that data as well. 
+
 
 fin
 
