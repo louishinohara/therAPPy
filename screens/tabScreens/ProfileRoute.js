@@ -1,7 +1,7 @@
 // Written by Ushio Shinohara
-
+//Recommendation Additions, event code on https://therappy.rutgers.edu/?page_id=96 : Suraj Sanyal
 import * as React from 'react';
-import { View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,Platform, TouchableHighlight,Linking} from "react-native";
+import { Alert, View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,Platform, TouchableHighlight,Linking} from "react-native";
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text,Appbar  } from 'react-native-paper';
 import { Block,theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -12,16 +12,50 @@ const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
 
 
+var reccString1 = 'We\'ve been noticing that you have been feeling ';
+
+var feelingsArr = [
+    'happy',
+    'sad',
+    'frustrated',
+    'shaken',
+    'at peace',
+    'calm',
+    'afraid',
+    'panicked',
+    'anxious',
+    'depressed',
+    'spaced out'
+]
+
+var reccString2 = feelingsArr[Math.floor(Math.random() * feelingsArr.length)];
+var reccString3 = ' lately. We recommend that you ';
+
+var recArr = [
+    'go for a walk!',
+    'write about your thoughts.',
+    'touch base with a friend/family member.',
+    'exercise for a bit!',
+    'take 10 minutes to practice mindfulness.',
+]
+
+var reccString4 = recArr[Math.floor(Math.random() * recArr.length)];
+
+var reccStringFull = reccString1.concat(reccString2, reccString3, reccString4);
+
 class ProfileRoute extends React.Component {
-    state: {
-        name: ''
-    }
-
-
-
-
 
     render() {
+
+        Alert.alert(
+            'Recommendation',
+            reccStringFull,
+            [
+                {text: 'OK', onPress: () => console.log('OK Pressed')},
+            ],
+            { cancelable: false }
+          )
+
         var date = moment().format("DD/MM/YYYY");
         return (
     <ScrollView>
@@ -38,7 +72,7 @@ class ProfileRoute extends React.Component {
                         <Title style={styles.date}> {date}</Title>
                         <Paragraph style={styles.recTitle}>Here's your latest recommendation!</Paragraph>
                         <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
-                        <Paragraph style={styles.reBody}>We've been noticing that you have been feeling down lately. We recommend that you go out for a walk!</Paragraph>
+                        <Paragraph style={styles.reBody}>{reccStringFull}</Paragraph>
                     </Card.Content>
                     
   
@@ -57,7 +91,7 @@ class ProfileRoute extends React.Component {
     </ScrollView>);
 
     }
-    }
+}
 
 export default ProfileRoute;
 const styles = StyleSheet.create({
