@@ -98,10 +98,10 @@ export default class LoginBase extends Component {
           onPress={() => this.props.navigation.navigate('dataUpDown')}>
           <Text style={styles.dataText}>Upload / Download Data</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           onPress={() => this.props.navigation.navigate('BottomTabs')}>
           <Text style={styles.dataText}>TO MAIN SCREEN DELETE LATER</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
 
       </View>
 
