@@ -19,6 +19,14 @@ import {
   Button
 } from 'react-native';
 
+//TODO
+
+//Lots of TODOs
+
+//Move to settings page, so user has to be authenticated first
+//Add more rigiorous checks to make sure file is of the appropriate format
+//Actually implement the file download feature
+//Add file encryption (plain text is a big no no)
 
 export default class dataUploadDownload extends Component {
   state = {

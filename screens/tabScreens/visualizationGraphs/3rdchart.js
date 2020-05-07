@@ -37,6 +37,8 @@ class ChartScreen extends React.Component {
     //Create time stamps for start of current year and start of next month to create the timerange for queries
     var newYearsCurrent = firebase.generateDate(now.getFullYear(),0,1);
 
+    var nextMonth = new Date();
+
 
     //Lazy fix for December
   if(now.getMonth() == 11){
@@ -44,7 +46,7 @@ class ChartScreen extends React.Component {
     nextMonth.setFullYear(now.getFullYear+1);
 
   }
-    var nextMonth = firebase.generateDate(now.getFullYear(),(now.getMonth()+1)%12,1);
+    nextMonth = firebase.generateDate(now.getFullYear(),(now.getMonth()+1)%12,1);
 
     //Adjust labels to match current month
     temp.labels = this.state.lineData.labels.slice(0,now.getMonth()+1);
@@ -54,7 +56,7 @@ class ChartScreen extends React.Component {
       //Make sure final data array only has now.getMonth() entries
       //Write data to temp
       //For example, to change the data plotted on the graph do temp.datasets[0].data = array of data
-      
+      console.log(documents);
       
     
     //Write temp to state, replacing lineData
