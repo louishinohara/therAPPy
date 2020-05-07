@@ -21,7 +21,7 @@ A test account which you can use is
 username: marsic@isastud.com
 password: test12
 
-username: ari@gmail.com
+username:  ariela.chomski@gmail.com
 password: test123
 
 username: test@test.com 
