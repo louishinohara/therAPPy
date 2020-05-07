@@ -2,7 +2,7 @@
 //Ajay Vejendla - Debugged/fixed data load to change chart dynamically
 
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking, TouchableOpacity} from "react-native";
+import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking, TouchableOpacity, Alert,Button} from "react-native";
 import {
   BarChart,
 } from "react-native-chart-kit";
@@ -37,6 +37,8 @@ class CAPSScreen extends React.Component {
               const temp = {...self.state.barDataTest}
 
               firebase.querySurvey().then(function(document){
+
+                if(!((document == null) || (document == undefined))){
                 temp.datasets[0].data = [
                   document[0].depression,
                   document[0].generalizedAnxiety,
@@ -47,9 +49,17 @@ class CAPSScreen extends React.Component {
                   document[0].hostility
                 
                 ];
-                
-              console.log(document);
+              
               self.setState({barDataTest: temp});
+
+              }
+
+              else{
+
+                Alert.alert("You don't seem to have any survey data submitted. Try taking the caps survey, then come back here and refresh.");
+
+
+              }
 
               }).catch();
               

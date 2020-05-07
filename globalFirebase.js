@@ -5,6 +5,8 @@
 // must be listed before other Firebase SDKs
 var firebase = require('firebase/app');
 
+import {Alert,Button} from 'react-native';
+
 // Add the Firebase products that you want to use
 require('firebase/auth');
 require('firebase/firestore');
@@ -84,7 +86,7 @@ class globalFirebase {
     //Return most recently submitted caps survey submitted by the currently authenticated user.
     async querySurvey(){
         //Array containing documents that match query
-        console.log('e');
+        
         var documents = [];
         var userID = this.auth.currentUser.uid;
     
@@ -95,6 +97,7 @@ class globalFirebase {
         //Return references to most recent caps survey entry
         var query = docRef.where("userID", "==", userID);
     
+        try {
         var querySnapshot = await query.orderBy('dateAndTimeReceived','desc').limit(1).get();
         
         querySnapshot.forEach(function (doc) {
@@ -102,9 +105,17 @@ class globalFirebase {
         }
         
         );
-        console.log('e');
+       
         //return documents
         return documents;
+        }
+
+        catch(error){
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            Alert.alert(error.message);
+        }
         
     }
     
@@ -194,6 +205,10 @@ class globalFirebase {
     //Log out current user
     signOut(){
         this.auth.signOut();
+    }
+
+    getEmail(){
+        return this.auth.currentUser.email;
     }
 
 
