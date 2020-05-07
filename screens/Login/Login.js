@@ -2,6 +2,11 @@
 //firebase additions by: Ajay Vejendla
 //debugged by: Ariela Chomski
 
+//TODO: Get auto authentication on start to work
+//Current issue: authenication automatically happens if the session isn't expired in firebase
+//Authentication is done asynchronusly, but listner has to be created after created firebase object
+//Requires writing auth state to storage or something
+
 import 'react-native-gesture-handler';
 import React from 'react';
 import {Component} from 'react';
@@ -21,6 +26,8 @@ export default class LoginBase extends Component {
     email: '',
     password: '',
   };
+
+  
   render() {
     return (
       //<NavigationContainer>

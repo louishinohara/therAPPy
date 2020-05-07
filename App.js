@@ -27,7 +27,25 @@ if (!global.btoa) { global.btoa = encode; }
 
 if (!global.atob) { global.atob = decode; }
 
+
+//===== Supress Timer Warnings =====\\
+//Note that timer optimization is a known issue with firebase and react-native, and hasn't been fixed
+//Doesn't seem to be a major performance issue right now
+
+import { YellowBox } from 'react-native';
+import _ from 'lodash';
+
+YellowBox.ignoreWarnings(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    _console.warn(message);
+  }
+};
+
 export default function App() {
+  
+
   return (
       <NavigationContainer>
         <RootStack />

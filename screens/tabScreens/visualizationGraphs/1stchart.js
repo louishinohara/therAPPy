@@ -52,21 +52,22 @@ updateData(){
 
   const self = this;
   //Create clone of chart data currently in state
-  const temp = {...self.state.data}
+  const temp = self.state.data;
   //Get current time
   var now = new Date();
   //Create time stamps for start of current month and start of next month to create the timerange for queries
-  var currentMonth = firebase.generateDate(now.getFullYear(),now.getMonth,1);
+  var currentMonth = firebase.generateDate(now.getFullYear(),now.getMonth(),1);
 
-  var nextMonth = firebase.generateDate(now.getFullYear(),(now.getMonth()+1)%12,1);
+  var nextMonth = new Date();
 
+    //Lazy fix for December
+    if(now.getMonth() == 11){
 
-  //Lazy fix for December
-  if(now.getMonth() == 11){
+      nextMonth.setFullYear(now.getFullYear+1);
+  
+    }
 
-    nextMonth.setFullYear(now.getFullYear+1);
-
-  }
+  nextMonth = firebase.generateDate(now.getFullYear(),(now.getMonth()+1)%12,1);
 
   firebase.queryDataDate('feelingsData',firebase.getUser(),currentMonth,nextMonth).then(function(documents){
     //Do data processing here
@@ -74,11 +75,12 @@ updateData(){
     //Final array should never exceed 
     //Write data to temp
     //For example, to change the data plotted on the graph do temp.datasets[0].data = array of data
-    
-    
+    console.log('e');
+    console.log(documents);
   
   //Write temp to state, replacing current chart data
   self.setState({data: temp});
+  console.log(temp);
 
   }).catch(
 

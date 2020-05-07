@@ -59,6 +59,42 @@ class globalFirebase {
 
     //Search for documents from userID
     //Promise resolving to array of documents matching query
+    async queryDataUserOnlyLimit(collection,x){
+        //Array containing documents that match query
+        var documents = [];
+    
+    
+        //Declare reference object that points to collection 
+        var docRef = this.database.collection(collection);
+    
+        //Return references to all documents that have a matching userID
+        var query = docRef.where("userID", "==", this.auth.currentUser.uid);
+        try{
+        var querySnapshot = await query.orderBy('dateAndTimeReceived','desc').limit(30).get();
+    
+        querySnapshot.forEach(function (doc) {
+            documents.push(doc.data());
+        }
+        
+        );
+        
+        //return documents
+        return documents;
+        }
+
+        catch(error){
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            Alert.alert(error.message);
+
+            console.log(error.message);
+        }
+        
+    }
+    
+    //Search for documents from userID
+    //Promise resolving to array of documents matching query
     async queryDataUserOnly(collection,userID){
         //Array containing documents that match query
         var documents = [];
