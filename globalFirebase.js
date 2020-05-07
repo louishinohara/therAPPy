@@ -1,4 +1,5 @@
 //Written by Ajay Vejendla
+//Debugged and edited by Ajay 
 
 // Firebase App (the core Firebase SDK) is always required and
 // must be listed before other Firebase SDKs
@@ -27,6 +28,11 @@ class globalFirebase {
         this.firebaseServer = firebase.initializeApp(firebaseConfig);
         this.database = firebase.firestore();
         this.auth = firebase.auth();
+
+        //Eject from expo before enabling
+
+        //firebase.firestore().enablePersistence();
+        
     }
 
     //Login with credentials email and password
@@ -44,20 +50,25 @@ class globalFirebase {
 
     }
 
+    getUser(){
+
+        return this.auth.currentUser.uid;
+    }
+
     //Search for documents from userID
     //Promise resolving to array of documents matching query
     async queryDataUserOnly(collection,userID){
         //Array containing documents that match query
-        documents = [];
+        var documents = [];
     
     
         //Declare reference object that points to collection 
-        docRef = this.database.collection(collection);
+        var docRef = this.database.collection(collection);
     
         //Return references to all documents that have a matching userID
-        query = docRef.where("userID", "==", userID);
+        var query = docRef.where("userID", "==", userID);
     
-        querySnapshot = await query.get();
+        var querySnapshot = await query.get();
     
         querySnapshot.forEach(function (doc) {
             documents.push(doc.data());
@@ -69,22 +80,49 @@ class globalFirebase {
         return documents;
         
     }
+
+    //Return most recently submitted caps survey submitted by the currently authenticated user.
+    async querySurvey(){
+        //Array containing documents that match query
+        console.log('e');
+        var documents = [];
+        var userID = this.auth.currentUser.uid;
+    
+    
+        //Declare reference object that points to collection 
+        var docRef = this.database.collection('surveyData');
+    
+        //Return references to most recent caps survey entry
+        var query = docRef.where("userID", "==", userID);
+    
+        var querySnapshot = await query.orderBy('dateAndTimeReceived','desc').limit(1).get();
+        
+        querySnapshot.forEach(function (doc) {
+            documents.push(doc.data());
+        }
+        
+        );
+        console.log('e');
+        //return documents
+        return documents;
+        
+    }
     
     //Search range date1 < timeAndDateReceived < date2
     //Promise, resolves to array of documents matching query
     async queryDataDate(collection,userID,date1,date2){
         //Array containing documents that match query
-        documents = [];
+        var documents = [];
     
     
         //Declare reference object that points to collection 
-        docRef = this.database.collection(collection);
+        var docRef = this.database.collection(collection);
     
         //Return references to all documents that have a matching userID
-        query = docRef.where("userID", "==", userID).where("dateAndTimeReceived" , ">=", date1).where("dateAndTimeReceived" , "<", date2);
+        var query = docRef.where("userID", "==", userID).where("dateAndTimeReceived" , ">=", date1).where("dateAndTimeReceived" , "<", date2);
     
         //Retrieve the actual documents
-        querySnapshot = await query.get();
+        var querySnapshot = await query.get();
         querySnapshot.forEach(function (doc) {
             documents.push(doc.data());
         }
@@ -138,7 +176,7 @@ class globalFirebase {
     //Automatically tagged with UID
     submitData(collection,data){
          data.dateAndTimeReceived = firebase.firestore.Timestamp.now();
-         //data.userID = this.auth.currentUser.uid;
+         data.userID = this.auth.currentUser.uid;
          this.database.collection(collection).doc().set(data);
         
     }
