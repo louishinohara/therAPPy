@@ -1,5 +1,6 @@
 // Written by Ushio Shinohara
-
+  // tested by: Ajay V
+  // debugged by: Josh Hymowitz
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions,Button} from "react-native";
 import { Appbar } from "react-native-paper";

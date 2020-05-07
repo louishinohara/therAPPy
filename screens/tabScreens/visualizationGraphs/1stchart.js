@@ -1,4 +1,6 @@
 // Written by Ushio Shinohara
+  // tested by: Josh Hymowitz
+  // debugged by: Ushio Shinohara
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
 import {

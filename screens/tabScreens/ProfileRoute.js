@@ -1,4 +1,7 @@
 // Written by Ushio Shinohara
+// Added to by Suraj Sanyal and Josh Hymowitz
+// Tested by: Suraj Sanyal and Josh Hymowitz
+
 //Recommendation Additions, event code on https://therappy.rutgers.edu/?page_id=96 : Suraj Sanyal
 import * as React from 'react';
 import { Alert, View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,Platform, TouchableHighlight,Linking} from "react-native";
@@ -12,36 +15,6 @@ const { width, height } = Dimensions.get('screen');
 const thumbMeasure = (width - 48 - 32) / 3;
 
 
-var reccString1 = 'We\'ve been noticing that you have been feeling ';
-
-var feelingsArr = [
-    'happy',
-    'sad',
-    'frustrated',
-    'shaken',
-    'at peace',
-    'calm',
-    'afraid',
-    'panicked',
-    'anxious',
-    'depressed',
-    'spaced out'
-]
-
-var reccString2 = feelingsArr[Math.floor(Math.random() * feelingsArr.length)];
-var reccString3 = ' lately. We recommend that you ';
-
-var recArr = [
-    'go for a walk!',
-    'write about your thoughts.',
-    'touch base with a friend/family member.',
-    'exercise for a bit!',
-    'take 10 minutes to practice mindfulness.',
-]
-
-var reccString4 = recArr[Math.floor(Math.random() * recArr.length)];
-
-var reccStringFull = reccString1.concat(reccString2, reccString3, reccString4);
 
 class ProfileRoute extends React.Component {
 
@@ -176,3 +149,34 @@ const styles = StyleSheet.create({
     },
 
 });
+
+var reccString1 = 'We\'ve been noticing that you have been feeling ';
+
+var feelingsArr = [
+    'happy',
+    'sad',
+    'frustrated',
+    'shaken',
+    'at peace',
+    'calm',
+    'afraid',
+    'panicked',
+    'anxious',
+    'depressed',
+    'spaced out'
+]
+
+var reccString2 = feelingsArr[Math.floor(Math.random() * feelingsArr.length)];
+var reccString3 = ' lately. We recommend that you ';
+
+var recArr = [
+    'go for a walk!',
+    'write about your thoughts.',
+    'touch base with a friend/family member.',
+    'exercise for a bit!',
+    'take 10 minutes to practice mindfulness.',
+]
+
+var reccString4 = recArr[Math.floor(Math.random() * recArr.length)];
+
+var reccStringFull = reccString1.concat(reccString2, reccString3, reccString4);

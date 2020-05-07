@@ -1,6 +1,7 @@
 //Authored Louis Shinohara
 //Ajay Vejendla - Debugged/fixed data load to change chart dynamically
-
+// Tested by: Josh Hymowitz
+// Debugged by: Ajay Vejendla
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions, Linking, TouchableOpacity, Alert,Button} from "react-native";
 import {
