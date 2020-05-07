@@ -5,10 +5,10 @@ https://reactnative.dev/docs/0.24/getting-started
 
 Here are the instructions that our team members followed in order to simulate the app through expo.
 
-
 1. Have nodejs installed (i needed a version 13.x.x so you might wanna google an installation for yourself)
-2. Install expo globall onto your computer
+2. Install expo globally onto your computer 'npm install -g expo-cli'
 3. Clone the repository onto your local drive and open up the project folder with the IDE of your choice. (Works smoothly with VScode for us)
+
 
 Once those files have been downloaded the commands in the terminal of your IDE of project root folder:
 1. 'expo install' -> Install expo into the project on your local drive
@@ -39,11 +39,11 @@ jest --updateSnapshot
 
 
 * Integration Tests * 
-There was difficulty understanding and writing a test that integrated the individual unit tests written and it was brought to a conclusion that the best way to do so was to have the app be ran in order to demonstrate the integration of the separate units in the application. 
+There was difficulty understanding and writing a test that integrated the individual unit tests written and it was brought to a conclusion that the best way to do so was to have the app be run in order to demonstrate the integration of the separate units in the application. 
 
 * OTHER NOTES *
 
-Here are the two github repostiries for our code for the first demo. They are in seperate files because we were unable to merge both projects due to compatibility issues.
+Here are the two github repositories for our code for the first demo. They are in separate files because we were unable to merge both projects due to compatibility issues.
 https://github.com/louishinohara/therAPPy_data_visualization
 https://github.com/scorrette/se-health-app
 
