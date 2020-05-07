@@ -69,7 +69,7 @@ class globalFirebase {
     
         //Return references to all documents that have a matching userID
         var query = docRef.where("userID", "==", userID);
-    
+        try{
         var querySnapshot = await query.get();
     
         querySnapshot.forEach(function (doc) {
@@ -80,6 +80,14 @@ class globalFirebase {
         
         //return documents
         return documents;
+        }
+
+        catch(error){
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            Alert.alert(error.message);
+        }
         
     }
 
@@ -133,6 +141,7 @@ class globalFirebase {
         var query = docRef.where("userID", "==", userID).where("dateAndTimeReceived" , ">=", date1).where("dateAndTimeReceived" , "<", date2);
     
         //Retrieve the actual documents
+        try{
         var querySnapshot = await query.get();
         querySnapshot.forEach(function (doc) {
             documents.push(doc.data());
@@ -142,6 +151,14 @@ class globalFirebase {
         
         //return documents 
         return documents;
+        }
+
+        catch(error){
+            var errorCode = error.code;
+            var errorMessage = error.message;
+
+            Alert.alert(error.message);
+        }
         
     }
     
