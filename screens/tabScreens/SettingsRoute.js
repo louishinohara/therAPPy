@@ -135,6 +135,7 @@ class SettingsRoute extends Component {
                 { text: "OK", onPress: () => {
 
                   firebase.signOut();
+                  global.navigatorRef.current?.navigate('LoginScreen');
 
                   },
                   style: "cancel"

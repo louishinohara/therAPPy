@@ -26,10 +26,11 @@ global.crypto.getRandomValues = byteArray => { for (let i = 0; i < byteArray.len
 if (!global.btoa) { global.btoa = encode; }
 
 if (!global.atob) { global.atob = decode; }
-
+global.navigatorRef = React.createRef();
 export default function App() {
+
   return (
-      <NavigationContainer>
+      <NavigationContainer ref={navigatorRef}>
         <RootStack />
       </NavigationContainer>
 
