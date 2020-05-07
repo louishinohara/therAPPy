@@ -41,11 +41,11 @@ export default class BottomTabs extends React.Component {
   });
 
   render() {
-    
+    console.log(this.props);
 
     return (
 
-      <BottomNavigation 
+      <BottomNavigation
         // style={styles.title}
         navigationState={this.state}
         onIndexChange={this._handleIndexChange}

@@ -18,6 +18,8 @@ export default class MoodWheel extends Component {
       name: [],
       points: [],
       userID: '',
+      avg: -1,
+      happinessLevel: '',
     },
   };
   handleTouch(input) {
@@ -60,6 +62,28 @@ export default class MoodWheel extends Component {
         mood.points.push(0);
       }
     });
+
+    let temp = 0;
+    mood.points.forEach(function(point) {
+      temp += point;
+    });
+    temp = temp/mood.points.length;
+    mood.avg = temp;
+    if (mood.avg >= 0 && mood.avg < 20) {
+      mood.happinessLevel = 'horrible';
+    }
+    else if (mood.avg < 40) {
+      mood.happinessLevel = 'bad';
+    }
+    else if (mood.avg < 60) {
+      mood.happinessLevel = 'neutral';
+    }
+    else if (mood.avg < 80) {
+      mood.happinessLevel = 'good';
+    }
+    else if (mood.avg < 100) {
+      mood.happinessLevel = 'great';
+    }
     console.log(mood);
     //Ajay - Fixed firebase submission
     firebase.submitData('feelingsData',mood);
