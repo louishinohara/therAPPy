@@ -1,10 +1,12 @@
 //written by: Ariela Chomski
 //debugged by: Ariela Chomski
+//tested by: Ariela Chomski
+
 import React, {Component} from 'react';
 import Svg, {Text, Path, TSpan, G} from 'react-native-svg';
 import {Alert, StyleSheet, View} from 'react-native';
 import TouchableOpacity from "react-native-web/src/exports/TouchableOpacity";
-
+import firebaseMethods from "firebase/firestore";
 export default class MoodWheel extends Component {
   constructor(props) {
     super(props);
@@ -15,9 +17,9 @@ export default class MoodWheel extends Component {
       date: -1,
       name: [],
       points: [],
-      userID: -1,
+      userID: '',
     },
-  }
+  };
   handleTouch(input) {
     if (this.emotions.has(input)) {
       let temp = this.emotions.get(input);
@@ -29,7 +31,7 @@ export default class MoodWheel extends Component {
     console.log(input, this.emotions.get(input));
   }
 
-  handleSubmit(mood) {
+  handleSubmit(mood, firebase) {
     console.log(mood.name);
     mood.name.forEach(function(name) {
       console.log(name);
@@ -59,10 +61,8 @@ export default class MoodWheel extends Component {
       }
     });
     console.log(mood);
-    //haven't tested this yet
-    //  mood.date = firebaseMethods.Timestamp.now();
-    mood.userID = firebase.auth().currentUser.uid;
-    firebase.firestore().collection('feelingsData').doc().set(mood);
+    //Ajay - Fixed firebase submission
+    firebase.submitData('feelingsData',mood);
   }
 
   createTwoButtonAlert = (mood) =>
@@ -81,7 +81,6 @@ export default class MoodWheel extends Component {
           ],
           { cancelable: false }
       );
-
   render() {
     return (
         <View style={styles.container}>
