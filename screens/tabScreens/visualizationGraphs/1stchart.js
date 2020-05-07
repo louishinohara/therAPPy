@@ -8,41 +8,41 @@ import {
   PieChart,
 } from "react-native-chart-kit";
 const screenWidth = Dimensions.get("window").width;
-
+// POPULATE CHART DATA BY ADDIN
 class MyPieChart extends React.Component {
 state = {
   data : [
     {
       name: "Very Happy Days",
-      population: 0,
+      population: 5,
       color: "#23b526",
       legendFontColor: "#23b526",
       legendFontSize: 15
     },
     {
       name: "Happy Days",
-      population: 0,
+      population: 4,
       color: "#a1df39",
       legendFontColor: "#a1df39",
       legendFontSize: 15
     },
     {
       name: "Neutral Days",
-      population: 0,
+      population: 10,
       color: "#fed41c",
       legendFontColor: "#fed41c",
       legendFontSize: 15
     },
     {
       name: "Sad Days",
-      population: 0,
+      population: 2,
       color: "#fd7c1a",
       legendFontColor: "#fd7c1a",
       legendFontSize: 15
     },
     {
       name: "Bad Days",
-      population: 0,
+      population: 1,
       color: "#FF3714",
       legendFontColor: "#FF3714",
       legendFontSize: 15

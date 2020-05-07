@@ -18,7 +18,7 @@ class ChartScreen extends React.Component {
     datasets: [
     {
     data: [
-      0,0,0,0,0,0,0,0,0,0,0,0
+      20,40,40,50,10,30,20,60,10,80,90,10
         ]
     }
     ]
