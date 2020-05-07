@@ -778,7 +778,7 @@ export default class MoodWheel extends Component {
             </Text>
             <Text
                 onPress={() => {
-                  this.handleSubmit(this.state.mood);
+                  this.handleSubmit(this.state.mood, firebase);
                   this.createTwoButtonAlert(this.state.mood);
                   //TODO: add firebase upload
                 }}
