@@ -21,10 +21,6 @@ class ProfileRoute extends React.Component {
 
 
 
-
-
-
-
     render() {
         var date = moment().format("DD/MM/YYYY");
         return (

@@ -126,8 +126,9 @@ class CAPSScreen extends React.Component {
                 borderRadius: 16,
               }}
               />
-              <TouchableOpacity onPress={()=> this.changeData()}>
-              <Text>Refresh </Text>
+              <TouchableOpacity style={styles.refresh}
+              onPress={()=> this.changeData()}>
+              <Text style={styles.refreshText} >Refresh Data </Text>
               </TouchableOpacity>
               <Text style={styles.subHeader}> What does this mean?</Text>
               <Text style = {styles.description}>   The CCAPS-62 survey, which is the basis for our evaluation of a user’s mental health, consists of 62 questions describing a person’s thoughts, feelings, and experiences over the past two weeks, with answers on a scale of 0 or “not like me at all”, to 4 or “extremely like me”. Each question is an indicator of one of eight factors the survey evaluates (Depression, Substance Abuse, Eating Concerns, Generalized Anxiety, Family Distress, Social Anxiety, Hostility, and Academic Distress).</Text>
@@ -168,6 +169,23 @@ const styles = StyleSheet.create({
   chart: {
       backgroundColor: 'blue',
       color: 'blue'
+  },
+    refresh: {
+    width: '80%',
+    backgroundColor: '#7f58ff',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 5,
+    marginLeft: 50,
+  },
+  refreshText : {
+        fontSize: 16,
+        fontWeight: '500',
+        textAlign: 'center',
+        color: 'white'
+      
   },
   subHeader: {
         fontSize: 22,
