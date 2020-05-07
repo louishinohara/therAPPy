@@ -13,10 +13,6 @@ const thumbMeasure = (width - 48 - 32) / 3;
 
 
 class ProfileRoute extends React.Component {
-    state: {
-        name: ''
-    }
-
 
 
 
