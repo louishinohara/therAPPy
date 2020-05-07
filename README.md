@@ -13,10 +13,8 @@ Here are the instructions that our team members followed in order to simulate th
 Once those files have been downloaded the commands in the terminal of your IDE of project root folder:
 1. 'expo install' -> Install expo into the project on your local drive
 2. 'npm install' -> Download all necessary dependencies
-
-* Now Download Expo Client on your mobile device via the app store*
-
-3. 'expo start' -> Which launches a QR code in the IDE's terminal. Scan it with the camera app on your phone to launch the simulator in expo client. 
+3. Now Download Expo Client on your mobile device via the app store. It is much easier than running an emulator from your computer. 
+4. 'expo start' -> Which launches a QR code in the IDE's terminal. Scan it with the camera app on your phone to launch the simulator in expo client. 
 
 A test account which you can use is
 username: test@test.com 
@@ -26,6 +24,22 @@ However you can also create your own account to navigate through the app
 
 
 
+* Unit Tests *
+
+The Unit Tests that were created for this project were render tests of each aspect of our application. This test simply checks if each page renders as it should. There were some issues with this test where some pages come up as a fail in the test and this outcome is expected. Instructions of how to run are located below:
+
+To run the tests install jest globally:
+npm install jest --global
+
+and then run the following command while in the root folder of the code for our project:
+jest --updateSnapshot
+
+7 should fail and the rest should pass
+
+
+
+* Integration Tests * 
+There was difficulty understanding and writing a test that integrated the individual unit tests written and it was brought to a conclusion that the best way to do so was to have the app be ran in order to demonstrate the integration of the separate units in the application. 
 
 * OTHER NOTES *
 
