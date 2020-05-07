@@ -1,5 +1,7 @@
 // Written by Ushio Shinohara
 //Ajay Vejendla - Debugged charts to be dynamic, added code for getting the appropriate docs from firebase
+  // tested by: Josh Hymowitz
+  // debugged by: Ushio Shinohara
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
 import {

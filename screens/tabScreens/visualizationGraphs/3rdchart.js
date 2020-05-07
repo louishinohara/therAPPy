@@ -1,6 +1,7 @@
 //Written by Louis Shinohara
 //Ajay Vejendla - Fixed chart to be dynamic, and added skeleton code for loading firebase data into graph
-
+// Tested by Louis Shinohara
+// Debugged by Josh Hymowitz
 import React from "react";
 import { View, StyleSheet, Text, ScrollView, Image, Dimensions} from "react-native";
 import {
