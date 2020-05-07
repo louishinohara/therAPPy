@@ -56,7 +56,7 @@ class CAPSScreen extends React.Component {
                       
             };
 
-            componentWillMount(){
+            componentDidMount(){
               this.changeData();
             };
 

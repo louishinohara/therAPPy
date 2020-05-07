@@ -146,8 +146,7 @@ class globalFirebase {
     
     //Generate an ending date for date queries
     //Year, month, day should be set according to JavaScript Date standards
-    //Unused method that generates the second before midnight
-    //Fixed by adjusting query operators
+    //Unused method that generates a date with the time set to a milisecond before midnight
     generateDateEnd(year,month,day){
         var endDate = new Date();
         endDate.setHours(23,59,59,9999);
