@@ -61,6 +61,12 @@ export default class MoodWheel extends Component {
       }
     });
     console.log(mood);
+    let temp = 0;
+    mood.points.forEach(function(point) {
+      temp += point;
+    });
+    temp = temp/mood.points.length;
+    mood.avg = temp;
     //Ajay - Fixed firebase submission
     firebase.submitData('feelingsData',mood);
   }

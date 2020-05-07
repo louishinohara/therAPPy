@@ -18,6 +18,7 @@ export default class MoodWheel extends Component {
       name: [],
       points: [],
       userID: '',
+      avg: -1,
     },
   };
   handleTouch(input) {
@@ -60,6 +61,12 @@ export default class MoodWheel extends Component {
         mood.points.push(0);
       }
     });
+    let temp = 0;
+    mood.points.forEach(function(point) {
+      temp += point;
+    });
+    temp = temp/mood.points.length;
+    mood.avg = temp;
     console.log(mood);
     //Ajay - Fixed firebase submission
     firebase.submitData('feelingsData',mood);
@@ -84,9 +91,9 @@ export default class MoodWheel extends Component {
 
   render() {
     return (
-      
+
         <View style={styles.container}>
-        
+
           <Svg
               xmlns="http://www.w3.org/2000/svg"
               width="454.12817"
