@@ -5,7 +5,7 @@ import { View, StyleSheet, Image, Button, ScrollView,Dimensions,ImageBackground,
 import { Avatar, Card, Title, Paragraph,BottomNavigation, Text,Appbar  } from 'react-native-paper';
 import { Block,theme } from 'galio-framework';
 import { LinearGradient } from 'expo-linear-gradient';
-
+import moment from 'moment'; 
 // import {Images } from '../constants';
 import {HeaderHeight} from "../../constants/utils"
 const { width, height } = Dimensions.get('screen');
@@ -13,12 +13,25 @@ const thumbMeasure = (width - 48 - 32) / 3;
 
 
 class ProfileRoute extends React.Component {
+    state: {
+        name: ''
+    }
+
+
+
+
+
+
+
+
+
     render() {
+        var date = moment().format("DD/MM/YYYY");
         return (
     <ScrollView>
         <View style={styles.container}>
             <View style={styles.header}></View>
-            <Image style={styles.avatar} source={{ uri: 'https://i.imgur.com/xfnigDQ.jpg' }} />
+            <Image style={styles.avatar} source={{ uri: 'https://i.imgur.com/uoETW4o.jpg' }} />
             <View style={styles.body}>
                 <View style={styles.bodyContent}>
                     <Text style={styles.name}>John Doe</Text>
@@ -26,7 +39,7 @@ class ProfileRoute extends React.Component {
                 </View>
                 <Card style={styles.cardContent}>
                     <Card.Content>
-                        <Title style={styles.date}>Monday, May 1st</Title>
+                        <Title style={styles.date}> {date}</Title>
                         <Paragraph style={styles.recTitle}>Here's your latest recommendation!</Paragraph>
                         <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
                         <Paragraph style={styles.reBody}>We've been noticing that you have been feeling down lately. We recommend that you go out for a walk!</Paragraph>
@@ -37,7 +50,7 @@ class ProfileRoute extends React.Component {
                 <Card style={styles.cardContent}>
                 
                     <Card.Content>
-                        <Title>Here Are Some Events Near You!</Title>
+                        <Title style={styles.titleText}>Here Are Some Events Near You!</Title>
                     </Card.Content>
                     <TouchableHighlight onPress={ ()=>{ Linking.openURL('https://therappy.rutgers.edu/?page_id=96')}}>
                     <Card.Cover source={{ uri: 'https://i.imgur.com/k5mgiDT.png' }} />
@@ -66,6 +79,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         marginTop: 80
+    },
+    titleText: {
+        fontSize: 18,
+        color: "#696969",
+        marginTop: 10,
+        textAlign: 'center'
     },
     name: {
         fontSize: 22,
@@ -115,7 +134,8 @@ const styles = StyleSheet.create({
         resizeMode:'contain',
     },
     date: {
-        fontSize: 20
+        fontSize: 20,
+        textAlign: 'center'
     },
     recTitle: {
         fontSize: 18
