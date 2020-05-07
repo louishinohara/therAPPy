@@ -82,18 +82,18 @@ export default class LoginBase extends Component {
           }}>
           <Text style={styles.loginText}>LOGIN</Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity style={styles.createAccountBtn}
           onPress={() => this.props.navigation.navigate('CreateAccountScreen')}>
-          <Text style={styles.forgot}>Create Account</Text>
+          <Text style={styles.createAccount}>Create Account</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.dataBtn}
+          onPress={() => this.props.navigation.navigate('dataUpDown')}>
+          <Text style={styles.dataText}>Upload / Download Data</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate('BottomTabs')}>
-          <Text style={styles.forgot}>TO MAIN SCREEN DELETE LATER</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('dataUpDown')}>
-          <Text style={styles.forgot}>TO DATA UPLOAD/DOWNLOAD, DELETE LATER</Text>
+          <Text style={styles.dataText}>TO MAIN SCREEN DELETE LATER</Text>
         </TouchableOpacity>
 
       </View>
@@ -146,7 +146,15 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 14,
   },
+  createAccount: {
+    color: 'white',
+    fontSize: 18,
+  },
   loginText: {
+    color: 'black',
+    fontSize: 18,
+  },
+  dataText: {
     color: 'black',
     fontSize: 18,
   },
@@ -157,8 +165,31 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: 20,
+    marginBottom: 5,
     marginTop: 20,
+    // padding:20,
+  },
+    createAccountBtn: {
+          width: '80%',
+    backgroundColor: 'grey',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 5,
+    // marginTop: 20,
+    // padding:20,
+
+  },
+      dataBtn: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 25,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 5,
+    // marginTop: 20,
     // padding:20,
   },
 });
