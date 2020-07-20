@@ -23,7 +23,7 @@
     "expo-updates": "~0.1.0",
     "firebase": "^7.13.1",
     "galio-framework": "^0.6.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mem": "^6.0.1",
     "native-base": "^2.13.12",
     "react": "~16.9.0",
